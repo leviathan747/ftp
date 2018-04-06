@@ -1,4 +1,3 @@
-//! ACTIVITY BEGIN. '8813849e-3684-4e42-a9b4-71c90157cae1' DO NOT EDIT THIS LINE.
 private service Socket::testrecv () is
 serversock: sockethandle;
 localaddr: sockaddr;
@@ -45,5 +44,3 @@ begin
   console << "Message: " << databuffer << endl;
 
 end service;
-//! ACTIVITY END. DO NOT EDIT THIS LINE.
-

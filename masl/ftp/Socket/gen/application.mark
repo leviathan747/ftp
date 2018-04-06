@@ -1,1 +1,2 @@
 Socket::Socket::testcases::void testrecv,test_only,Function,true
+Socket::Socket::testcases::void testrecv,scenario,Function,1

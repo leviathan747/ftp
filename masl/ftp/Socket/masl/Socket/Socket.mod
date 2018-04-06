@@ -7,13 +7,22 @@ domain Socket is
   public type sockproto is enum ( TCP, UDP );   
   public type optionlevel is enum ( SOL_SOCKET );   
   public type optionname is enum ( SO_DEBUG, SO_ACCEPTCONN, SO_BROADCAST, SO_REUSEADDR, SO_KEEPALIVE, SO_LINGER, SO_OOBINLINE, SO_SNDBUF, SO_RCVBUF, SO_ERROR, SO_TYPE, SO_DONTROUTE, SO_RCVLOWAT, SO_RCVTIMEO, SO_SNDLOWAT, SO_SNDTIMEO );   
+  //!address is a string representation of an IPv4 address in the format
+  //!"<byte>.<byte>.<byte>.<byte>" where each byte is the ASCII representation
+  //!of a decimal integer.
+  //!
+  //!port is a 16 bit integer represented in decimal.
+  public type sockaddr_in is structure
+    address: string;     
+    port: integer;     
+  end structure;   
   public type sockaddr is structure
     family: sockfamily;     
-    data: data;     
+    data: sockaddr_in;     
   end structure;   
   
   public service accept ( socket: in sockethandle,
-                          address: out sockaddr ) return integer;   
+                          address: out sockaddr ) return sockethandle;   
   public service bind ( socket: in sockethandle,
                         address: in sockaddr ) return integer;   
   public service connect ( socket: in sockethandle,
@@ -55,6 +64,6 @@ domain Socket is
   public service socket ( family: in sockfamily,
                           socktype: in socktype,
                           protocol: in sockproto ) return sockethandle;   
-  private service testrecv (); pragma test_only( true );   
+  private service testrecv (); pragma test_only( true ); pragma scenario( 1 );   
   
 end domain;
