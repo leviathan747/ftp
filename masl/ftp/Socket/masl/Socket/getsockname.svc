@@ -1,0 +1,5 @@
+public service Socket::getsockname ( socket: in sockethandle,
+                                     address: out sockaddr ) return integer is
+begin
+  return 0;
+end service;

@@ -1,0 +1,7 @@
+public service Socket::getsockopt ( socket: in sockethandle,
+                                    level: in optionlevel,
+                                    option: in optionname,
+                                    option_value: out data ) return integer is
+begin
+  return 0;
+end service;

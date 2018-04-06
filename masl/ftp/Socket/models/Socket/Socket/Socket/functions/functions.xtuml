@@ -1,0 +1,724 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	"d82c84ce-d0a8-4ae5-8341-75a7060de1df",
+	'functions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("5d51d6ba-c96d-4bd0-a9ed-f75b39d027cc",
+	112,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'Socket::Socket::Socket::functions');
+INSERT INTO DIM_DIA
+	VALUES ("5d51d6ba-c96d-4bd0-a9ed-f75b39d027cc",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("1c3873a3-60e8-4a3f-aeb0-33d2b5eb86ef",
+	"00000000-0000-0000-0000-000000000000",
+	'accept',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("a1b2c4ec-52a9-42df-ab6f-054eab7ac3f8",
+	"1c3873a3-60e8-4a3f-aeb0-33d2b5eb86ef",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("176d664e-1820-44c3-9c66-8b544f69728f",
+	"00000000-0000-0000-0000-000000000000",
+	'socket',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO S_SPARM
+	VALUES ("c117cd35-65cb-4b03-9295-292feca02a36",
+	"1c3873a3-60e8-4a3f-aeb0-33d2b5eb86ef",
+	'address',
+	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	1,
+	'',
+	"a1b2c4ec-52a9-42df-ab6f-054eab7ac3f8",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	"00000000-0000-0000-0000-000000000000",
+	'sockaddr',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO PE_PE
+	VALUES ("1c3873a3-60e8-4a3f-aeb0-33d2b5eb86ef",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("a78e6e43-004a-43d1-8e0c-df5faba26a5c",
+	"00000000-0000-0000-0000-000000000000",
+	'bind',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("4abd8d12-47ff-43bd-87ef-ad4802107420",
+	"a78e6e43-004a-43d1-8e0c-df5faba26a5c",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("d5ee0aa4-bc80-43e3-b7eb-2a82eea001fb",
+	"a78e6e43-004a-43d1-8e0c-df5faba26a5c",
+	'address',
+	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	0,
+	'',
+	"4abd8d12-47ff-43bd-87ef-ad4802107420",
+	'');
+INSERT INTO PE_PE
+	VALUES ("a78e6e43-004a-43d1-8e0c-df5faba26a5c",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("dce0ff04-a014-4661-affe-9dcc12eab0c1",
+	"00000000-0000-0000-0000-000000000000",
+	'connect',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("161bbf79-6e13-4161-b63f-db5dbbed10b7",
+	"dce0ff04-a014-4661-affe-9dcc12eab0c1",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("e13521fb-1c39-443c-a2dd-7a1a1b74b87e",
+	"dce0ff04-a014-4661-affe-9dcc12eab0c1",
+	'address',
+	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	0,
+	'',
+	"161bbf79-6e13-4161-b63f-db5dbbed10b7",
+	'');
+INSERT INTO PE_PE
+	VALUES ("dce0ff04-a014-4661-affe-9dcc12eab0c1",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("341d9c39-a845-449a-85b1-6d37356bcfe2",
+	"00000000-0000-0000-0000-000000000000",
+	'getpeername',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("a3158891-4dd9-498d-978a-ff49502412ad",
+	"341d9c39-a845-449a-85b1-6d37356bcfe2",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("a3b2c390-5671-4d0a-a906-993fd27245f5",
+	"341d9c39-a845-449a-85b1-6d37356bcfe2",
+	'address',
+	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	1,
+	'',
+	"a3158891-4dd9-498d-978a-ff49502412ad",
+	'');
+INSERT INTO PE_PE
+	VALUES ("341d9c39-a845-449a-85b1-6d37356bcfe2",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("b58a18b4-3e00-477b-b2dc-db7411c2e882",
+	"00000000-0000-0000-0000-000000000000",
+	'getsockname',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("3516bbbb-3f5f-41a1-9bdc-e76ab10ce8fe",
+	"b58a18b4-3e00-477b-b2dc-db7411c2e882",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("7f627baa-8ffc-4f87-9cbb-d2f0990bb5fd",
+	"b58a18b4-3e00-477b-b2dc-db7411c2e882",
+	'address',
+	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	1,
+	'',
+	"3516bbbb-3f5f-41a1-9bdc-e76ab10ce8fe",
+	'');
+INSERT INTO PE_PE
+	VALUES ("b58a18b4-3e00-477b-b2dc-db7411c2e882",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("0ab50b63-a07c-445e-a2ab-2e977ee366d9",
+	"00000000-0000-0000-0000-000000000000",
+	'getsockopt',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("5af0f484-99cf-4abb-91cf-5fd6b4e415a5",
+	"0ab50b63-a07c-445e-a2ab-2e977ee366d9",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("763bc055-6a9c-4c2a-9ccc-0bcfcedfc80b",
+	"0ab50b63-a07c-445e-a2ab-2e977ee366d9",
+	'level',
+	"74374eb1-3d30-47c2-b1d3-f6d298f9e09a",
+	0,
+	'',
+	"5af0f484-99cf-4abb-91cf-5fd6b4e415a5",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("74374eb1-3d30-47c2-b1d3-f6d298f9e09a",
+	"00000000-0000-0000-0000-000000000000",
+	'optionlevel',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO S_SPARM
+	VALUES ("897d59fb-e26e-48a3-b4f5-daceb79b4014",
+	"0ab50b63-a07c-445e-a2ab-2e977ee366d9",
+	'option',
+	"f8f44f60-34fa-4291-bd78-01519625977d",
+	0,
+	'',
+	"763bc055-6a9c-4c2a-9ccc-0bcfcedfc80b",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f8f44f60-34fa-4291-bd78-01519625977d",
+	"00000000-0000-0000-0000-000000000000",
+	'optionname',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO S_SPARM
+	VALUES ("9aed0ebe-b346-43b9-95a7-0029d7527e91",
+	"0ab50b63-a07c-445e-a2ab-2e977ee366d9",
+	'option_value',
+	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	1,
+	'',
+	"897d59fb-e26e-48a3-b4f5-daceb79b4014",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	"00000000-0000-0000-0000-000000000000",
+	'data',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO PE_PE
+	VALUES ("0ab50b63-a07c-445e-a2ab-2e977ee366d9",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("df0bac24-c929-4b72-8d9c-4ffaa3e59cd3",
+	"00000000-0000-0000-0000-000000000000",
+	'listen',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("bb2ddaf7-5f0e-4b1e-89ed-8322d8d21265",
+	"df0bac24-c929-4b72-8d9c-4ffaa3e59cd3",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("7d750604-d7b8-4cf4-95d5-95067f606a8d",
+	"df0bac24-c929-4b72-8d9c-4ffaa3e59cd3",
+	'backlog',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"bb2ddaf7-5f0e-4b1e-89ed-8322d8d21265",
+	'');
+INSERT INTO PE_PE
+	VALUES ("df0bac24-c929-4b72-8d9c-4ffaa3e59cd3",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("d88a1067-c3f7-4951-8c9e-8ba0bbffec1e",
+	"00000000-0000-0000-0000-000000000000",
+	'recv',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("3f1c7129-7654-41cf-99c7-95dc6e7877fe",
+	"d88a1067-c3f7-4951-8c9e-8ba0bbffec1e",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("543e4c73-036f-48fc-a617-e85d0305df1d",
+	"d88a1067-c3f7-4951-8c9e-8ba0bbffec1e",
+	'buffer',
+	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	1,
+	'',
+	"3f1c7129-7654-41cf-99c7-95dc6e7877fe",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("ca86cc5b-3297-43e4-9798-8516fe6e0619",
+	"d88a1067-c3f7-4951-8c9e-8ba0bbffec1e",
+	'length',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"543e4c73-036f-48fc-a617-e85d0305df1d",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("ff48c0e5-9004-4000-b7b0-4b9dde4e3802",
+	"d88a1067-c3f7-4951-8c9e-8ba0bbffec1e",
+	'flags',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"ca86cc5b-3297-43e4-9798-8516fe6e0619",
+	'');
+INSERT INTO PE_PE
+	VALUES ("d88a1067-c3f7-4951-8c9e-8ba0bbffec1e",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("8c90814c-67eb-4ab2-a099-1ce3f174e2c7",
+	"00000000-0000-0000-0000-000000000000",
+	'recvfrom',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("1a970f4d-b292-41b3-80cd-f375e7f8ed39",
+	"8c90814c-67eb-4ab2-a099-1ce3f174e2c7",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("867b6ad7-cab6-4cd5-a81d-1176ed7a7803",
+	"8c90814c-67eb-4ab2-a099-1ce3f174e2c7",
+	'buffer',
+	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	1,
+	'',
+	"1a970f4d-b292-41b3-80cd-f375e7f8ed39",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("1ef3131a-9262-4468-8d4e-92a2f3c3582e",
+	"8c90814c-67eb-4ab2-a099-1ce3f174e2c7",
+	'length',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"867b6ad7-cab6-4cd5-a81d-1176ed7a7803",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("a96601a5-df51-4a84-bafe-8c363b9f3629",
+	"8c90814c-67eb-4ab2-a099-1ce3f174e2c7",
+	'flags',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"1ef3131a-9262-4468-8d4e-92a2f3c3582e",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("07f6dc3d-beff-43f1-99f4-4f0cf4b82cbd",
+	"8c90814c-67eb-4ab2-a099-1ce3f174e2c7",
+	'address',
+	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	1,
+	'',
+	"a96601a5-df51-4a84-bafe-8c363b9f3629",
+	'');
+INSERT INTO PE_PE
+	VALUES ("8c90814c-67eb-4ab2-a099-1ce3f174e2c7",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("1c35110d-d00d-4b31-b5d3-655d4d1e458d",
+	"00000000-0000-0000-0000-000000000000",
+	'sendto',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("aeb00207-8df1-4dde-8894-5413e9473908",
+	"1c35110d-d00d-4b31-b5d3-655d4d1e458d",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("c13f77e4-64c1-4950-a29b-dc06ff53703e",
+	"1c35110d-d00d-4b31-b5d3-655d4d1e458d",
+	'message',
+	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	0,
+	'',
+	"aeb00207-8df1-4dde-8894-5413e9473908",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("01367d59-601a-441b-96b3-89e161c0bc08",
+	"1c35110d-d00d-4b31-b5d3-655d4d1e458d",
+	'length',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"c13f77e4-64c1-4950-a29b-dc06ff53703e",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("4a05ef90-4add-453e-ad96-d093a0b5f9e5",
+	"1c35110d-d00d-4b31-b5d3-655d4d1e458d",
+	'flags',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"01367d59-601a-441b-96b3-89e161c0bc08",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("b21e8a3b-f771-4394-a569-b0bf6aaa89d7",
+	"1c35110d-d00d-4b31-b5d3-655d4d1e458d",
+	'address',
+	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	0,
+	'',
+	"4a05ef90-4add-453e-ad96-d093a0b5f9e5",
+	'');
+INSERT INTO PE_PE
+	VALUES ("1c35110d-d00d-4b31-b5d3-655d4d1e458d",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("7996bf6b-48c6-40ad-940d-530eee70489d",
+	"00000000-0000-0000-0000-000000000000",
+	'setsockopt',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("5048c349-4e9c-4a5e-b696-c56f91091af4",
+	"7996bf6b-48c6-40ad-940d-530eee70489d",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("46830c48-997b-46cf-ad23-be36656a5ba6",
+	"7996bf6b-48c6-40ad-940d-530eee70489d",
+	'level',
+	"74374eb1-3d30-47c2-b1d3-f6d298f9e09a",
+	0,
+	'',
+	"5048c349-4e9c-4a5e-b696-c56f91091af4",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("a82cf283-57a1-49f4-a7cb-0b7e89c07ea2",
+	"7996bf6b-48c6-40ad-940d-530eee70489d",
+	'option',
+	"f8f44f60-34fa-4291-bd78-01519625977d",
+	0,
+	'',
+	"46830c48-997b-46cf-ad23-be36656a5ba6",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("d7612497-8189-48fb-8963-dcf58dcb65b4",
+	"7996bf6b-48c6-40ad-940d-530eee70489d",
+	'option_value',
+	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	0,
+	'',
+	"a82cf283-57a1-49f4-a7cb-0b7e89c07ea2",
+	'');
+INSERT INTO PE_PE
+	VALUES ("7996bf6b-48c6-40ad-940d-530eee70489d",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("71fdb8fd-c271-4531-a60c-f058d1543454",
+	"00000000-0000-0000-0000-000000000000",
+	'send',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("85001890-d759-4cb2-a9ce-5d198272479d",
+	"71fdb8fd-c271-4531-a60c-f058d1543454",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("846dc396-8e41-4e16-b216-f966483de1ac",
+	"71fdb8fd-c271-4531-a60c-f058d1543454",
+	'message',
+	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	0,
+	'',
+	"85001890-d759-4cb2-a9ce-5d198272479d",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("8b1ad7b9-5eaf-46ab-90bf-fee7d5e3a163",
+	"71fdb8fd-c271-4531-a60c-f058d1543454",
+	'length',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"846dc396-8e41-4e16-b216-f966483de1ac",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("08c7e9a1-5f41-459e-887f-1b7fcdb85ff1",
+	"71fdb8fd-c271-4531-a60c-f058d1543454",
+	'flags',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"8b1ad7b9-5eaf-46ab-90bf-fee7d5e3a163",
+	'');
+INSERT INTO PE_PE
+	VALUES ("71fdb8fd-c271-4531-a60c-f058d1543454",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("208255e1-3344-4c27-8827-d7fe0c13aaa8",
+	"00000000-0000-0000-0000-000000000000",
+	'shutdown',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("a9e4cca3-37e7-426e-a45f-3792e932f835",
+	"208255e1-3344-4c27-8827-d7fe0c13aaa8",
+	'socket',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("24a39994-32f4-4c73-b762-fde0101edbf9",
+	"208255e1-3344-4c27-8827-d7fe0c13aaa8",
+	'how',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"a9e4cca3-37e7-426e-a45f-3792e932f835",
+	'');
+INSERT INTO PE_PE
+	VALUES ("208255e1-3344-4c27-8827-d7fe0c13aaa8",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("b7701eaa-cb88-469c-863f-839cfab93385",
+	"00000000-0000-0000-0000-000000000000",
+	'socket',
+	'',
+	'',
+	"176d664e-1820-44c3-9c66-8b544f69728f",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("75436c4b-a38e-4967-bfa5-f89942dcf9be",
+	"b7701eaa-cb88-469c-863f-839cfab93385",
+	'family',
+	"0b7f282f-ada0-47e6-b8ec-a1cecf5c2e92",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("0b7f282f-ada0-47e6-b8ec-a1cecf5c2e92",
+	"00000000-0000-0000-0000-000000000000",
+	'sockfamily',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO S_SPARM
+	VALUES ("5cb283ce-8607-473d-ac9a-c99500d2de86",
+	"b7701eaa-cb88-469c-863f-839cfab93385",
+	'socktype',
+	"69d98f1a-7779-4e87-81f4-a3fbf4dbae2a",
+	0,
+	'',
+	"75436c4b-a38e-4967-bfa5-f89942dcf9be",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("69d98f1a-7779-4e87-81f4-a3fbf4dbae2a",
+	"00000000-0000-0000-0000-000000000000",
+	'socktype',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO S_SPARM
+	VALUES ("25983527-616b-406b-994f-dc3c921697e8",
+	"b7701eaa-cb88-469c-863f-839cfab93385",
+	'protocol',
+	"abc7628c-6a34-4321-8e5b-f24a74bc1a6f",
+	0,
+	'',
+	"5cb283ce-8607-473d-ac9a-c99500d2de86",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("abc7628c-6a34-4321-8e5b-f24a74bc1a6f",
+	"00000000-0000-0000-0000-000000000000",
+	'sockproto',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO PE_PE
+	VALUES ("b7701eaa-cb88-469c-863f-839cfab93385",
+	1,
+	"0fcbf994-85d3-4a85-96b9-555e301e7108",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("0fcbf994-85d3-4a85-96b9-555e301e7108",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"07ebd00e-3bed-4dac-b43a-fb9c66bfe086",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("07ebd00e-3bed-4dac-b43a-fb9c66bfe086",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Socket',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Socket.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("d82c84ce-d0a8-4ae5-8341-75a7060de1df",
+	'Socket',
+	1,
+	'../../../Socket.xtuml');

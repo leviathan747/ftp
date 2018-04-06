@@ -1,0 +1,7 @@
+public service Socket::send ( socket: in sockethandle,
+                              message: in data,
+                              length: in integer,
+                              flags: in integer ) return integer is
+begin
+  return 0;
+end service;
