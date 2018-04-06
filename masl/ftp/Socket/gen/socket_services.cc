@@ -7,23 +7,51 @@
 #include <stdint.h>
 #include "swa/Domain.hh"
 #include "swa/Stack.hh"
+
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
 #include <stdio.h>
+#include <errno.h>
+#include <string.h>
 
 namespace masld_Socket
 {
 
-  int32_t masls_accept ( maslt_sockethandle maslp_socket,
-                         maslt_sockaddr&    maslp_address )
+  maslt_sockethandle masls_accept ( maslt_sockethandle maslp_socket,
+                                    maslt_sockaddr&    maslp_address )
   {
-    printf( "executing accept\n");
-    return 0;
+    struct sockaddr_in peeraddress     = {};
+    socklen_t          peeraddress_len = sizeof(peeraddress);
+    int32_t            retval          = -1;
+
+    retval = accept( maslp_socket, (struct sockaddr *)&peeraddress, &peeraddress_len );
+    if ( retval >= 0 ) {
+
+      maslp_address.set_masla_address() = ::SWA::String( inet_ntoa( peeraddress.sin_addr) );
+      maslp_address.set_masla_port() = (int32_t)ntohs( peeraddress.sin_port );
+
+    }
+    else {
+      int opt = 12345;
+      int32_t retval2;
+      retval2 = getsockopt( maslp_socket, SOL_SOCKET, SO_ACCEPTCONN, &opt, sizeof(int) );
+      printf( "retval2: %d, error code: %d, errno: %d, msg: %s\n", retval2, opt, errno, strerror( errno ) );
+    }
+    return retval;
   }
 
   int32_t masls_bind ( maslt_sockethandle    maslp_socket,
                        const maslt_sockaddr& maslp_address )
   {
-    printf( "executing bind\n");
-    return 0;
+    struct sockaddr_in localaddress = {};
+
+    localaddress.sin_family = AF_INET;
+    inet_aton( maslp_address.get_masla_address().c_str(), &(localaddress.sin_addr) );
+    localaddress.sin_port = htons( maslp_address.get_masla_port() );
+
+    return bind( maslp_socket, (struct sockaddr *)&localaddress, sizeof(localaddress) );
   }
 
   int32_t masls_connect ( maslt_sockethandle    maslp_socket,
@@ -47,10 +75,9 @@ namespace masld_Socket
     return 0;
   }
 
-  int32_t masls_getsockopt ( maslt_sockethandle       maslp_socket,
-                             const maslt_optionlevel& maslp_level,
-                             const maslt_optionname&  maslp_option,
-                             maslt_data&              maslp_option_value )
+  int32_t masls_getsockopt ( maslt_sockethandle      maslp_socket,
+                             const maslt_optionname& maslp_option,
+                             maslt_data&             maslp_value )
   {
     printf( "executing getsockopt\n");
     return 0;
@@ -59,8 +86,7 @@ namespace masld_Socket
   int32_t masls_listen ( maslt_sockethandle maslp_socket,
                          int32_t            maslp_backlog )
   {
-    printf( "executing listen\n");
-    return 0;
+    return listen( maslp_socket, maslp_backlog );
   }
 
   int32_t masls_recv ( maslt_sockethandle maslp_socket,
@@ -68,8 +94,19 @@ namespace masld_Socket
                        int32_t            maslp_length,
                        int32_t            maslp_flags )
   {
-    printf( "executing recv\n");
-    return 0;
+    uint8_t buf[ maslp_length ] = {};
+    int32_t retval              = -1;
+
+    printf( "waiting for data...\n" );
+    retval = recv( maslp_socket, buf, maslp_length, maslp_flags );
+    if ( retval >= 0 ) {
+
+      for ( int32_t i = 0; i < retval; i++ ) {
+        maslp_buffer += buf[i];
+      }
+
+    }
+    return retval;
   }
 
   int32_t masls_recvfrom ( maslt_sockethandle maslp_socket,
@@ -101,10 +138,9 @@ namespace masld_Socket
     return 0;
   }
 
-  int32_t masls_setsockopt ( maslt_sockethandle       maslp_socket,
-                             const maslt_optionlevel& maslp_level,
-                             const maslt_optionname&  maslp_option,
-                             const maslt_data&        maslp_option_value )
+  int32_t masls_setsockopt ( maslt_sockethandle      maslp_socket,
+                             const maslt_optionname& maslp_option,
+                             const maslt_data&       maslp_value )
   {
     printf( "executing setsockopt\n");
     return 0;
@@ -117,12 +153,27 @@ namespace masld_Socket
     return 0;
   }
 
-  maslt_sockethandle masls_socket ( const maslt_sockfamily& maslp_family,
-                                    const maslt_socktype&   maslp_socktype,
-                                    const maslt_sockproto&  maslp_protocol )
+  maslt_sockethandle masls_socket ( const maslt_socktype&  maslp_socktype,
+                                    const maslt_sockproto& maslp_protocol )
   {
-    printf( "executing socket\n");
-    return 0;
+    int32_t type  = -1;
+    int32_t proto = -1;
+
+    if ( maslt_socktype::masle_SOCK_STREAM == maslp_socktype )
+      type = SOCK_STREAM;
+    else if ( maslt_socktype::masle_SOCK_DGRAM == maslp_socktype )
+      type = SOCK_DGRAM;
+    else
+      type = -1;
+
+    if ( maslt_sockproto::masle_IPPROTO_TCP == maslp_protocol )
+      proto = IPPROTO_TCP;
+    else if ( maslt_sockproto::masle_IPPROTO_UDP == maslp_protocol )
+      proto = IPPROTO_UDP;
+    else
+      proto = -1;
+
+    return socket( AF_INET, type, proto );
   }
 
 }

@@ -63,16 +63,20 @@ INSERT INTO S_SPARM
 	VALUES ("c117cd35-65cb-4b03-9295-292feca02a36",
 	"1c3873a3-60e8-4a3f-aeb0-33d2b5eb86ef",
 	'address',
-	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	"498c4857-8187-483a-86b3-3a26639ade60",
 	1,
 	'',
 	"a1b2c4ec-52a9-42df-ab6f-054eab7ac3f8",
 	'');
 INSERT INTO S_DT_PROXY
-	VALUES ("74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	VALUES ("498c4857-8187-483a-86b3-3a26639ade60",
 	"00000000-0000-0000-0000-000000000000",
 	'sockaddr',
-	'',
+	'address is a string representation of an IPv4 address in the format
+"<byte>.<byte>.<byte>.<byte>" where each byte is the ASCII representation
+of a decimal integer.
+
+port is a 16 bit integer represented in decimal.',
 	'',
 	'../../Shared/Shared.xtuml');
 INSERT INTO PE_PE
@@ -104,7 +108,7 @@ INSERT INTO S_SPARM
 	VALUES ("d5ee0aa4-bc80-43e3-b7eb-2a82eea001fb",
 	"a78e6e43-004a-43d1-8e0c-df5faba26a5c",
 	'address',
-	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	"498c4857-8187-483a-86b3-3a26639ade60",
 	0,
 	'',
 	"4abd8d12-47ff-43bd-87ef-ad4802107420",
@@ -138,7 +142,7 @@ INSERT INTO S_SPARM
 	VALUES ("e13521fb-1c39-443c-a2dd-7a1a1b74b87e",
 	"dce0ff04-a014-4661-affe-9dcc12eab0c1",
 	'address',
-	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	"498c4857-8187-483a-86b3-3a26639ade60",
 	0,
 	'',
 	"161bbf79-6e13-4161-b63f-db5dbbed10b7",
@@ -172,7 +176,7 @@ INSERT INTO S_SPARM
 	VALUES ("a3b2c390-5671-4d0a-a906-993fd27245f5",
 	"341d9c39-a845-449a-85b1-6d37356bcfe2",
 	'address',
-	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	"498c4857-8187-483a-86b3-3a26639ade60",
 	1,
 	'',
 	"a3158891-4dd9-498d-978a-ff49502412ad",
@@ -206,7 +210,7 @@ INSERT INTO S_SPARM
 	VALUES ("7f627baa-8ffc-4f87-9cbb-d2f0990bb5fd",
 	"b58a18b4-3e00-477b-b2dc-db7411c2e882",
 	'address',
-	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	"498c4857-8187-483a-86b3-3a26639ade60",
 	1,
 	'',
 	"3516bbbb-3f5f-41a1-9bdc-e76ab10ce8fe",
@@ -237,29 +241,13 @@ INSERT INTO S_SPARM
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO S_SPARM
-	VALUES ("763bc055-6a9c-4c2a-9ccc-0bcfcedfc80b",
-	"0ab50b63-a07c-445e-a2ab-2e977ee366d9",
-	'level',
-	"74374eb1-3d30-47c2-b1d3-f6d298f9e09a",
-	0,
-	'',
-	"5af0f484-99cf-4abb-91cf-5fd6b4e415a5",
-	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("74374eb1-3d30-47c2-b1d3-f6d298f9e09a",
-	"00000000-0000-0000-0000-000000000000",
-	'optionlevel',
-	'',
-	'',
-	'../../Shared/Shared.xtuml');
-INSERT INTO S_SPARM
 	VALUES ("897d59fb-e26e-48a3-b4f5-daceb79b4014",
 	"0ab50b63-a07c-445e-a2ab-2e977ee366d9",
 	'option',
 	"f8f44f60-34fa-4291-bd78-01519625977d",
 	0,
 	'',
-	"763bc055-6a9c-4c2a-9ccc-0bcfcedfc80b",
+	"5af0f484-99cf-4abb-91cf-5fd6b4e415a5",
 	'');
 INSERT INTO S_DT_PROXY
 	VALUES ("f8f44f60-34fa-4291-bd78-01519625977d",
@@ -271,7 +259,7 @@ INSERT INTO S_DT_PROXY
 INSERT INTO S_SPARM
 	VALUES ("9aed0ebe-b346-43b9-95a7-0029d7527e91",
 	"0ab50b63-a07c-445e-a2ab-2e977ee366d9",
-	'option_value',
+	'value',
 	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
 	1,
 	'',
@@ -426,7 +414,7 @@ INSERT INTO S_SPARM
 	VALUES ("07f6dc3d-beff-43f1-99f4-4f0cf4b82cbd",
 	"8c90814c-67eb-4ab2-a099-1ce3f174e2c7",
 	'address',
-	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	"498c4857-8187-483a-86b3-3a26639ade60",
 	1,
 	'',
 	"a96601a5-df51-4a84-bafe-8c363b9f3629",
@@ -487,7 +475,7 @@ INSERT INTO S_SPARM
 	VALUES ("b21e8a3b-f771-4394-a569-b0bf6aaa89d7",
 	"1c35110d-d00d-4b31-b5d3-655d4d1e458d",
 	'address',
-	"74e16677-bd8b-4425-b4a1-3e664d23fc56",
+	"498c4857-8187-483a-86b3-3a26639ade60",
 	0,
 	'',
 	"4a05ef90-4add-453e-ad96-d093a0b5f9e5",
@@ -518,27 +506,18 @@ INSERT INTO S_SPARM
 	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO S_SPARM
-	VALUES ("46830c48-997b-46cf-ad23-be36656a5ba6",
-	"7996bf6b-48c6-40ad-940d-530eee70489d",
-	'level',
-	"74374eb1-3d30-47c2-b1d3-f6d298f9e09a",
-	0,
-	'',
-	"5048c349-4e9c-4a5e-b696-c56f91091af4",
-	'');
-INSERT INTO S_SPARM
 	VALUES ("a82cf283-57a1-49f4-a7cb-0b7e89c07ea2",
 	"7996bf6b-48c6-40ad-940d-530eee70489d",
 	'option',
 	"f8f44f60-34fa-4291-bd78-01519625977d",
 	0,
 	'',
-	"46830c48-997b-46cf-ad23-be36656a5ba6",
+	"5048c349-4e9c-4a5e-b696-c56f91091af4",
 	'');
 INSERT INTO S_SPARM
 	VALUES ("d7612497-8189-48fb-8963-dcf58dcb65b4",
 	"7996bf6b-48c6-40ad-940d-530eee70489d",
-	'option_value',
+	'value',
 	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
 	0,
 	'',
@@ -647,29 +626,13 @@ INSERT INTO S_SYNC
 	'',
 	5);
 INSERT INTO S_SPARM
-	VALUES ("75436c4b-a38e-4967-bfa5-f89942dcf9be",
-	"b7701eaa-cb88-469c-863f-839cfab93385",
-	'family',
-	"0b7f282f-ada0-47e6-b8ec-a1cecf5c2e92",
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO S_DT_PROXY
-	VALUES ("0b7f282f-ada0-47e6-b8ec-a1cecf5c2e92",
-	"00000000-0000-0000-0000-000000000000",
-	'sockfamily',
-	'',
-	'',
-	'../../Shared/Shared.xtuml');
-INSERT INTO S_SPARM
 	VALUES ("5cb283ce-8607-473d-ac9a-c99500d2de86",
 	"b7701eaa-cb88-469c-863f-839cfab93385",
 	'socktype',
 	"69d98f1a-7779-4e87-81f4-a3fbf4dbae2a",
 	0,
 	'',
-	"75436c4b-a38e-4967-bfa5-f89942dcf9be",
+	"00000000-0000-0000-0000-000000000000",
 	'');
 INSERT INTO S_DT_PROXY
 	VALUES ("69d98f1a-7779-4e87-81f4-a3fbf4dbae2a",

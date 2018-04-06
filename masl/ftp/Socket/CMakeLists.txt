@@ -17,4 +17,6 @@ find_package(Sqlite3 REQUIRED)
 find_package(Boost REQUIRED QUIET COMPONENTS system)
 link_libraries(Boost::boost)
 
+add_compile_options ( "-g" )
+
 add_subdirectory(gen/code_generation/Socket)

@@ -506,6 +506,24 @@ INSERT INTO C_EP_PROXY
 	'socket',
 	'',
 	'../Shared/Socket/Socket.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("a8c56cfa-140c-4abe-8902-cf2de06dfbc0",
+	"cc2f5cc2-4a7d-4871-b576-45f0b205198a",
+	"a6c7652e-18a0-44b4-bff9-885720dde285");
+INSERT INTO SPR_PO
+	VALUES ("a8c56cfa-140c-4abe-8902-cf2de06dfbc0",
+	'datatostring',
+	'',
+	'',
+	3,
+	5);
+INSERT INTO C_EP_PROXY
+	VALUES ("cc2f5cc2-4a7d-4871-b576-45f0b205198a",
+	"f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
+	-1,
+	'datatostring',
+	'',
+	'../Shared/Socket/Socket.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
 	"00000000-0000-0000-0000-000000000000",

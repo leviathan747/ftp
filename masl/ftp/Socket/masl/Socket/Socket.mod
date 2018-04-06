@@ -1,10 +1,9 @@
 domain Socket is
   
   public type sockethandle is integer;   
-  public type sockfamily is enum ( AF_INET );   
   public type data is sequence of byte;   
   public type socktype is enum ( SOCK_STREAM, SOCK_DGRAM );   
-  public type sockproto is enum ( TCP, UDP );   
+  public type sockproto is enum ( IPPROTO_TCP, IPPROTO_UDP );   
   public type optionlevel is enum ( SOL_SOCKET );   
   public type optionname is enum ( SO_DEBUG, SO_ACCEPTCONN, SO_BROADCAST, SO_REUSEADDR, SO_KEEPALIVE, SO_LINGER, SO_OOBINLINE, SO_SNDBUF, SO_RCVBUF, SO_ERROR, SO_TYPE, SO_DONTROUTE, SO_RCVLOWAT, SO_RCVTIMEO, SO_SNDLOWAT, SO_SNDTIMEO );   
   //!address is a string representation of an IPv4 address in the format
@@ -12,13 +11,9 @@ domain Socket is
   //!of a decimal integer.
   //!
   //!port is a 16 bit integer represented in decimal.
-  public type sockaddr_in is structure
+  public type sockaddr is structure
     address: string;     
     port: integer;     
-  end structure;   
-  public type sockaddr is structure
-    family: sockfamily;     
-    data: sockaddr_in;     
   end structure;   
   
   public service accept ( socket: in sockethandle,
@@ -32,9 +27,8 @@ domain Socket is
   public service getsockname ( socket: in sockethandle,
                                address: out sockaddr ) return integer;   
   public service getsockopt ( socket: in sockethandle,
-                              level: in optionlevel,
                               option: in optionname,
-                              option_value: out data ) return integer;   
+                              value: out data ) return integer;   
   public service listen ( socket: in sockethandle,
                           backlog: in integer ) return integer;   
   public service recv ( socket: in sockethandle,
@@ -52,18 +46,17 @@ domain Socket is
                           flags: in integer,
                           address: in sockaddr ) return integer;   
   public service setsockopt ( socket: in sockethandle,
-                              level: in optionlevel,
                               option: in optionname,
-                              option_value: in data ) return integer;   
+                              value: in data ) return integer;   
   public service send ( socket: in sockethandle,
                         message: in data,
                         length: in integer,
                         flags: in integer ) return integer;   
   public service shutdown ( socket: in sockethandle,
                             how: in integer ) return integer;   
-  public service socket ( family: in sockfamily,
-                          socktype: in socktype,
+  public service socket ( socktype: in socktype,
                           protocol: in sockproto ) return sockethandle;   
   private service testrecv (); pragma test_only( true ); pragma scenario( 1 );   
+  public service datatostring ( data: in data ) return string;   
   
 end domain;

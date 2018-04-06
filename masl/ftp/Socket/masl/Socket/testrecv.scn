@@ -8,18 +8,17 @@ retval: integer;
 begin
 
   // create a server socket
-  serversock := socket( AF_INET, SOCK_STREAM, TCP );
+  serversock := socket( SOCK_STREAM, IPPROTO_TCP );
   if ( serversock < 0 ) then
     console << "Error 1" << endl;
   end if;
 
   // bind to localhost on port 8080
-  localaddr.family := AF_INET;
-  localaddr.data.address := "127.0.0.1";
-  localaddr.data.port := 8080;
+  localaddr.address := "127.0.0.1";
+  localaddr.port := 8080;
   retval := bind( serversock, localaddr );
   if ( retval < 0 ) then
-    console << "Error 2" << endl;
+    console << "Error 2: " << retval << endl;
   end if;
   
   // listen for one connection
@@ -41,6 +40,6 @@ begin
   end if;
   
   // log the data
-  console << "Message: " << databuffer << endl;
+  console << "Message: " << datatostring( databuffer ) << endl;
 
 end service;
