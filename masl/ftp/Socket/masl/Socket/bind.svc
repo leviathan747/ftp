@@ -1,5 +1,0 @@
-public service Socket::bind ( socket: in sockethandle,
-                              address: in sockaddr ) return integer is
-begin
-  return 0;
-end service;

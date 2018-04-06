@@ -1,5 +1,0 @@
-public service Socket::shutdown ( socket: in sockethandle,
-                                  how: in integer ) return integer is
-begin
-  return 0;
-end service;

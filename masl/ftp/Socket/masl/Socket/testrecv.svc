@@ -1,0 +1,4 @@
+private service Socket::testrecv () is
+begin
+  null;
+end service;

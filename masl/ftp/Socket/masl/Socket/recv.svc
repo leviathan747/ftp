@@ -1,7 +1,0 @@
-public service Socket::recv ( socket: in sockethandle,
-                              buffer: out data,
-                              length: in integer,
-                              flags: in integer ) return integer is
-begin
-  return 0;
-end service;

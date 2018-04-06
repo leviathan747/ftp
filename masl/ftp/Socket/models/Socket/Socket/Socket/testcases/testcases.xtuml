@@ -1,0 +1,73 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("51739935-4fdb-4ce0-be29-0a23a9749812",
+	"00000000-0000-0000-0000-000000000000",
+	"d82c84ce-d0a8-4ae5-8341-75a7060de1df",
+	'testcases',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("470596c1-294f-4321-a747-e1d6c8fc890d",
+	112,
+	"51739935-4fdb-4ce0-be29-0a23a9749812",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'Socket::Socket::Socket::testcases');
+INSERT INTO DIM_DIA
+	VALUES ("470596c1-294f-4321-a747-e1d6c8fc890d",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("8813849e-3684-4e42-a9b4-71c90157cae1",
+	"00000000-0000-0000-0000-000000000000",
+	'testrecv',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	1);
+INSERT INTO PE_PE
+	VALUES ("8813849e-3684-4e42-a9b4-71c90157cae1",
+	1,
+	"51739935-4fdb-4ce0-be29-0a23a9749812",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("51739935-4fdb-4ce0-be29-0a23a9749812",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"07ebd00e-3bed-4dac-b43a-fb9c66bfe086",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("07ebd00e-3bed-4dac-b43a-fb9c66bfe086",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Socket',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Socket.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("d82c84ce-d0a8-4ae5-8341-75a7060de1df",
+	'Socket',
+	1,
+	'../../../Socket.xtuml');

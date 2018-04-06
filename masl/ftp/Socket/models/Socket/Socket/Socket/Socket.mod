@@ -46,4 +46,7 @@ end structure
         socket : in sockethandle,        how : in integer    ) return integer;
     public service socket (
         family : in sockfamily,        socktype : in socktype,        protocol : in sockproto    ) return sockethandle;
+    private service testrecv (
+    );
+pragma test_only ( true ); 
 end domain;

@@ -1,8 +1,0 @@
-public service Socket::sendto ( socket: in sockethandle,
-                                message: in data,
-                                length: in integer,
-                                flags: in integer,
-                                address: in sockaddr ) return integer is
-begin
-  return 0;
-end service;

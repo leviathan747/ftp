@@ -1,6 +1,0 @@
-public service Socket::socket ( family: in sockfamily,
-                                socktype: in socktype,
-                                protocol: in sockproto ) return sockethandle is
-begin
-  return 0;
-end service;
