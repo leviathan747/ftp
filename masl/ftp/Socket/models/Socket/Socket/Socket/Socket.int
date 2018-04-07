@@ -1,3 +1,7 @@
+//!Implementation based on documentation found here:
+//!http://pubs.opengroup.org/onlinepubs/7908799/xns/syssocket.h.html
+//!
+//!This implementation only supports internet sockets.
 domain Socket is
   public type sockethandle is integer
   ;
@@ -25,6 +29,14 @@ end structure
   ;
   public type error is enum (EACCES, EADDRINUSE, EADDRNOTAVAIL, EAFNOSUPPORT, EAGAIN, EALREADY, EBADF, ECONNABORTED, ECONNREFUSED, ECONNRESET, EDESTADDRREQ, EDOM, EFAULT, EHOSTUNREACH, EINPROGRESS, EINTR, EINVAL, EIO, EISCONN, EISDIR, ELOOP, EMFILE, EMSGSIZE, ENAMETOOLONG, ENETDOWN, ENETUNREACH, ENFILE, ENOBUFS, ENOENT, ENOMEM, ENOPROTOOPT, ENOSR, ENOTCONN, ENOTDIR, ENOTSOCK, EOPNOTSUPP, EPIPE, EPROTO, EPROTONOSUPPORT, EPROTOTYPE, EROFS, ETIMEDOUT, EUNKNOWN)
   ;
+    public service datatostring (
+        data : in data    ) return string;
+    public service geterror (
+    ) return error;
+    public service strerror (
+    ) return string;
+    public service durationtotimeval (
+        duration : in duration    ) return data;
     public service accept (
         socket : in sockethandle,        address : out sockaddr    ) return sockethandle;
     public service bind (
@@ -53,12 +65,4 @@ end structure
         socket : in sockethandle,        how : in shutdowntype    ) return integer;
     public service socket (
         socktype : in socktype,        protocol : in sockproto    ) return sockethandle;
-    public service datatostring (
-        data : in data    ) return string;
-    public service geterror (
-    ) return error;
-    public service strerror (
-    ) return string;
-    public service durationtotimeval (
-        duration : in duration    ) return data;
 end domain;

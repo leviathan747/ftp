@@ -681,7 +681,10 @@ INSERT INTO C_C_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000",
 	'Socket',
-	'',
+	'Implementation based on documentation found here:
+http://pubs.opengroup.org/onlinepubs/7908799/xns/syssocket.h.html
+
+This implementation only supports internet sockets.',
 	0,
 	"00000000-0000-0000-0000-000000000000",
 	0,

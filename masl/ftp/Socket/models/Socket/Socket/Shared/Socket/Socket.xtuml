@@ -680,7 +680,7 @@ INSERT INTO S_DT_PROXY
 	'duration',
 	'',
 	'',
-	'../Shared.xtuml');
+	'../../../types/types.xtuml');
 INSERT INTO C_EP
 	VALUES ("ed1fa4f4-fdf9-4dfe-9c17-aaac930bb7aa",
 	"f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
