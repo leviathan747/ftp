@@ -1,8 +1,8 @@
 //! ACTIVITY BEGIN. '8813849e-3684-4e42-a9b4-71c90157cae1' DO NOT EDIT THIS LINE.
 private service Socket::testrecv () is
-serversock: sockethandle;
+serversock: socketfd;
 localaddr: sockaddr;
-sock: sockethandle;
+sock: socketfd;
 peeraddr: sockaddr;
 databuffer: data;
 retval: integer;
@@ -54,7 +54,7 @@ end service;
 
 //! ACTIVITY BEGIN. '5220fc5f-a31d-43dd-b8d5-cb44c4c845b1' DO NOT EDIT THIS LINE.
 private service Socket::testsend () is
-sock: sockethandle;
+sock: socketfd;
 peeraddr: sockaddr;
 msg: string;
 retval: integer;
@@ -86,7 +86,7 @@ end service;
 
 //! ACTIVITY BEGIN. '714513b0-a7bb-4895-bccc-da5c03b81ddf' DO NOT EDIT THIS LINE.
 private service Socket::testsend_udp () is
-sock: sockethandle;
+sock: socketfd;
 peeraddr: sockaddr;
 msg: string;
 retval: integer;
@@ -112,7 +112,7 @@ end service;
 
 //! ACTIVITY BEGIN. 'ca89167a-0073-4ed7-872e-7b24d12f6a51' DO NOT EDIT THIS LINE.
 private service Socket::testrecv_udp () is
-serversock: sockethandle;
+serversock: socketfd;
 localaddr: sockaddr;
 peeraddr: sockaddr;
 databuffer: data;

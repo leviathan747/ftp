@@ -4,7 +4,7 @@
 //!This implementation only supports internet sockets.
 domain Socket is
   
-  public type sockethandle is integer;   
+  public type socketfd is integer;   
   public type data is sequence of byte;   
   public type socktype is enum ( SOCK_STREAM, SOCK_DGRAM );   
   public type sockproto is enum ( IPPROTO_TCP, IPPROTO_UDP );   
@@ -22,6 +22,46 @@ domain Socket is
   public type shutdowntype is enum ( SHUT_RD, SHUT_WR, SHUT_RDWR );   
   public type error is enum ( EACCES, EADDRINUSE, EADDRNOTAVAIL, EAFNOSUPPORT, EAGAIN, EALREADY, EBADF, ECONNABORTED, ECONNREFUSED, ECONNRESET, EDESTADDRREQ, EDOM, EFAULT, EHOSTUNREACH, EINPROGRESS, EINTR, EINVAL, EIO, EISCONN, EISDIR, ELOOP, EMFILE, EMSGSIZE, ENAMETOOLONG, ENETDOWN, ENETUNREACH, ENFILE, ENOBUFS, ENOENT, ENOMEM, ENOPROTOOPT, ENOSR, ENOTCONN, ENOTDIR, ENOTSOCK, EOPNOTSUPP, EPIPE, EPROTO, EPROTONOSUPPORT, EPROTOTYPE, EROFS, ETIMEDOUT, EUNKNOWN );   
   
+  public service accept ( socket: in socketfd,
+                          address: out sockaddr ) return socketfd;   
+  public service bind ( socket: in socketfd,
+                        address: in sockaddr ) return integer;   
+  public service connect ( socket: in socketfd,
+                           address: in sockaddr ) return integer;   
+  public service getpeername ( socket: in socketfd,
+                               address: out sockaddr ) return integer;   
+  public service getsockname ( socket: in socketfd,
+                               address: out sockaddr ) return integer;   
+  public service getsockopt ( socket: in socketfd,
+                              option: in optionname,
+                              value: out data ) return integer;   
+  public service listen ( socket: in socketfd,
+                          backlog: in integer ) return integer;   
+  public service recv ( socket: in socketfd,
+                        buffer: out data,
+                        length: in integer,
+                        flags: in integer ) return integer;   
+  public service recvfrom ( socket: in socketfd,
+                            buffer: out data,
+                            length: in integer,
+                            flags: in integer,
+                            address: out sockaddr ) return integer;   
+  public service sendto ( socket: in socketfd,
+                          message: in data,
+                          length: in integer,
+                          flags: in integer,
+                          address: in sockaddr ) return integer;   
+  public service setsockopt ( socket: in socketfd,
+                              option: in optionname,
+                              value: in data ) return integer;   
+  public service send ( socket: in socketfd,
+                        message: in data,
+                        length: in integer,
+                        flags: in integer ) return integer;   
+  public service shutdown ( socket: in socketfd,
+                            how: in shutdowntype ) return integer;   
+  public service socket ( socktype: in socktype,
+                          protocol: in sockproto ) return socketfd;   
   private service testrecv (); pragma test_only( true ); pragma scenario( 1 );   
   private service testsend (); pragma scenario( 2 ); pragma test_only( true );   
   private service testsend_udp (); pragma scenario( 4 ); pragma test_only( true );   
@@ -31,45 +71,5 @@ domain Socket is
   public service strerror () return string;   
   public service durationtotimeval ( duration: in duration ) return data;   
   private service stringtodata ( s: in string ) return data;   
-  public service accept ( socket: in sockethandle,
-                          address: out sockaddr ) return sockethandle;   
-  public service bind ( socket: in sockethandle,
-                        address: in sockaddr ) return integer;   
-  public service connect ( socket: in sockethandle,
-                           address: in sockaddr ) return integer;   
-  public service getpeername ( socket: in sockethandle,
-                               address: out sockaddr ) return integer;   
-  public service getsockname ( socket: in sockethandle,
-                               address: out sockaddr ) return integer;   
-  public service getsockopt ( socket: in sockethandle,
-                              option: in optionname,
-                              value: out data ) return integer;   
-  public service listen ( socket: in sockethandle,
-                          backlog: in integer ) return integer;   
-  public service recv ( socket: in sockethandle,
-                        buffer: out data,
-                        length: in integer,
-                        flags: in integer ) return integer;   
-  public service recvfrom ( socket: in sockethandle,
-                            buffer: out data,
-                            length: in integer,
-                            flags: in integer,
-                            address: out sockaddr ) return integer;   
-  public service sendto ( socket: in sockethandle,
-                          message: in data,
-                          length: in integer,
-                          flags: in integer,
-                          address: in sockaddr ) return integer;   
-  public service setsockopt ( socket: in sockethandle,
-                              option: in optionname,
-                              value: in data ) return integer;   
-  public service send ( socket: in sockethandle,
-                        message: in data,
-                        length: in integer,
-                        flags: in integer ) return integer;   
-  public service shutdown ( socket: in sockethandle,
-                            how: in shutdowntype ) return integer;   
-  public service socket ( socktype: in socktype,
-                          protocol: in sockproto ) return sockethandle;   
   
 end domain;

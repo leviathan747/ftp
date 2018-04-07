@@ -1,5 +1,5 @@
 private service Socket::testsend_udp () is
-sock: sockethandle;
+sock: socketfd;
 peeraddr: sockaddr;
 msg: string;
 retval: integer;

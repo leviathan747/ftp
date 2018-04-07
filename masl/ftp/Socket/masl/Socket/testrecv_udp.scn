@@ -1,5 +1,5 @@
 private service Socket::testrecv_udp () is
-serversock: sockethandle;
+serversock: socketfd;
 localaddr: sockaddr;
 peeraddr: sockaddr;
 databuffer: data;

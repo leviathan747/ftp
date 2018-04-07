@@ -4,7 +4,7 @@
 //!This implementation only supports internet sockets.
 domain Socket is
   
-  public type sockethandle is integer;   
+  public type socketfd is integer;   
   public type data is sequence of byte;   
   public type socktype is enum ( SOCK_STREAM, SOCK_DGRAM );   
   public type sockproto is enum ( IPPROTO_TCP, IPPROTO_UDP );   
@@ -22,49 +22,49 @@ domain Socket is
   public type shutdowntype is enum ( SHUT_RD, SHUT_WR, SHUT_RDWR );   
   public type error is enum ( EACCES, EADDRINUSE, EADDRNOTAVAIL, EAFNOSUPPORT, EAGAIN, EALREADY, EBADF, ECONNABORTED, ECONNREFUSED, ECONNRESET, EDESTADDRREQ, EDOM, EFAULT, EHOSTUNREACH, EINPROGRESS, EINTR, EINVAL, EIO, EISCONN, EISDIR, ELOOP, EMFILE, EMSGSIZE, ENAMETOOLONG, ENETDOWN, ENETUNREACH, ENFILE, ENOBUFS, ENOENT, ENOMEM, ENOPROTOOPT, ENOSR, ENOTCONN, ENOTDIR, ENOTSOCK, EOPNOTSUPP, EPIPE, EPROTO, EPROTONOSUPPORT, EPROTOTYPE, EROFS, ETIMEDOUT, EUNKNOWN );   
   
-  public service datatostring ( data: in data ) return string;   
-  public service geterror () return error;   
-  public service strerror () return string;   
-  public service durationtotimeval ( duration: in duration ) return data;   
-  public service accept ( socket: in sockethandle,
-                          address: out sockaddr ) return sockethandle;   
-  public service bind ( socket: in sockethandle,
+  public service accept ( socket: in socketfd,
+                          address: out sockaddr ) return socketfd;   
+  public service bind ( socket: in socketfd,
                         address: in sockaddr ) return integer;   
-  public service connect ( socket: in sockethandle,
+  public service connect ( socket: in socketfd,
                            address: in sockaddr ) return integer;   
-  public service getpeername ( socket: in sockethandle,
+  public service getpeername ( socket: in socketfd,
                                address: out sockaddr ) return integer;   
-  public service getsockname ( socket: in sockethandle,
+  public service getsockname ( socket: in socketfd,
                                address: out sockaddr ) return integer;   
-  public service getsockopt ( socket: in sockethandle,
+  public service getsockopt ( socket: in socketfd,
                               option: in optionname,
                               value: out data ) return integer;   
-  public service listen ( socket: in sockethandle,
+  public service listen ( socket: in socketfd,
                           backlog: in integer ) return integer;   
-  public service recv ( socket: in sockethandle,
+  public service recv ( socket: in socketfd,
                         buffer: out data,
                         length: in integer,
                         flags: in integer ) return integer;   
-  public service recvfrom ( socket: in sockethandle,
+  public service recvfrom ( socket: in socketfd,
                             buffer: out data,
                             length: in integer,
                             flags: in integer,
                             address: out sockaddr ) return integer;   
-  public service sendto ( socket: in sockethandle,
+  public service sendto ( socket: in socketfd,
                           message: in data,
                           length: in integer,
                           flags: in integer,
                           address: in sockaddr ) return integer;   
-  public service setsockopt ( socket: in sockethandle,
+  public service setsockopt ( socket: in socketfd,
                               option: in optionname,
                               value: in data ) return integer;   
-  public service send ( socket: in sockethandle,
+  public service send ( socket: in socketfd,
                         message: in data,
                         length: in integer,
                         flags: in integer ) return integer;   
-  public service shutdown ( socket: in sockethandle,
+  public service shutdown ( socket: in socketfd,
                             how: in shutdowntype ) return integer;   
   public service socket ( socktype: in socktype,
-                          protocol: in sockproto ) return sockethandle;   
+                          protocol: in sockproto ) return socketfd;   
+  public service datatostring ( data: in data ) return string;   
+  public service geterror () return error;   
+  public service strerror () return string;   
+  public service durationtotimeval ( duration: in duration ) return data;   
   
 end domain;

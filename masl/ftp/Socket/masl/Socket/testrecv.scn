@@ -1,7 +1,7 @@
 private service Socket::testrecv () is
-serversock: sockethandle;
+serversock: socketfd;
 localaddr: sockaddr;
-sock: sockethandle;
+sock: socketfd;
 peeraddr: sockaddr;
 databuffer: data;
 retval: integer;
