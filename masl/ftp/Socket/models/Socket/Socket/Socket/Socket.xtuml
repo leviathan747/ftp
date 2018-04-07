@@ -525,24 +525,6 @@ INSERT INTO C_EP_PROXY
 	'',
 	'../Shared/Socket/Socket.xtuml');
 INSERT INTO SPR_PEP
-	VALUES ("ba320fcb-7fcb-430e-93df-fce86988c3b9",
-	"b6de6196-cb41-45d4-9a2d-6d3065a4edcf",
-	"a6c7652e-18a0-44b4-bff9-885720dde285");
-INSERT INTO SPR_PO
-	VALUES ("ba320fcb-7fcb-430e-93df-fce86988c3b9",
-	'errno',
-	'',
-	'',
-	3,
-	5);
-INSERT INTO C_EP_PROXY
-	VALUES ("b6de6196-cb41-45d4-9a2d-6d3065a4edcf",
-	"f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
-	-1,
-	'errno',
-	'',
-	'../Shared/Socket/Socket.xtuml');
-INSERT INTO SPR_PEP
 	VALUES ("e8c07fad-975c-418e-8306-5c7273243df2",
 	"57edc635-5c32-4830-bf70-ed1986afcece",
 	"a6c7652e-18a0-44b4-bff9-885720dde285");
@@ -576,6 +558,24 @@ INSERT INTO C_EP_PROXY
 	"f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
 	-1,
 	'durationtotimeval',
+	'',
+	'../Shared/Socket/Socket.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("fcdba8ea-df11-4a3a-8980-daca99eb2f43",
+	"ed1fa4f4-fdf9-4dfe-9c17-aaac930bb7aa",
+	"a6c7652e-18a0-44b4-bff9-885720dde285");
+INSERT INTO SPR_PO
+	VALUES ("fcdba8ea-df11-4a3a-8980-daca99eb2f43",
+	'geterror',
+	'',
+	'',
+	3,
+	5);
+INSERT INTO C_EP_PROXY
+	VALUES ("ed1fa4f4-fdf9-4dfe-9c17-aaac930bb7aa",
+	"f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
+	-1,
+	'geterror',
 	'',
 	'../Shared/Socket/Socket.xtuml');
 INSERT INTO C_I_PROXY

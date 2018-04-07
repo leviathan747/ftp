@@ -10,7 +10,7 @@ begin
   // create a server socket
   serversock := socket( SOCK_STREAM, IPPROTO_TCP );
   if ( serversock < 0 ) then
-    console << "Error " << errno() << ": " << strerror( errno() ) << endl;
+    console << "Error " << geterror() << ": " << strerror() << endl;
   end if;
 
   // bind to localhost on port 8080
@@ -18,31 +18,31 @@ begin
   localaddr.port := 8080;
   retval := bind( serversock, localaddr );
   if ( retval < 0 ) then
-    console << "Error " << errno() << ": " << strerror( errno() ) << endl;
+    console << "Error " << geterror() << ": " << strerror() << endl;
   end if;
   
   // listen for one connection
   retval := listen( serversock, 1 );
   if ( retval < 0 ) then
-    console << "Error " << errno() << ": " << strerror( errno() ) << endl;
+    console << "Error " << geterror() << ": " << strerror() << endl;
   end if;
   
   // accept a connection
   sock := accept( serversock, peeraddr );
   if ( sock < 0 ) then
-    console << "Error " << errno() << ": " << strerror( errno() ) << endl;
+    console << "Error " << geterror() << ": " << strerror() << endl;
   end if;
   
   // set timeout to 5 seconds
   retval := setsockopt( sock, SO_RCVTIMEO, durationtotimeval( @PT5S@ ) );
   if ( retval < 0 ) then
-    console << "Error " << errno() << ": " << strerror( errno() ) << endl;
+    console << "Error " << geterror() << ": " << strerror() << endl;
   end if;
 
   // receive data
   retval := recv( sock, databuffer, 256, 0 );
   if ( retval < 0 ) then
-    console << "Error " << errno() << ": " << strerror( errno() ) << endl;
+    console << "Error " << geterror() << ": " << strerror() << endl;
   else
     // log the data
     console << "Message: " << datatostring( databuffer ) << endl;

@@ -16,6 +16,7 @@ domain Socket is
     port: integer;     
   end structure;   
   public type shutdowntype is enum ( SHUT_RD, SHUT_WR, SHUT_RDWR );   
+  public type error is enum ( EACCES, EADDRINUSE, EADDRNOTAVAIL, EAFNOSUPPORT, EAGAIN, EALREADY, EBADF, ECONNABORTED, ECONNREFUSED, ECONNRESET, EDESTADDRREQ, EDOM, EFAULT, EHOSTUNREACH, EINPROGRESS, EINTR, EINVAL, EIO, EISCONN, EISDIR, ELOOP, EMFILE, EMSGSIZE, ENAMETOOLONG, ENETDOWN, ENETUNREACH, ENFILE, ENOBUFS, ENOENT, ENOMEM, ENOPROTOOPT, ENOSR, ENOTCONN, ENOTDIR, ENOTSOCK, EOPNOTSUPP, EPIPE, EPROTO, EPROTONOSUPPORT, EPROTOTYPE, EROFS, ETIMEDOUT, EUNKNOWN );   
   
   public service accept ( socket: in sockethandle,
                           address: out sockaddr ) return sockethandle;   
@@ -60,8 +61,8 @@ domain Socket is
   private service testrecv (); pragma test_only( true ); pragma scenario( 1 );   
   private service testsend (); pragma scenario( 2 ); pragma test_only( true );   
   public service datatostring ( data: in data ) return string;   
-  public service errno () return integer;   
-  public service strerror ( errno: in integer ) return string;   
+  public service geterror () return error;   
+  public service strerror () return string;   
   public service durationtotimeval ( duration: in duration ) return data;   
   private service stringtodata ( s: in string ) return data;   
   
