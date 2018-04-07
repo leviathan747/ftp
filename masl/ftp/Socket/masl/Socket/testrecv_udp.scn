@@ -1,0 +1,32 @@
+private service Socket::testrecv_udp () is
+serversock: sockethandle;
+localaddr: sockaddr;
+peeraddr: sockaddr;
+databuffer: data;
+retval: integer;
+begin
+
+  // create a server socket
+  serversock := socket( SOCK_DGRAM, IPPROTO_UDP );
+  if ( serversock < 0 ) then
+    console << "Error " << geterror() << ": " << strerror() << endl;
+  end if;
+
+  // bind to localhost on port 8080
+  localaddr.address := "127.0.0.1";
+  localaddr.port := 8080;
+  retval := bind( serversock, localaddr );
+  if ( retval < 0 ) then
+    console << "Error " << geterror() << ": " << strerror() << endl;
+  end if;
+  
+  // receive some data
+  retval := recvfrom( serversock, databuffer, 256, 0, peeraddr );
+  if ( retval < 0 ) then
+    console << "Error " << geterror() << ": " << strerror() << endl;
+  else
+    // log the data
+    console << "Message from " << peeraddr.address << ":" << peeraddr.port << ": " << datatostring( databuffer ) << endl;
+  end if;
+
+end service;

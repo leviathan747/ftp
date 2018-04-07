@@ -60,6 +60,8 @@ domain Socket is
                           protocol: in sockproto ) return sockethandle;   
   private service testrecv (); pragma test_only( true ); pragma scenario( 1 );   
   private service testsend (); pragma scenario( 2 ); pragma test_only( true );   
+  private service testsend_udp (); pragma scenario( 4 ); pragma test_only( true );   
+  private service testrecv_udp (); pragma scenario( 3 ); pragma test_only( true );   
   public service datatostring ( data: in data ) return string;   
   public service geterror () return error;   
   public service strerror () return string;   
