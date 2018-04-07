@@ -52,6 +52,9 @@ end structure
     private service testrecv (
     );
 pragma test_only ( true ); pragma scenario ( 1 ); 
+    private service testsend (
+    );
+pragma scenario ( 2 ); pragma test_only ( true ); 
     public service datatostring (
         data : in data    ) return string;
     public service errno (
@@ -60,4 +63,6 @@ pragma test_only ( true ); pragma scenario ( 1 );
         errno : in integer    ) return string;
     public service durationtotimeval (
         duration : in duration    ) return data;
+    private service stringtodata (
+        s : in string    ) return data;
 end domain;

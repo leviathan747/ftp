@@ -56,10 +56,12 @@ domain Socket is
                             how: in integer ) return integer;   
   public service socket ( socktype: in socktype,
                           protocol: in sockproto ) return sockethandle;   
+  private service testrecv (); pragma test_only( true ); pragma scenario( 1 );   
+  private service testsend (); pragma scenario( 2 ); pragma test_only( true );   
   public service datatostring ( data: in data ) return string;   
   public service errno () return integer;   
   public service strerror ( errno: in integer ) return string;   
   public service durationtotimeval ( duration: in duration ) return data;   
-  private service testrecv (); pragma test_only( true ); pragma scenario( 1 );   
+  private service stringtodata ( s: in string ) return data;   
   
 end domain;

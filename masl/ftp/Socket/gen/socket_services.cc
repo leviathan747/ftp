@@ -47,7 +47,13 @@ namespace masld_Socket
   int32_t masls_connect ( maslt_sockethandle    maslp_socket,
                           const maslt_sockaddr& maslp_address )
   {
-    return 0;
+    struct sockaddr_in peeraddress = {};
+
+    peeraddress.sin_family = AF_INET;
+    inet_aton( maslp_address.get_masla_address().c_str(), &(peeraddress.sin_addr) );
+    peeraddress.sin_port = htons( maslp_address.get_masla_port() );
+
+    return connect( maslp_socket, (struct sockaddr *)&peeraddress, sizeof(peeraddress) );
   }
 
   int32_t masls_getpeername ( maslt_sockethandle maslp_socket,
@@ -108,7 +114,7 @@ namespace masld_Socket
                        int32_t            maslp_length,
                        int32_t            maslp_flags )
   {
-    return 0;
+    return send( maslp_socket, maslp_message.getData().data(), maslp_length, maslp_flags );
   }
 
   int32_t masls_sendto ( maslt_sockethandle    maslp_socket,

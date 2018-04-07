@@ -46,4 +46,9 @@ namespace masld_Socket
     return maslt_data( dataptr, dataptr + sizeof(struct timeval) );
   }
 
+  maslt_data masls_stringtodata ( const ::SWA::String& maslp_s )
+  {
+    return maslt_data( maslp_s.begin(), maslp_s.end() );
+  }
+
 }
