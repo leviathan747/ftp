@@ -12,10 +12,6 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#include <stdio.h>
-#include <errno.h>
-#include <string.h>
-
 namespace masld_Socket
 {
 
@@ -32,12 +28,6 @@ namespace masld_Socket
       maslp_address.set_masla_address() = ::SWA::String( inet_ntoa( peeraddress.sin_addr) );
       maslp_address.set_masla_port() = (int32_t)ntohs( peeraddress.sin_port );
 
-    }
-    else {
-      int opt = 12345;
-      int32_t retval2;
-      retval2 = getsockopt( maslp_socket, SOL_SOCKET, SO_ACCEPTCONN, &opt, sizeof(int) );
-      printf( "retval2: %d, error code: %d, errno: %d, msg: %s\n", retval2, opt, errno, strerror( errno ) );
     }
     return retval;
   }
@@ -57,21 +47,18 @@ namespace masld_Socket
   int32_t masls_connect ( maslt_sockethandle    maslp_socket,
                           const maslt_sockaddr& maslp_address )
   {
-    printf( "executing connect\n");
     return 0;
   }
 
   int32_t masls_getpeername ( maslt_sockethandle maslp_socket,
                               maslt_sockaddr&    maslp_address )
   {
-    printf( "executing getpeername\n");
     return 0;
   }
 
   int32_t masls_getsockname ( maslt_sockethandle maslp_socket,
                               maslt_sockaddr&    maslp_address )
   {
-    printf( "executing getsockname\n");
     return 0;
   }
 
@@ -79,7 +66,6 @@ namespace masld_Socket
                              const maslt_optionname& maslp_option,
                              maslt_data&             maslp_value )
   {
-    printf( "executing getsockopt\n");
     return 0;
   }
 
@@ -97,7 +83,6 @@ namespace masld_Socket
     uint8_t buf[ maslp_length ] = {};
     int32_t retval              = -1;
 
-    printf( "waiting for data...\n" );
     retval = recv( maslp_socket, buf, maslp_length, maslp_flags );
     if ( retval >= 0 ) {
 
@@ -115,7 +100,6 @@ namespace masld_Socket
                            int32_t            maslp_flags,
                            maslt_sockaddr&    maslp_address )
   {
-    printf( "executing recvfrom\n");
     return 0;
   }
 
@@ -124,7 +108,6 @@ namespace masld_Socket
                        int32_t            maslp_length,
                        int32_t            maslp_flags )
   {
-    printf( "executing send\n");
     return 0;
   }
 
@@ -134,7 +117,6 @@ namespace masld_Socket
                          int32_t               maslp_flags,
                          const maslt_sockaddr& maslp_address )
   {
-    printf( "executing sendto\n");
     return 0;
   }
 
@@ -142,14 +124,28 @@ namespace masld_Socket
                              const maslt_optionname& maslp_option,
                              const maslt_data&       maslp_value )
   {
-    printf( "executing setsockopt\n");
-    return 0;
+    int option = -1;
+    if ( maslt_optionname::masle_SO_DEBUG == maslp_option ) option = SO_DEBUG;
+    else if ( maslt_optionname::masle_SO_BROADCAST == maslp_option ) option = SO_BROADCAST;
+    else if ( maslt_optionname::masle_SO_REUSEADDR == maslp_option ) option = SO_REUSEADDR;
+    else if ( maslt_optionname::masle_SO_KEEPALIVE == maslp_option ) option = SO_KEEPALIVE;
+    else if ( maslt_optionname::masle_SO_LINGER == maslp_option ) option = SO_LINGER;
+    else if ( maslt_optionname::masle_SO_OOBINLINE == maslp_option ) option = SO_OOBINLINE;
+    else if ( maslt_optionname::masle_SO_SNDBUF == maslp_option ) option = SO_SNDBUF;
+    else if ( maslt_optionname::masle_SO_RCVBUF == maslp_option ) option = SO_RCVBUF;
+    else if ( maslt_optionname::masle_SO_DONTROUTE == maslp_option ) option = SO_DONTROUTE;
+    else if ( maslt_optionname::masle_SO_RCVLOWAT == maslp_option ) option = SO_RCVLOWAT;
+    else if ( maslt_optionname::masle_SO_RCVTIMEO == maslp_option ) option = SO_RCVTIMEO;
+    else if ( maslt_optionname::masle_SO_SNDLOWAT == maslp_option ) option = SO_SNDLOWAT;
+    else if ( maslt_optionname::masle_SO_SNDTIMEO == maslp_option ) option = SO_SNDTIMEO;
+    else option = -1;
+
+    return setsockopt( maslp_socket, SOL_SOCKET, option, maslp_value.getData().data(), maslp_value.size() );
   }
 
   int32_t masls_shutdown ( maslt_sockethandle maslp_socket,
                            int32_t            maslp_how )
   {
-    printf( "executing shutdown\n");
     return 0;
   }
 

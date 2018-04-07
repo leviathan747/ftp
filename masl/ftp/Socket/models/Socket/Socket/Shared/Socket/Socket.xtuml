@@ -630,6 +630,73 @@ INSERT INTO C_PP
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("b6de6196-cb41-45d4-9a2d-6d3065a4edcf",
+	"f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
+	-1,
+	'errno',
+	'');
+INSERT INTO C_IO
+	VALUES ("b6de6196-cb41-45d4-9a2d-6d3065a4edcf",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'errno',
+	'',
+	0,
+	'',
+	"cc2f5cc2-4a7d-4871-b576-45f0b205198a");
+INSERT INTO C_EP
+	VALUES ("57edc635-5c32-4830-bf70-ed1986afcece",
+	"f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
+	-1,
+	'strerror',
+	'');
+INSERT INTO C_IO
+	VALUES ("57edc635-5c32-4830-bf70-ed1986afcece",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'strerror',
+	'',
+	0,
+	'',
+	"b6de6196-cb41-45d4-9a2d-6d3065a4edcf");
+INSERT INTO C_PP
+	VALUES ("edc9629b-86a2-4de1-8f3d-eb41ad769e70",
+	"57edc635-5c32-4830-bf70-ed1986afcece",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'errno',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("710f54b2-bd79-4555-a53a-0f4397f3d5af",
+	"f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
+	-1,
+	'durationtotimeval',
+	'');
+INSERT INTO C_IO
+	VALUES ("710f54b2-bd79-4555-a53a-0f4397f3d5af",
+	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	'durationtotimeval',
+	'',
+	0,
+	'',
+	"57edc635-5c32-4830-bf70-ed1986afcece");
+INSERT INTO C_PP
+	VALUES ("152a6d7e-a284-4870-b90f-2e52c90175a5",
+	"710f54b2-bd79-4555-a53a-0f4397f3d5af",
+	"7e732464-d2d0-4a73-99ee-edff8ca29d09",
+	'duration',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("7e732464-d2d0-4a73-99ee-edff8ca29d09",
+	"00000000-0000-0000-0000-000000000000",
+	'duration',
+	'',
+	'',
+	'../Shared.xtuml');
 INSERT INTO PE_PE
 	VALUES ("f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
 	1,

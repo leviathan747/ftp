@@ -54,4 +54,10 @@ end structure
 pragma test_only ( true ); pragma scenario ( 1 ); 
     public service datatostring (
         data : in data    ) return string;
+    public service errno (
+    ) return integer;
+    public service strerror (
+        errno : in integer    ) return string;
+    public service durationtotimeval (
+        duration : in duration    ) return data;
 end domain;
