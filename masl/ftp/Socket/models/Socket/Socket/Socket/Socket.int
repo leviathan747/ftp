@@ -21,6 +21,8 @@ domain Socket is
   port: integer;
 end structure
   ;
+  public type shutdowntype is enum (SHUT_RD, SHUT_WR, SHUT_RDWR)
+  ;
     public service accept (
         socket : in sockethandle,        address : out sockaddr    ) return sockethandle;
     public service bind (
@@ -46,7 +48,7 @@ end structure
     public service send (
         socket : in sockethandle,        message : in data,        length : in integer,        flags : in integer    ) return integer;
     public service shutdown (
-        socket : in sockethandle,        how : in integer    ) return integer;
+        socket : in sockethandle,        how : in shutdowntype    ) return integer;
     public service socket (
         socktype : in socktype,        protocol : in sockproto    ) return sockethandle;
     public service datatostring (

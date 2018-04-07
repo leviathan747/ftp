@@ -15,6 +15,7 @@ domain Socket is
     address: string;     
     port: integer;     
   end structure;   
+  public type shutdowntype is enum ( SHUT_RD, SHUT_WR, SHUT_RDWR );   
   
   public service accept ( socket: in sockethandle,
                           address: out sockaddr ) return sockethandle;   
@@ -53,7 +54,7 @@ domain Socket is
                         length: in integer,
                         flags: in integer ) return integer;   
   public service shutdown ( socket: in sockethandle,
-                            how: in integer ) return integer;   
+                            how: in shutdowntype ) return integer;   
   public service socket ( socktype: in socktype,
                           protocol: in sockproto ) return sockethandle;   
   private service testrecv (); pragma test_only( true ); pragma scenario( 1 );   

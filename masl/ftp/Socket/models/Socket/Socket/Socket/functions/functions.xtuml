@@ -604,11 +604,18 @@ INSERT INTO S_SPARM
 	VALUES ("24a39994-32f4-4c73-b762-fde0101edbf9",
 	"208255e1-3344-4c27-8827-d7fe0c13aaa8",
 	'how',
-	"ba5eda7a-def5-0000-0000-000000000002",
+	"ac22196f-4fc9-4e89-bcee-f8655909378c",
 	0,
 	'',
 	"a9e4cca3-37e7-426e-a45f-3792e932f835",
 	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("ac22196f-4fc9-4e89-bcee-f8655909378c",
+	"00000000-0000-0000-0000-000000000000",
+	'shutdowntype',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
 INSERT INTO PE_PE
 	VALUES ("208255e1-3344-4c27-8827-d7fe0c13aaa8",
 	1,
