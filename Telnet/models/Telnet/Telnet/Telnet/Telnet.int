@@ -1,0 +1,13 @@
+//!This is an implementation of the Telnet protocol as defined in RFC 854. It is a
+//!simple implementation that only implements the NVT and does not support any
+//!additional options.
+domain Telnet is
+  public type termid is integer
+  ;
+  public type telnetcmd is enum (SE, NOP, DM, BRK, IP, AO, AYT, EC, EL, GA, SB, WILL, WONT, DO, DONT, IAC)
+  ;
+  public type error is enum (OK, TERMINVAL, TERMBUSY, HOSTINVAL, PORTINVAL, SOCKETERR)
+  ;
+  terminator Printer is
+  end terminator;
+end domain;

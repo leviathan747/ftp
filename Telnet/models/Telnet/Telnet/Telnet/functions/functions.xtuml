@@ -33,6 +33,314 @@ INSERT INTO DIM_DIA
 	0.000000,
 	0.000000,
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("101e1faa-88b1-40f1-bc8d-b61afe06ddf3",
+	"00000000-0000-0000-0000-000000000000",
+	'create_terminal',
+	'NAME
+    create_terminal -- create a new Telnet terminal instance.
+    
+SYNOPSIS
+    public service create_terminal( terminal: out termid,
+                                    error:    out error );
+    
+DESCRIPTION
+
+    The ''create_terminal'' service is used to create a new Telnet terminal
+    instance with its own printer and keyboard.
+
+    ''terminal'' is set to the identifier of the created terminal instance or the
+    constant NULTERM if the operation results in an error. See the
+    ''TerminalConstants'' class.
+
+    ''error'' is an error code set by the attach operation or OK if successful.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("4660f8ba-b2ee-4c63-a372-46dfbb80661f",
+	"101e1faa-88b1-40f1-bc8d-b61afe06ddf3",
+	'termid',
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("6314e6a4-e588-4ac5-b758-e200640cc183",
+	"00000000-0000-0000-0000-000000000000",
+	'termid',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO PE_PE
+	VALUES ("101e1faa-88b1-40f1-bc8d-b61afe06ddf3",
+	1,
+	"b1d5d768-f0c2-413f-a6b0-1eefdefcdba5",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("029e7f27-4bde-49e7-9290-567e37d71a5d",
+	"00000000-0000-0000-0000-000000000000",
+	'sendtext',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("b3605e08-0382-4a20-bdb4-bf4a8c884298",
+	"029e7f27-4bde-49e7-9290-567e37d71a5d",
+	'termid',
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("3f2c8cf7-a764-48b1-b5a0-2017418e4a90",
+	"029e7f27-4bde-49e7-9290-567e37d71a5d",
+	'text',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"b3605e08-0382-4a20-bdb4-bf4a8c884298",
+	'');
+INSERT INTO PE_PE
+	VALUES ("029e7f27-4bde-49e7-9290-567e37d71a5d",
+	1,
+	"b1d5d768-f0c2-413f-a6b0-1eefdefcdba5",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("481ac0ec-0618-425c-b919-f87138088de5",
+	"00000000-0000-0000-0000-000000000000",
+	'command',
+	'NAME
+    command -- send a Telnet command on a specified terminal instance.
+    
+SYNOPSIS
+    public service command( terminal: in termid,
+                            cmd:      in telnetcmd );
+    
+DESCRIPTION
+
+    The ''command'' service is used to queue Telnet commands to be sent on a
+    specified terminal instance.
+    
+    ''terminal'' is an identifier specifying the terminal instance which to
+    send the command from.
+    
+    ''cmd'' is a command code defined in the enumerated type telnetcmd. See the
+    datatype definition for descriptions of available commands.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and set the ''error'' code if:
+    
+    [TERMINVAL]     ''terminal'' is a non-existent or invalid terminal. Also
+                    returned if the terminal is not attached to a peer.',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("0444aa96-1eef-44d0-9c94-7065735bb24a",
+	"481ac0ec-0618-425c-b919-f87138088de5",
+	'termid',
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("a76dcfa2-4ed7-4184-b60c-29657b7e615e",
+	"481ac0ec-0618-425c-b919-f87138088de5",
+	'cmd',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	0,
+	'',
+	"0444aa96-1eef-44d0-9c94-7065735bb24a",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"00000000-0000-0000-0000-000000000000",
+	'telnetcmd',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO PE_PE
+	VALUES ("481ac0ec-0618-425c-b919-f87138088de5",
+	1,
+	"b1d5d768-f0c2-413f-a6b0-1eefdefcdba5",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("0da5dc3c-c867-43d0-9617-02e802fa627f",
+	"00000000-0000-0000-0000-000000000000",
+	'attach',
+	'NAME
+    attach -- attach a Telnet terminal instance to another Telnet terminal.
+    
+SYNOPSIS
+    public service attach( terminal: in  termid,
+                           host:     in  string,
+                           port:     in  integer,
+                           error:    out error );
+    
+DESCRIPTION
+
+    The ''attach'' service is used to attach a Telnet terminal instance to another
+    Telnet terminal specified by ''host'' and ''port''.
+
+    ''terminal'' is an identifier specifying the terminal instance which to
+    execute the attach operation against.
+
+    ''host'' is a string representation of an IPv4 address in the form
+    "<byte>.<byte>.<byte>.<byte>" where <byte> is a string representing a
+    decimal integer from 0-255. "localhost" is also accepted as a value for
+    ''host''. Any other string is invalid and will result in an error.
+    
+    ''port'' is an integer ranging from 0-65535 representing the port on which the
+    foreign Telnet terminal is listening.
+    
+    ''error'' is an error code set by the attach operation or OK if successful.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and set the ''error'' code if:
+    
+    [TERMINVAL]     ''terminal'' is a non-existent or invalid terminal.
+
+    [TERMBUSY]      ''terminal'' is already attached or already listening for
+                    connections.
+    
+    [HOSTINVAL]     ''host'' does not represent a valid host as specified above.
+    
+    [PORTINVAL]     ''port'' does not represent a valid port as specified above.
+    
+    [SOCKETERR]     The call results in a socket error.',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("b553c739-fd27-4d6a-bab8-4e523b283188",
+	"0da5dc3c-c867-43d0-9617-02e802fa627f",
+	'termid',
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("3a903cbd-39e0-46e3-954d-081052e56383",
+	"0da5dc3c-c867-43d0-9617-02e802fa627f",
+	'host',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"b553c739-fd27-4d6a-bab8-4e523b283188",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("efd988e6-3126-45ad-a471-1d2cfe4d9f11",
+	"0da5dc3c-c867-43d0-9617-02e802fa627f",
+	'port',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"3a903cbd-39e0-46e3-954d-081052e56383",
+	'');
+INSERT INTO PE_PE
+	VALUES ("0da5dc3c-c867-43d0-9617-02e802fa627f",
+	1,
+	"b1d5d768-f0c2-413f-a6b0-1eefdefcdba5",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("c55d12b5-c261-45b8-ab42-158601c4fbef",
+	"00000000-0000-0000-0000-000000000000",
+	'listen',
+	'NAME
+    listen -- set a terminal instance to listen for a TCP connection on a local
+    port.
+    
+SYNOPSIS
+    public service listen( terminal: in  termid,
+                           port:     in  integer,
+                           error:    out error );
+    
+DESCRIPTION
+
+    The ''listen'' service is used to initiate a terminal instance to listen for a
+    TCP connection on a local port.
+
+    ''terminal'' is an identifier specifying the terminal instance which to
+    execute the listen operation against.
+
+    ''port'' is an integer ranging from 0-65535 representing the port on which to
+    listen.
+    
+    ''error'' is an error code set by the listen operation or OK if successful.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and set the ''error'' code if:
+    
+    [TERMINVAL]     ''terminal'' is a non-existent or invalid terminal.
+
+    [TERMBUSY]      ''terminal'' is already attached or already listening for
+                    connections.
+    
+    [PORTINVAL]     ''port'' does not represent a valid port as specified above.
+    
+    [SOCKETERR]     The call results in a socket error.',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("40c3ae5e-7cbc-42a8-a268-456fe35e0e6d",
+	"c55d12b5-c261-45b8-ab42-158601c4fbef",
+	'termid',
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("b5305c46-ad3b-4517-827d-fc64deab4ff5",
+	"c55d12b5-c261-45b8-ab42-158601c4fbef",
+	'port',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"40c3ae5e-7cbc-42a8-a268-456fe35e0e6d",
+	'');
+INSERT INTO PE_PE
+	VALUES ("c55d12b5-c261-45b8-ab42-158601c4fbef",
+	1,
+	"b1d5d768-f0c2-413f-a6b0-1eefdefcdba5",
+	"00000000-0000-0000-0000-000000000000",
+	1);
 INSERT INTO PE_PE
 	VALUES ("b1d5d768-f0c2-413f-a6b0-1eefdefcdba5",
 	1,
@@ -44,7 +352,10 @@ INSERT INTO C_C_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000",
 	'Telnet',
-	'',
+	'This is an implementation of the Telnet protocol as defined in RFC 854. It is a
+simple implementation that only implements the NVT and does not support any
+additional options.
+',
 	0,
 	"00000000-0000-0000-0000-000000000000",
 	0,

@@ -50,6 +50,102 @@ INSERT INTO DIM_ELE
 	VALUES ("f694e616-8dc7-4c12-a43d-7b365cf8776f",
 	0,
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("a7e41ce9-8e32-4d3c-a91c-c7cf7c12bf9e",
+	"e184a043-fee5-4a47-ab41-80b0eb2d1ce9",
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	51,
+	0,
+	'Telnet::Telnet::Shared::termid');
+INSERT INTO GD_SHP
+	VALUES ("a7e41ce9-8e32-4d3c-a91c-c7cf7c12bf9e");
+INSERT INTO GD_NCS
+	VALUES ("a7e41ce9-8e32-4d3c-a91c-c7cf7c12bf9e");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"a7e41ce9-8e32-4d3c-a91c-c7cf7c12bf9e");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"a7e41ce9-8e32-4d3c-a91c-c7cf7c12bf9e",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("a7e41ce9-8e32-4d3c-a91c-c7cf7c12bf9e",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("e7e4b431-df06-4992-a7f8-486d1d935545",
+	"e184a043-fee5-4a47-ab41-80b0eb2d1ce9",
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	52,
+	0,
+	'Telnet::Telnet::Shared::telnetcmd');
+INSERT INTO GD_SHP
+	VALUES ("e7e4b431-df06-4992-a7f8-486d1d935545");
+INSERT INTO GD_NCS
+	VALUES ("e7e4b431-df06-4992-a7f8-486d1d935545");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"e7e4b431-df06-4992-a7f8-486d1d935545");
+INSERT INTO DIM_GE
+	VALUES (440.000000,
+	0.000000,
+	"e7e4b431-df06-4992-a7f8-486d1d935545",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("e7e4b431-df06-4992-a7f8-486d1d935545",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("35af8124-3a94-4b89-a7ee-756d9e7cf0dd",
+	"e184a043-fee5-4a47-ab41-80b0eb2d1ce9",
+	"4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	52,
+	0,
+	'Telnet::Telnet::Shared::error');
+INSERT INTO GD_SHP
+	VALUES ("35af8124-3a94-4b89-a7ee-756d9e7cf0dd");
+INSERT INTO GD_NCS
+	VALUES ("35af8124-3a94-4b89-a7ee-756d9e7cf0dd");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"35af8124-3a94-4b89-a7ee-756d9e7cf0dd");
+INSERT INTO DIM_GE
+	VALUES (660.000000,
+	0.000000,
+	"35af8124-3a94-4b89-a7ee-756d9e7cf0dd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("35af8124-3a94-4b89-a7ee-756d9e7cf0dd",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("ce43b4c8-377c-461f-8cee-e1a3af7f1c75",
+	"e184a043-fee5-4a47-ab41-80b0eb2d1ce9",
+	"34131f52-c231-4e8f-8f22-a3dbffc2a21a",
+	96,
+	0,
+	'Telnet::Telnet::Shared::Printer');
+INSERT INTO GD_SHP
+	VALUES ("ce43b4c8-377c-461f-8cee-e1a3af7f1c75");
+INSERT INTO GD_NCS
+	VALUES ("ce43b4c8-377c-461f-8cee-e1a3af7f1c75");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"ce43b4c8-377c-461f-8cee-e1a3af7f1c75");
+INSERT INTO DIM_GE
+	VALUES (880.000000,
+	0.000000,
+	"ce43b4c8-377c-461f-8cee-e1a3af7f1c75",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("ce43b4c8-377c-461f-8cee-e1a3af7f1c75",
+	0,
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_DIA
 	VALUES ("e184a043-fee5-4a47-ab41-80b0eb2d1ce9",
 	'',
@@ -57,6 +153,194 @@ INSERT INTO DIM_DIA
 	0.000000,
 	0.000000,
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT
+	VALUES ("6314e6a4-e588-4ac5-b758-e200640cc183",
+	"00000000-0000-0000-0000-000000000000",
+	'termid',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("6314e6a4-e588-4ac5-b758-e200640cc183",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("6314e6a4-e588-4ac5-b758-e200640cc183",
+	1,
+	"f1dc9ba8-f17d-4b1c-ae52-63a816d86352",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"00000000-0000-0000-0000-000000000000",
+	'telnetcmd',
+	'',
+	'');
+INSERT INTO S_EDT
+	VALUES ("afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5");
+INSERT INTO S_ENUM
+	VALUES ("5fc7e8b5-5fc1-439a-8508-44d654f60ba1",
+	'GA',
+	'The Go Ahead signal.',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"983a1634-5112-4e11-98de-b7d66e7f3ff0");
+INSERT INTO S_ENUM
+	VALUES ("2380efe7-0e1d-4edc-86a6-44557f78ada4",
+	'SE',
+	'End of subnegotiation parameters.',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_ENUM
+	VALUES ("38fe2858-49d1-4a92-b294-4e62e1781e07",
+	'NOP',
+	'No operation.',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"2380efe7-0e1d-4edc-86a6-44557f78ada4");
+INSERT INTO S_ENUM
+	VALUES ("e2ba7d71-2010-405e-ab2a-ed0259357eff",
+	'DM',
+	'The data stream portion of a Synch. This should always be accompanied by a TCP
+Urgent notification.',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"38fe2858-49d1-4a92-b294-4e62e1781e07");
+INSERT INTO S_ENUM
+	VALUES ("12b63097-ceb2-4694-ba73-ef2fcfb4a5c9",
+	'BRK',
+	'NVT character BRK.',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"e2ba7d71-2010-405e-ab2a-ed0259357eff");
+INSERT INTO S_ENUM
+	VALUES ("cb83ba71-951e-42e1-9622-bb194a1a5aad",
+	'IP',
+	'The Interrupt Process function.',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"12b63097-ceb2-4694-ba73-ef2fcfb4a5c9");
+INSERT INTO S_ENUM
+	VALUES ("237c41eb-81a1-4c80-8279-0bc82a1fa32c",
+	'AO',
+	'the Abort Output function.',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"cb83ba71-951e-42e1-9622-bb194a1a5aad");
+INSERT INTO S_ENUM
+	VALUES ("546ca3a5-5bbc-47cc-9472-83ccf3e3936a",
+	'AYT',
+	'The Are You There function.',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"237c41eb-81a1-4c80-8279-0bc82a1fa32c");
+INSERT INTO S_ENUM
+	VALUES ("57e3caf7-8d58-49ec-a8d4-dcd36f314329",
+	'EC',
+	'The Erase Character function.',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"546ca3a5-5bbc-47cc-9472-83ccf3e3936a");
+INSERT INTO S_ENUM
+	VALUES ("983a1634-5112-4e11-98de-b7d66e7f3ff0",
+	'EL',
+	'The Erase Line function.',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"57e3caf7-8d58-49ec-a8d4-dcd36f314329");
+INSERT INTO S_ENUM
+	VALUES ("f569644f-cc7f-4322-b887-65915fbd6496",
+	'SB',
+	'Subnegotiation of the indicated option.
+',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"5fc7e8b5-5fc1-439a-8508-44d654f60ba1");
+INSERT INTO S_ENUM
+	VALUES ("640e4b4e-17a2-4b9f-b357-2deb130f8661",
+	'WILL',
+	'Indicates the desire to begin performing, or confirmation that you are now
+performing, the indicated option.
+',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"f569644f-cc7f-4322-b887-65915fbd6496");
+INSERT INTO S_ENUM
+	VALUES ("562a7f3c-2553-4a22-81ac-197258f51e8d",
+	'WONT',
+	'Indicates the refusal to perform, or continue performing, the indicated option.
+',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"640e4b4e-17a2-4b9f-b357-2deb130f8661");
+INSERT INTO S_ENUM
+	VALUES ("1561171b-ac30-42d7-9fc1-d151dc46b15d",
+	'DO',
+	'Indicates the request that the other party perform, or confirmation that you are
+expecting the other party to perform, the indicated option.
+',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"562a7f3c-2553-4a22-81ac-197258f51e8d");
+INSERT INTO S_ENUM
+	VALUES ("11b8d0d4-cdda-41a2-9057-de10884d77e8",
+	'DONT',
+	'Indicates the demand that the other party stop performing, or confirmation that
+you are no longer expecting the other party to perform, the indicated option.
+',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"1561171b-ac30-42d7-9fc1-d151dc46b15d");
+INSERT INTO S_ENUM
+	VALUES ("20ad3dc2-9ace-4cde-9c6b-4536a24ea0aa",
+	'IAC',
+	'Data byte 255. Escape character to indicate that the following should be
+interpreted as a command.
+',
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"11b8d0d4-cdda-41a2-9057-de10884d77e8");
+INSERT INTO PE_PE
+	VALUES ("afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	1,
+	"f1dc9ba8-f17d-4b1c-ae52-63a816d86352",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	"00000000-0000-0000-0000-000000000000",
+	'error',
+	'',
+	'');
+INSERT INTO S_EDT
+	VALUES ("4759761c-ff94-437c-9a70-f7e0ae7a4074");
+INSERT INTO S_ENUM
+	VALUES ("9fb8e0a6-ea3b-4c26-ac14-d445dc2ff5bc",
+	'OK',
+	'',
+	"4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_ENUM
+	VALUES ("cff23e75-ba74-4331-9539-096c07582c44",
+	'TERMINVAL',
+	'',
+	"4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	"9fb8e0a6-ea3b-4c26-ac14-d445dc2ff5bc");
+INSERT INTO S_ENUM
+	VALUES ("1ab6cd9b-57df-41f3-bf9a-b6822f098ac0",
+	'TERMBUSY',
+	'',
+	"4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	"cff23e75-ba74-4331-9539-096c07582c44");
+INSERT INTO S_ENUM
+	VALUES ("24724501-1b4c-417c-a6ed-3ce8d7716abd",
+	'HOSTINVAL',
+	'',
+	"4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	"1ab6cd9b-57df-41f3-bf9a-b6822f098ac0");
+INSERT INTO S_ENUM
+	VALUES ("a1cdab70-1af3-4620-87ee-91f6b6d72105",
+	'PORTINVAL',
+	'',
+	"4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	"24724501-1b4c-417c-a6ed-3ce8d7716abd");
+INSERT INTO S_ENUM
+	VALUES ("8bbeafa2-d13c-4d7f-849f-fab5b5369751",
+	'SOCKETERR',
+	'',
+	"4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	"a1cdab70-1af3-4620-87ee-91f6b6d72105");
+INSERT INTO PE_PE
+	VALUES ("4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	1,
+	"f1dc9ba8-f17d-4b1c-ae52-63a816d86352",
+	"00000000-0000-0000-0000-000000000000",
+	3);
 INSERT INTO PE_PE
 	VALUES ("f1dc9ba8-f17d-4b1c-ae52-63a816d86352",
 	1,

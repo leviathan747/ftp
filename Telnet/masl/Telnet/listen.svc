@@ -1,0 +1,5 @@
+private service Telnet::listen ( termid: in termid,
+                                 port: in integer ) is
+begin
+  null;
+end service;

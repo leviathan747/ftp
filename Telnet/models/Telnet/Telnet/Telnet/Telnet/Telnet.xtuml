@@ -44,7 +44,10 @@ INSERT INTO C_C_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000",
 	'Telnet',
-	'',
+	'This is an implementation of the Telnet protocol as defined in RFC 854. It is a
+simple implementation that only implements the NVT and does not support any
+additional options.
+',
 	0,
 	"00000000-0000-0000-0000-000000000000",
 	0,
