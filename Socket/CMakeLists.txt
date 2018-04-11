@@ -19,4 +19,4 @@ link_libraries(Boost::boost)
 
 add_compile_options ( "-g" )
 
-add_subdirectory(gen/code_generation/Socket)
+add_subdirectory(gen/code_generation)
