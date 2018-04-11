@@ -1,0 +1,78 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("f1dc9ba8-f17d-4b1c-ae52-63a816d86352",
+	"00000000-0000-0000-0000-000000000000",
+	"55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'Shared',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("e184a043-fee5-4a47-ab41-80b0eb2d1ce9",
+	112,
+	"f1dc9ba8-f17d-4b1c-ae52-63a816d86352",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'Telnet::Telnet::Shared');
+INSERT INTO GD_GE
+	VALUES ("f694e616-8dc7-4c12-a43d-7b365cf8776f",
+	"e184a043-fee5-4a47-ab41-80b0eb2d1ce9",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	96,
+	0,
+	'Telnet::Telnet::Shared::Telnet');
+INSERT INTO GD_SHP
+	VALUES ("f694e616-8dc7-4c12-a43d-7b365cf8776f");
+INSERT INTO GD_NCS
+	VALUES ("f694e616-8dc7-4c12-a43d-7b365cf8776f");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"f694e616-8dc7-4c12-a43d-7b365cf8776f");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"f694e616-8dc7-4c12-a43d-7b365cf8776f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("f694e616-8dc7-4c12-a43d-7b365cf8776f",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("e184a043-fee5-4a47-ab41-80b0eb2d1ce9",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("f1dc9ba8-f17d-4b1c-ae52-63a816d86352",
+	1,
+	"8d9c3a26-8e0c-42db-a0bb-c56c2084a178",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8d9c3a26-8e0c-42db-a0bb-c56c2084a178",
+	"55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	"55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'Telnet',
+	'',
+	0,
+	'../Telnet.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'Telnet',
+	1,
+	'../../Telnet.xtuml');
