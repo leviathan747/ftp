@@ -190,7 +190,7 @@ INSERT INTO GD_GE
 	"7ce2966b-75d4-417e-9c78-068f4d42003d",
 	93,
 	0,
-	'Telnet::Telnet::Telnet::Printer::Printer');
+	'Telnet::Telnet::Telnet::Print::Printer');
 INSERT INTO GD_CON
 	VALUES ("7f41eb10-e9f6-4944-a890-167d479f966e",
 	"00000000-0000-0000-0000-000000000000");

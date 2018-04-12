@@ -1,0 +1,14 @@
+//! ACTIVITY BEGIN. '3ccbd3e8-a515-4ff8-95b7-baa9a17940ce' DO NOT EDIT THIS LINE.
+private service Telnet::address_is_valid ( address : in string ) return boolean is
+begin
+  return true;  // TODO implement
+end service;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. 'f337cbae-6009-4f95-94bd-25a26640ece5' DO NOT EDIT THIS LINE.
+private service Telnet::port_is_valid ( port : in integer ) return boolean is
+begin
+  return true; // TODO implement
+end service;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+

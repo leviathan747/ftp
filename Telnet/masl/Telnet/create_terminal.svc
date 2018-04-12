@@ -1,4 +1,19 @@
 public service Telnet::create_terminal ( termid: out termid ) is
+term: instance of NetworkVirtualTerminal;
+existing_terms: sequence of instance of NetworkVirtualTerminal;
 begin
-  null;
+
+  // find the terminal with the highest ID and increment
+  existing_terms := find_all NetworkVirtualTerminal() reverse_ordered_by( id );
+  if ( existing_terms'length > 0 ) then
+    termid := existing_terms[existing_terms'first].id + 1;
+  else
+    termid := 1;
+  end if;
+  
+  // create a terminal, printer, and keyboard
+  term := create NetworkVirtualTerminal( id => termid );
+  link create Printer( nvt_id => termid ) R1.displays_output_for term;
+  link create Keyboard( nvt_id => termid ) R2.passes_input_to term;
+
 end service;

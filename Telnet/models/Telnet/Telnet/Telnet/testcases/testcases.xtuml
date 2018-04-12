@@ -1,0 +1,76 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("b862ebc7-6563-4aaf-bd1f-1eaf5b2cdc75",
+	"00000000-0000-0000-0000-000000000000",
+	"55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'testcases',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("c0291af8-f80e-48c8-80a5-c4043664c518",
+	112,
+	"b862ebc7-6563-4aaf-bd1f-1eaf5b2cdc75",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'Telnet::Telnet::Telnet::testcases');
+INSERT INTO DIM_DIA
+	VALUES ("c0291af8-f80e-48c8-80a5-c4043664c518",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("67c4d0ce-bdcc-4e48-9282-c7d18558da9a",
+	"00000000-0000-0000-0000-000000000000",
+	'test1',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	1);
+INSERT INTO PE_PE
+	VALUES ("67c4d0ce-bdcc-4e48-9282-c7d18558da9a",
+	1,
+	"b862ebc7-6563-4aaf-bd1f-1eaf5b2cdc75",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("b862ebc7-6563-4aaf-bd1f-1eaf5b2cdc75",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"1b9d9160-59bd-4a09-9c36-8e5ffc195451",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("1b9d9160-59bd-4a09-9c36-8e5ffc195451",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Telnet',
+	'This is an implementation of the Telnet protocol as defined in RFC 854. It is a
+simple implementation that only implements the NVT and does not support any
+additional options.
+',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Telnet.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'Telnet',
+	1,
+	'../../../Telnet.xtuml');

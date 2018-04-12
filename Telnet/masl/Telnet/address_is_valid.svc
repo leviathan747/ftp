@@ -1,0 +1,4 @@
+private service Telnet::address_is_valid ( address: in string ) return boolean is
+begin
+  return true;  // TODO implement
+end service;

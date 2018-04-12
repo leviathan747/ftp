@@ -160,7 +160,7 @@ domain Telnet is
 //!    [SOCKETERR]     The call results in a socket error.
     public service listen (
         termid : in termid,        port : in integer    );
-  terminator Printer is
+  terminator Print is
 //!NAME
 //!    print -- post data from a specified Telnet terminal instance.
 //!    

@@ -1,0 +1,110 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("70f346a6-fa93-47ba-a24a-b7b02ef783da",
+	"00000000-0000-0000-0000-000000000000",
+	"55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'util',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("9ec286f2-c35f-437b-8d4a-a3398d1d1ed2",
+	112,
+	"70f346a6-fa93-47ba-a24a-b7b02ef783da",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'Telnet::Telnet::Telnet::util');
+INSERT INTO DIM_DIA
+	VALUES ("9ec286f2-c35f-437b-8d4a-a3398d1d1ed2",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("3ccbd3e8-a515-4ff8-95b7-baa9a17940ce",
+	"00000000-0000-0000-0000-000000000000",
+	'address_is_valid',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("88b84fb8-f8ae-4721-82a3-cf96dce2a1ce",
+	"3ccbd3e8-a515-4ff8-95b7-baa9a17940ce",
+	'address',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("3ccbd3e8-a515-4ff8-95b7-baa9a17940ce",
+	1,
+	"70f346a6-fa93-47ba-a24a-b7b02ef783da",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("f337cbae-6009-4f95-94bd-25a26640ece5",
+	"00000000-0000-0000-0000-000000000000",
+	'port_is_valid',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("b0b01e60-8c7e-4801-82a8-2ef4dded841e",
+	"f337cbae-6009-4f95-94bd-25a26640ece5",
+	'port',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("f337cbae-6009-4f95-94bd-25a26640ece5",
+	1,
+	"70f346a6-fa93-47ba-a24a-b7b02ef783da",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("70f346a6-fa93-47ba-a24a-b7b02ef783da",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"1b9d9160-59bd-4a09-9c36-8e5ffc195451",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("1b9d9160-59bd-4a09-9c36-8e5ffc195451",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Telnet',
+	'This is an implementation of the Telnet protocol as defined in RFC 854. It is a
+simple implementation that only implements the NVT and does not support any
+additional options.
+',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Telnet.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'Telnet',
+	1,
+	'../../../Telnet.xtuml');

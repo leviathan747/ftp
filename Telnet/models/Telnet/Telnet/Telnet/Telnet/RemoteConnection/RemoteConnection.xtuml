@@ -98,61 +98,50 @@ INSERT INTO O_ATTR
 	'',
 	'local_address',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000004",
+	"deb29ed8-d623-4a63-b676-9bc66c9ca4a1",
 	'',
 	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("deb29ed8-d623-4a63-b676-9bc66c9ca4a1",
+	"00000000-0000-0000-0000-000000000000",
+	'Socket::sockaddr',
+	'',
+	'',
+	'../../../../types/types.xtuml');
 INSERT INTO O_NBATTR
-	VALUES ("ac7d3f0e-dcf4-44c0-be7f-1976649b80e6",
+	VALUES ("ad7239c5-af13-4218-8b85-d1ed7cb272a5",
 	"41e2da58-7702-4676-b4f8-266d953e44b7");
 INSERT INTO O_BATTR
-	VALUES ("ac7d3f0e-dcf4-44c0-be7f-1976649b80e6",
+	VALUES ("ad7239c5-af13-4218-8b85-d1ed7cb272a5",
 	"41e2da58-7702-4676-b4f8-266d953e44b7");
 INSERT INTO O_ATTR
-	VALUES ("ac7d3f0e-dcf4-44c0-be7f-1976649b80e6",
+	VALUES ("ad7239c5-af13-4218-8b85-d1ed7cb272a5",
 	"41e2da58-7702-4676-b4f8-266d953e44b7",
 	"a664fb26-8be4-4a4f-b4cb-9909e98e8a04",
-	'local_port',
-	'',
-	'',
-	'local_port',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'',
-	'');
-INSERT INTO O_NBATTR
-	VALUES ("ad7239c5-af13-4218-8b85-d1ed7cb272a5",
-	"41e2da58-7702-4676-b4f8-266d953e44b7");
-INSERT INTO O_BATTR
-	VALUES ("ad7239c5-af13-4218-8b85-d1ed7cb272a5",
-	"41e2da58-7702-4676-b4f8-266d953e44b7");
-INSERT INTO O_ATTR
-	VALUES ("ad7239c5-af13-4218-8b85-d1ed7cb272a5",
-	"41e2da58-7702-4676-b4f8-266d953e44b7",
-	"ac7d3f0e-dcf4-44c0-be7f-1976649b80e6",
 	'remote_address',
 	'',
 	'',
 	'remote_address',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000004",
+	"deb29ed8-d623-4a63-b676-9bc66c9ca4a1",
 	'',
 	'');
 INSERT INTO O_NBATTR
-	VALUES ("8ca33c18-1a5a-4a96-9b0e-0bf5ab6137f7",
+	VALUES ("a4175873-bac0-4389-89c1-5559b7d58bf7",
 	"41e2da58-7702-4676-b4f8-266d953e44b7");
 INSERT INTO O_BATTR
-	VALUES ("8ca33c18-1a5a-4a96-9b0e-0bf5ab6137f7",
+	VALUES ("a4175873-bac0-4389-89c1-5559b7d58bf7",
 	"41e2da58-7702-4676-b4f8-266d953e44b7");
 INSERT INTO O_ATTR
-	VALUES ("8ca33c18-1a5a-4a96-9b0e-0bf5ab6137f7",
+	VALUES ("a4175873-bac0-4389-89c1-5559b7d58bf7",
 	"41e2da58-7702-4676-b4f8-266d953e44b7",
 	"ad7239c5-af13-4218-8b85-d1ed7cb272a5",
-	'remote_port',
+	'current_state',
 	'',
 	'',
-	'remote_port',
+	'current_state',
 	0,
-	"ba5eda7a-def5-0000-0000-000000000002",
+	"ba5eda7a-def5-0000-0000-000000000006",
 	'',
 	'');
 INSERT INTO O_ID

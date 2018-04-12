@@ -1,0 +1,83 @@
+//! ACTIVITY BEGIN. '2740c197-7613-46cf-b20c-3a91f8f3a7c9' '7c65ee46-0f42-4c51-b46c-0b2e0e8983c5' DO NOT EDIT THIS LINE.
+state Telnet::RemoteConnection.Idle () is
+begin
+  null;
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. '2740c197-7613-46cf-b20c-3a91f8f3a7c9' '7604b224-292e-4c52-afe5-5befb9de0229' DO NOT EDIT THIS LINE.
+state Telnet::RemoteConnection.Listening () is
+sock: Socket::socketfd;
+remoteaddr: Socket::sockaddr;
+begin
+
+  // if the socket does not exist, create it
+  if ( this.socket_id < 0 ) then
+
+    // create a server socket
+    this.socket_id := Socket::socket( Socket::SOCK_STREAM, Socket::IPPROTO_TCP );
+    if ( this.socket_id < 0 ) then
+      raise Socket::SocketException;
+    end if;
+     
+    // bind to the locally specified port
+    if ( Socket::bind( this.socket_id, this.local_address ) < 0 ) then
+      raise Socket::SocketException;
+    end if;
+    
+    // start listening
+    if ( Socket::listen( this.socket_id, 1 ) < 0 ) then
+      raise Socket::SocketException;
+    end if;
+    
+  end if;
+  
+  // accept a connection
+  sock := Socket::accept( this.socket_id, remoteaddr );
+  if ( sock < 0 ) then
+    raise Socket::SocketException;
+  else
+    this.socket_id := sock;
+    this.remote_address := remoteaddr;
+    generate done() to this;
+  end if;
+  
+exception when Socket::SocketException =>
+  generate error( SOCKETERR ) to this;
+
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. '2740c197-7613-46cf-b20c-3a91f8f3a7c9' '3d4fdfa0-7d5d-483f-9fbb-36dd8378f995' DO NOT EDIT THIS LINE.
+state Telnet::RemoteConnection.ReportingError ( code : in error ) is
+begin
+  // TODO log error
+  Print~>error( code );
+  generate RemoteConnection.done() to this;
+  
+  // TODO clean up
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. '2740c197-7613-46cf-b20c-3a91f8f3a7c9' '76ccd70f-a409-4cdf-a57b-0b0c5cd6775b' DO NOT EDIT THIS LINE.
+state Telnet::RemoteConnection.ReceivingData () is
+buffer: Socket::data;
+begin
+
+  // receive data
+  if ( Socket::recv( this.socket_id, buffer, 1024, 0 ) < 0 ) then
+    raise Socket::SocketException;
+  end if;
+  
+  // print data
+  console << "Received data: " << Socket::datatostring( buffer ) << endl;
+  
+  // repeat
+  generate done() to this;
+
+exception when Socket::SocketException =>
+  generate error( SOCKETERR ) to this;
+
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+

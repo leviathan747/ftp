@@ -1,40 +1,82 @@
 //! ACTIVITY BEGIN. '101e1faa-88b1-40f1-bc8d-b61afe06ddf3' DO NOT EDIT THIS LINE.
-private service Telnet::create_terminal ( termid : out termid ) is
+public service Telnet::create_terminal ( termid : out termid ) is
+term: instance of NetworkVirtualTerminal;
+existing_terms: sequence of instance of NetworkVirtualTerminal;
 begin
-  null;
+
+  // find the terminal with the highest ID and increment
+  existing_terms := find_all NetworkVirtualTerminal() reverse_ordered_by( id );
+  if ( existing_terms'length > 0 ) then
+    termid := existing_terms[existing_terms'first].id + 1;
+  else
+    termid := 1;
+  end if;
+  
+  // create a terminal, printer, and keyboard
+  term := create NetworkVirtualTerminal( id => termid );
+  link create Printer( nvt_id => termid ) R1.displays_output_for term;
+  link create Keyboard( nvt_id => termid ) R2.passes_input_to term;
+
 end service;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 
 //! ACTIVITY BEGIN. '029e7f27-4bde-49e7-9290-567e37d71a5d' DO NOT EDIT THIS LINE.
-private service Telnet::sendtext ( termid : in termid,
-                                  text : in integer ) is
+public service Telnet::sendtext ( termid : in termid,
+                                 text : in integer ) is
 begin
   null;
 end service;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 
 //! ACTIVITY BEGIN. '481ac0ec-0618-425c-b919-f87138088de5' DO NOT EDIT THIS LINE.
-private service Telnet::command ( termid : in termid,
-                                 cmd : in telnetcmd ) is
+public service Telnet::command ( termid : in termid,
+                                cmd : in telnetcmd ) is
 begin
   null;
 end service;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 
 //! ACTIVITY BEGIN. '0da5dc3c-c867-43d0-9617-02e802fa627f' DO NOT EDIT THIS LINE.
-private service Telnet::attach ( termid : in termid,
-                                host : in string,
-                                port : in integer ) is
+public service Telnet::attach ( termid : in termid,
+                               host : in string,
+                               port : in integer ) is
 begin
   null;
 end service;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 
 //! ACTIVITY BEGIN. 'c55d12b5-c261-45b8-ab42-158601c4fbef' DO NOT EDIT THIS LINE.
-private service Telnet::listen ( termid : in termid,
-                                port : in integer ) is
+public service Telnet::listen ( termid : in termid,
+                               port : in integer ) is
+term: instance of NetworkVirtualTerminal;
+conn: instance of RemoteConnection;
+localaddr: Socket::sockaddr;
 begin
-  null;
+  // select the terminal instance
+  term := find_one NetworkVirtualTerminal( id = termid );
+  if ( null /= term ) then
+    // validate the arguments
+    if ( port_is_valid( port ) ) then
+      // select an existing connection
+      if ( null = term->R3.communicates_through.RemoteConnection ) then
+        conn := create RemoteConnection( nvt_id => term.id, Current_State => Idle );
+        conn.socket_id := -1;
+        localaddr.address := "127.0.0.1";
+        localaddr.port := port;
+        conn.local_address := localaddr;
+        generate RemoteConnection.listen() to conn;
+      else
+        // TODO log error
+        Print~>error( TERMBUSY );
+      end if;
+    else
+      // TODO log error
+      Print~>error( PORTINVAL );
+    end if;
+  else
+    // TODO log error
+    Print~>error( TERMINVAL );
+  end if;
 end service;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 

@@ -1,0 +1,4 @@
+public service Telnet::Print~>error ( error: in error ) is
+begin
+  null;
+end service;

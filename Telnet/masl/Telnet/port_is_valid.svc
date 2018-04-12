@@ -1,0 +1,4 @@
+private service Telnet::port_is_valid ( port: in integer ) return boolean is
+begin
+  return true; // TODO implement
+end service;

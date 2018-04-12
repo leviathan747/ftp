@@ -1,5 +1,0 @@
-public service Telnet::Printer~>print ( termid: in termid,
-                                        text: in string ) is
-begin
-  null;
-end service;

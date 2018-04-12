@@ -1,5 +1,32 @@
 public service Telnet::listen ( termid: in termid,
                                 port: in integer ) is
+term: instance of NetworkVirtualTerminal;
+conn: instance of RemoteConnection;
+localaddr: Socket::sockaddr;
 begin
-  null;
+  // select the terminal instance
+  term := find_one NetworkVirtualTerminal( id = termid );
+  if ( null /= term ) then
+    // validate the arguments
+    if ( port_is_valid( port ) ) then
+      // select an existing connection
+      if ( null = term->R3.communicates_through.RemoteConnection ) then
+        conn := create RemoteConnection( nvt_id => term.id, Current_State => Idle );
+        conn.socket_id := -1;
+        localaddr.address := "127.0.0.1";
+        localaddr.port := port;
+        conn.local_address := localaddr;
+        generate RemoteConnection.listen() to conn;
+      else
+        // TODO log error
+        Print~>error( TERMBUSY );
+      end if;
+    else
+      // TODO log error
+      Print~>error( PORTINVAL );
+    end if;
+  else
+    // TODO log error
+    Print~>error( TERMINVAL );
+  end if;
 end service;

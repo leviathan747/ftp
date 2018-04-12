@@ -1,0 +1,11 @@
+//! ACTIVITY BEGIN. '67c4d0ce-bdcc-4e48-9282-c7d18558da9a' DO NOT EDIT THIS LINE.
+private service Telnet::test1 () is
+termid: termid;
+begin
+  // create terminal
+  create_terminal( termid );
+  // start it listening
+  listen( termid, 5555 );
+end service;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+

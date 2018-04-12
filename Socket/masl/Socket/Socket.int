@@ -22,6 +22,12 @@ domain Socket is
   public type shutdowntype is enum ( SHUT_RD, SHUT_WR, SHUT_RDWR );   
   public type error is enum ( EACCES, EADDRINUSE, EADDRNOTAVAIL, EAFNOSUPPORT, EAGAIN, EALREADY, EBADF, ECONNABORTED, ECONNREFUSED, ECONNRESET, EDESTADDRREQ, EDOM, EFAULT, EHOSTUNREACH, EINPROGRESS, EINTR, EINVAL, EIO, EISCONN, EISDIR, ELOOP, EMFILE, EMSGSIZE, ENAMETOOLONG, ENETDOWN, ENETUNREACH, ENFILE, ENOBUFS, ENOENT, ENOMEM, ENOPROTOOPT, ENOSR, ENOTCONN, ENOTDIR, ENOTSOCK, EOPNOTSUPP, EPIPE, EPROTO, EPROTONOSUPPORT, EPROTOTYPE, EROFS, ETIMEDOUT, EUNKNOWN );   
   
+  public exception SocketException;   
+  
+  public service datatostring ( data: in data ) return string;   
+  public service geterror () return error;   
+  public service strerror () return string;   
+  public service durationtotimeval ( duration: in duration ) return data;   
   public service accept ( socket: in socketfd,
                           address: out sockaddr ) return socketfd;   
   public service bind ( socket: in socketfd,
@@ -62,9 +68,5 @@ domain Socket is
                             how: in shutdowntype ) return integer;   
   public service socket ( socktype: in socktype,
                           protocol: in sockproto ) return socketfd;   
-  public service datatostring ( data: in data ) return string;   
-  public service geterror () return error;   
-  public service strerror () return string;   
-  public service durationtotimeval ( duration: in duration ) return data;   
   
 end domain;

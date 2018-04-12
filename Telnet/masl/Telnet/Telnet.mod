@@ -3,10 +3,10 @@
 //!additional options.
 domain Telnet is
   
+  object Keyboard;
+  object NetworkVirtualTerminal;
   object Printer;
   object RemoteConnection;
-  object NetworkVirtualTerminal;
-  object Keyboard;
   
   public type termid is integer;   
   public type telnetcmd is enum ( SE, NOP, DM, BRK, IP, AO, AYT, EC, EL, GA, SB, WILL, WONT, DO, DONT, IAC );   
@@ -164,9 +164,12 @@ domain Telnet is
   //!    [SOCKETERR]     The call results in a socket error.
   public service listen ( termid: in termid,
                           port: in integer );   
+  private service test1 (); pragma scenario( 1 ); pragma test_only( true );   
+  private service address_is_valid ( address: in string ) return boolean;   
+  private service port_is_valid ( port: in integer ) return boolean;   
   
   
-  terminator Printer is
+  terminator Print is
     //!NAME
     //!    print -- post data from a specified Telnet terminal instance.
     //!    
@@ -250,6 +253,19 @@ domain Telnet is
   
   
   
+  object Keyboard is
+    
+    nvt_id: preferred referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;     
+    buffer: sequence of byte;     
+    
+  end object;
+  
+  object NetworkVirtualTerminal is
+    
+    id: preferred termid;     
+    
+  end object;
+  
   object Printer is
     
     nvt_id: preferred referential ( R1.displays_output_for.NetworkVirtualTerminal.id ) termid;     
@@ -260,23 +276,35 @@ domain Telnet is
     
     nvt_id: preferred referential ( R3.provides_communication_channel_for.NetworkVirtualTerminal.id ) termid;     
     socket_id: Socket::socketfd;     
-    local_address: string;     
-    local_port: integer;     
-    remote_address: string;     
-    remote_port: integer;     
+    local_address: Socket::sockaddr;     
+    remote_address: Socket::sockaddr;     
     
-  end object;
-  
-  object NetworkVirtualTerminal is
+    state Idle ();     
+    state Listening ();     
+    state ReportingError ( code: in error );     
+    state ReceivingData ();     
     
-    id: preferred termid;     
+    event listen ();     
+    event error ( code: in error );     
+    event done ();     
     
-  end object;
-  
-  object Keyboard is
-    
-    nvt_id: preferred referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;     
-    buffer: sequence of byte;     
+    transition is
+      Non_Existent ( listen => Cannot_Happen,
+                     error => Cannot_Happen,
+                     done => Cannot_Happen );       
+      Idle ( listen => Listening,
+             error => Cannot_Happen,
+             done => Cannot_Happen );       
+      Listening ( listen => Cannot_Happen,
+                  error => ReportingError,
+                  done => ReceivingData );       
+      ReportingError ( listen => Cannot_Happen,
+                       error => Cannot_Happen,
+                       done => Idle );       
+      ReceivingData ( listen => Cannot_Happen,
+                      error => ReportingError,
+                      done => ReceivingData );       
+    end transition;
     
   end object;
   

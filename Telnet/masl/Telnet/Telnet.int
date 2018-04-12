@@ -161,7 +161,7 @@ domain Telnet is
                           port: in integer );   
   
   
-  terminator Printer is
+  terminator Print is
     //!NAME
     //!    print -- post data from a specified Telnet terminal instance.
     //!    

@@ -29,6 +29,29 @@ end structure
   ;
   public type error is enum (EACCES, EADDRINUSE, EADDRNOTAVAIL, EAFNOSUPPORT, EAGAIN, EALREADY, EBADF, ECONNABORTED, ECONNREFUSED, ECONNRESET, EDESTADDRREQ, EDOM, EFAULT, EHOSTUNREACH, EINPROGRESS, EINTR, EINVAL, EIO, EISCONN, EISDIR, ELOOP, EMFILE, EMSGSIZE, ENAMETOOLONG, ENETDOWN, ENETUNREACH, ENFILE, ENOBUFS, ENOENT, ENOMEM, ENOPROTOOPT, ENOSR, ENOTCONN, ENOTDIR, ENOTSOCK, EOPNOTSUPP, EPIPE, EPROTO, EPROTONOSUPPORT, EPROTOTYPE, EROFS, ETIMEDOUT, EUNKNOWN)
   ;
+  public exception SocketException;
+    private service testrecv (
+    );
+pragma test_only ( true ); pragma scenario ( 1 ); 
+    private service testsend (
+    );
+pragma scenario ( 2 ); pragma test_only ( true ); 
+    private service testsend_udp (
+    );
+pragma scenario ( 4 ); pragma test_only ( true ); 
+    private service testrecv_udp (
+    );
+pragma scenario ( 3 ); pragma test_only ( true ); 
+    public service datatostring (
+        data : in data    ) return string;
+    public service geterror (
+    ) return error;
+    public service strerror (
+    ) return string;
+    public service durationtotimeval (
+        duration : in duration    ) return data;
+    private service stringtodata (
+        s : in string    ) return data;
     public service accept (
         socket : in socketfd,        address : out sockaddr    ) return socketfd;
     public service bind (
@@ -57,26 +80,4 @@ end structure
         socket : in socketfd,        how : in shutdowntype    ) return integer;
     public service socket (
         socktype : in socktype,        protocol : in sockproto    ) return socketfd;
-    private service testrecv (
-    );
-pragma test_only ( true ); pragma scenario ( 1 ); 
-    private service testsend (
-    );
-pragma scenario ( 2 ); pragma test_only ( true ); 
-    private service testsend_udp (
-    );
-pragma scenario ( 4 ); pragma test_only ( true ); 
-    private service testrecv_udp (
-    );
-pragma scenario ( 3 ); pragma test_only ( true ); 
-    public service datatostring (
-        data : in data    ) return string;
-    public service geterror (
-    ) return error;
-    public service strerror (
-    ) return string;
-    public service durationtotimeval (
-        duration : in duration    ) return data;
-    private service stringtodata (
-        s : in string    ) return data;
 end domain;

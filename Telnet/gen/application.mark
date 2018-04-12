@@ -1,0 +1,2 @@
+Telnet::Telnet::testcases::void test1,scenario,Function,1
+Telnet::Telnet::testcases::void test1,test_only,Function,true
