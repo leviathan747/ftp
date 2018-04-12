@@ -2,6 +2,10 @@
 //!simple implementation that only implements the NVT and does not support any
 //!additional options.
 domain Telnet is
+  object Printer;
+  object RemoteConnection;
+  object NetworkVirtualTerminal;
+  object Keyboard;
   public type termid is integer
   ;
   public type telnetcmd is enum (SE, NOP, DM, BRK, IP, AO, AYT, EC, EL, GA, SB, WILL, WONT, DO, DONT, IAC)
@@ -26,7 +30,7 @@ domain Telnet is
 //!    
 //!ERRORS
 //!    N/A
-    private service create_terminal (
+    public service create_terminal (
         termid : out termid    );
 //!NAME
 //!    sendtext -- send ASCII text on a specified terminal instance.
@@ -53,7 +57,7 @@ domain Telnet is
 //!    
 //!    [TERMINVAL]     'termid' is a non-existent or invalid terminal. Also
 //!                    returned if the terminal is not attached to a peer.
-    private service sendtext (
+    public service sendtext (
         termid : in termid,        text : in integer    );
 //!NAME
 //!    command -- send a Telnet command on a specified terminal instance.
@@ -81,7 +85,7 @@ domain Telnet is
 //!    
 //!    [TERMINVAL]     'termid' is a non-existent or invalid terminal. Also
 //!                    returned if the terminal is not attached to a peer.
-    private service command (
+    public service command (
         termid : in termid,        cmd : in telnetcmd    );
 //!NAME
 //!    attach -- attach a Telnet terminal instance to another Telnet terminal.
@@ -123,7 +127,7 @@ domain Telnet is
 //!    [PORTINVAL]     'port' does not represent a valid port as specified above.
 //!    
 //!    [SOCKETERR]     The call results in a socket error.
-    private service attach (
+    public service attach (
         termid : in termid,        host : in string,        port : in integer    );
 //!NAME
 //!    listen -- set a terminal instance to listen for a TCP connection on a local
@@ -158,7 +162,7 @@ domain Telnet is
 //!    [PORTINVAL]     'port' does not represent a valid port as specified above.
 //!    
 //!    [SOCKETERR]     The call results in a socket error.
-    private service listen (
+    public service listen (
         termid : in termid,        port : in integer    );
   terminator Printer is
 //!NAME
@@ -231,4 +235,28 @@ domain Telnet is
     public service error (
         error : in error    );
   end terminator;
+  relationship R1 is NetworkVirtualTerminal unconditionally outputs_data_on one Printer,
+    Printer unconditionally displays_output_for one NetworkVirtualTerminal;
+  relationship R2 is NetworkVirtualTerminal unconditionally receives_input_from one Keyboard,
+    Keyboard unconditionally passes_input_to one NetworkVirtualTerminal;
+  relationship R3 is NetworkVirtualTerminal conditionally communicates_through one RemoteConnection,
+    RemoteConnection unconditionally provides_communication_channel_for one NetworkVirtualTerminal;
+  object Printer is
+    nvt_id : preferred  referential ( R1.displays_output_for.NetworkVirtualTerminal.id ) termid;
+  end object;
+  object RemoteConnection is
+    nvt_id : preferred  referential ( R3.provides_communication_channel_for.NetworkVirtualTerminal.id ) termid;
+    socket_id :   Socket::socketfd;
+    local_address :   string;
+    local_port :   integer;
+    remote_address :   string;
+    remote_port :   integer;
+  end object;
+  object NetworkVirtualTerminal is
+    id : preferred  termid;
+  end object;
+  object Keyboard is
+    nvt_id : preferred  referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;
+    buffer :   sequence of byte;
+  end object;
 end domain;

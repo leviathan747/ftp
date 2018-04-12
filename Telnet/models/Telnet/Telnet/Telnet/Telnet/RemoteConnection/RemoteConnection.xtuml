@@ -1,0 +1,185 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("41e2da58-7702-4676-b4f8-266d953e44b7",
+	'RemoteConnection',
+	4,
+	'RemoteConnection',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("41e2da58-7702-4676-b4f8-266d953e44b7",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	0,
+	"a778917b-f9ba-48ba-958e-b60bcb230808",
+	"ddba975b-4bbb-4acf-a660-bed2818ff504",
+	"79a963f2-76e2-4514-87d7-bbe4e13e0aa9",
+	"118cb2b5-c28f-4a58-9d98-3b6c52c87e9c",
+	"35aa1370-a831-4342-920a-7805de5683c5",
+	"72956c14-add4-4fad-8228-6779e1c0d7e1",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'NetworkVirtualTerminal',
+	'id',
+	'R3.''provides_communication_channel_for''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("41e2da58-7702-4676-b4f8-266d953e44b7",
+	"ddba975b-4bbb-4acf-a660-bed2818ff504",
+	"79a963f2-76e2-4514-87d7-bbe4e13e0aa9",
+	'../Telnet.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("a778917b-f9ba-48ba-958e-b60bcb230808",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	0,
+	"ddba975b-4bbb-4acf-a660-bed2818ff504",
+	"118cb2b5-c28f-4a58-9d98-3b6c52c87e9c",
+	'../Telnet.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("35aa1370-a831-4342-920a-7805de5683c5",
+	"41e2da58-7702-4676-b4f8-266d953e44b7",
+	"a778917b-f9ba-48ba-958e-b60bcb230808",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	1,
+	'id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("a778917b-f9ba-48ba-958e-b60bcb230808",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	'../NetworkVirtualTerminal/NetworkVirtualTerminal.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("35aa1370-a831-4342-920a-7805de5683c5",
+	"41e2da58-7702-4676-b4f8-266d953e44b7",
+	"00000000-0000-0000-0000-000000000000",
+	'nvt_id',
+	'',
+	'nvt_',
+	'id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("10e3ce8c-55cf-430c-bcfe-7ed82a44f9d3",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_BATTR
+	VALUES ("10e3ce8c-55cf-430c-bcfe-7ed82a44f9d3",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_ATTR
+	VALUES ("10e3ce8c-55cf-430c-bcfe-7ed82a44f9d3",
+	"41e2da58-7702-4676-b4f8-266d953e44b7",
+	"35aa1370-a831-4342-920a-7805de5683c5",
+	'socket_id',
+	'',
+	'',
+	'socket_id',
+	0,
+	"d90c8fab-12e8-472b-b150-ad5f2b6c6815",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("d90c8fab-12e8-472b-b150-ad5f2b6c6815",
+	"00000000-0000-0000-0000-000000000000",
+	'Socket::socketfd',
+	'',
+	'',
+	'../../../../types/types.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("a664fb26-8be4-4a4f-b4cb-9909e98e8a04",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_BATTR
+	VALUES ("a664fb26-8be4-4a4f-b4cb-9909e98e8a04",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_ATTR
+	VALUES ("a664fb26-8be4-4a4f-b4cb-9909e98e8a04",
+	"41e2da58-7702-4676-b4f8-266d953e44b7",
+	"10e3ce8c-55cf-430c-bcfe-7ed82a44f9d3",
+	'local_address',
+	'',
+	'',
+	'local_address',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ac7d3f0e-dcf4-44c0-be7f-1976649b80e6",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_BATTR
+	VALUES ("ac7d3f0e-dcf4-44c0-be7f-1976649b80e6",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_ATTR
+	VALUES ("ac7d3f0e-dcf4-44c0-be7f-1976649b80e6",
+	"41e2da58-7702-4676-b4f8-266d953e44b7",
+	"a664fb26-8be4-4a4f-b4cb-9909e98e8a04",
+	'local_port',
+	'',
+	'',
+	'local_port',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ad7239c5-af13-4218-8b85-d1ed7cb272a5",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_BATTR
+	VALUES ("ad7239c5-af13-4218-8b85-d1ed7cb272a5",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_ATTR
+	VALUES ("ad7239c5-af13-4218-8b85-d1ed7cb272a5",
+	"41e2da58-7702-4676-b4f8-266d953e44b7",
+	"ac7d3f0e-dcf4-44c0-be7f-1976649b80e6",
+	'remote_address',
+	'',
+	'',
+	'remote_address',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("8ca33c18-1a5a-4a96-9b0e-0bf5ab6137f7",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_BATTR
+	VALUES ("8ca33c18-1a5a-4a96-9b0e-0bf5ab6137f7",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_ATTR
+	VALUES ("8ca33c18-1a5a-4a96-9b0e-0bf5ab6137f7",
+	"41e2da58-7702-4676-b4f8-266d953e44b7",
+	"ad7239c5-af13-4218-8b85-d1ed7cb272a5",
+	'remote_port',
+	'',
+	'',
+	'remote_port',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_OIDA
+	VALUES ("35aa1370-a831-4342-920a-7805de5683c5",
+	"41e2da58-7702-4676-b4f8-266d953e44b7",
+	0,
+	'nvt_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_ID
+	VALUES (2,
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO PE_PE
+	VALUES ("41e2da58-7702-4676-b4f8-266d953e44b7",
+	1,
+	"264b5492-d687-49f9-b2b5-0e520ea6ae83",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("264b5492-d687-49f9-b2b5-0e520ea6ae83",
+	"00000000-0000-0000-0000-000000000000",
+	"55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'Telnet',
+	'',
+	0,
+	'../Telnet.xtuml');

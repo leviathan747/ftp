@@ -338,6 +338,370 @@ INSERT INTO C_P
 	'Unnamed Interface',
 	'',
 	'Telnet::Telnet::Telnet');
+INSERT INTO SPR_PEP
+	VALUES ("e6b70f62-752d-43fa-9e85-318ffa8b2ff9",
+	"38acd252-6836-43c8-a622-6a5b61e3cade",
+	"e9b837bc-23e6-465a-aa61-39249ad92cc6");
+INSERT INTO SPR_PO
+	VALUES ("e6b70f62-752d-43fa-9e85-318ffa8b2ff9",
+	'attach',
+	'NAME
+    attach -- attach a Telnet terminal instance to another Telnet terminal.
+    
+SYNOPSIS
+    public service attach( termid: in termid,
+                           host:   in string,
+                           port:   in integer );
+    
+DESCRIPTION
+
+    The ''attach'' service is used to attach a Telnet terminal instance to another
+    Telnet terminal specified by ''host'' and ''port''.
+
+    ''termid'' is an identifier specifying the terminal instance which to
+    execute the attach operation against.
+
+    ''host'' is a string representation of an IPv4 address in the form
+    "<byte>.<byte>.<byte>.<byte>" where <byte> is a string representing a
+    decimal integer from 0-255. "localhost" is also accepted as a value for
+    ''host''. Any other string is invalid and will result in an error.
+    
+    ''port'' is an integer ranging from 0-65535 representing the port on which the
+    foreign Telnet terminal is listening.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal.
+
+    [TERMBUSY]      ''termid'' is already attached or already listening for
+                    connections.
+    
+    [HOSTINVAL]     ''host'' does not represent a valid host as specified above.
+    
+    [PORTINVAL]     ''port'' does not represent a valid port as specified above.
+    
+    [SOCKETERR]     The call results in a socket error.',
+	'',
+	3,
+	5);
+INSERT INTO C_EP_PROXY
+	VALUES ("38acd252-6836-43c8-a622-6a5b61e3cade",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	-1,
+	'attach',
+	'NAME
+    attach -- attach a Telnet terminal instance to another Telnet terminal.
+    
+SYNOPSIS
+    public service attach( termid: in termid,
+                           host:   in string,
+                           port:   in integer );
+    
+DESCRIPTION
+
+    The ''attach'' service is used to attach a Telnet terminal instance to another
+    Telnet terminal specified by ''host'' and ''port''.
+
+    ''termid'' is an identifier specifying the terminal instance which to
+    execute the attach operation against.
+
+    ''host'' is a string representation of an IPv4 address in the form
+    "<byte>.<byte>.<byte>.<byte>" where <byte> is a string representing a
+    decimal integer from 0-255. "localhost" is also accepted as a value for
+    ''host''. Any other string is invalid and will result in an error.
+    
+    ''port'' is an integer ranging from 0-65535 representing the port on which the
+    foreign Telnet terminal is listening.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal.
+
+    [TERMBUSY]      ''termid'' is already attached or already listening for
+                    connections.
+    
+    [HOSTINVAL]     ''host'' does not represent a valid host as specified above.
+    
+    [PORTINVAL]     ''port'' does not represent a valid port as specified above.
+    
+    [SOCKETERR]     The call results in a socket error.',
+	'../Shared/Telnet/Telnet.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("3b4ab17e-b4b5-4e5b-819f-7e291ce699a0",
+	"141f3d71-78b9-4529-8978-5a2915eb9cf7",
+	"e9b837bc-23e6-465a-aa61-39249ad92cc6");
+INSERT INTO SPR_PO
+	VALUES ("3b4ab17e-b4b5-4e5b-819f-7e291ce699a0",
+	'command',
+	'NAME
+    command -- send a Telnet command on a specified terminal instance.
+    
+SYNOPSIS
+    public service command( termid: in termid,
+                            cmd:    in telnetcmd );
+    
+DESCRIPTION
+
+    The ''command'' service is used to queue Telnet commands to be sent on a
+    specified terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which to
+    send the command from.
+    
+    ''cmd'' is a command code defined in the enumerated type telnetcmd. See the
+    datatype definition for descriptions of available commands.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal. Also
+                    returned if the terminal is not attached to a peer.',
+	'',
+	3,
+	5);
+INSERT INTO C_EP_PROXY
+	VALUES ("141f3d71-78b9-4529-8978-5a2915eb9cf7",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	-1,
+	'command',
+	'NAME
+    command -- send a Telnet command on a specified terminal instance.
+    
+SYNOPSIS
+    public service command( termid: in termid,
+                            cmd:    in telnetcmd );
+    
+DESCRIPTION
+
+    The ''command'' service is used to queue Telnet commands to be sent on a
+    specified terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which to
+    send the command from.
+    
+    ''cmd'' is a command code defined in the enumerated type telnetcmd. See the
+    datatype definition for descriptions of available commands.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal. Also
+                    returned if the terminal is not attached to a peer.',
+	'../Shared/Telnet/Telnet.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("28b63ae6-a1df-4fc3-948e-69d5f39176f4",
+	"8a82c706-97d8-4f80-a1a2-1cf0da703910",
+	"e9b837bc-23e6-465a-aa61-39249ad92cc6");
+INSERT INTO SPR_PO
+	VALUES ("28b63ae6-a1df-4fc3-948e-69d5f39176f4",
+	'create_terminal',
+	'NAME
+    create_terminal -- create a new Telnet terminal instance.
+    
+SYNOPSIS
+    public service create_terminal( termid: out termid );
+    
+DESCRIPTION
+
+    The ''create_terminal'' service is used to create a new Telnet terminal
+    instance with its own printer and keyboard.
+
+    ''termid'' is set to the identifier of the created terminal instance.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
+	'',
+	3,
+	5);
+INSERT INTO C_EP_PROXY
+	VALUES ("8a82c706-97d8-4f80-a1a2-1cf0da703910",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	-1,
+	'create_terminal',
+	'NAME
+    create_terminal -- create a new Telnet terminal instance.
+    
+SYNOPSIS
+    public service create_terminal( termid: out termid );
+    
+DESCRIPTION
+
+    The ''create_terminal'' service is used to create a new Telnet terminal
+    instance with its own printer and keyboard.
+
+    ''termid'' is set to the identifier of the created terminal instance.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
+	'../Shared/Telnet/Telnet.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("fde3658a-46ae-413c-a426-5fa8f4f692b1",
+	"a94a96b8-b2b3-448d-83bb-4d214d443267",
+	"e9b837bc-23e6-465a-aa61-39249ad92cc6");
+INSERT INTO SPR_PO
+	VALUES ("fde3658a-46ae-413c-a426-5fa8f4f692b1",
+	'listen',
+	'NAME
+    listen -- set a terminal instance to listen for a TCP connection on a local
+    port.
+    
+SYNOPSIS
+    public service listen( termid: in termid,
+                           port:   in integer );
+    
+DESCRIPTION
+
+    The ''listen'' service is used to initiate a terminal instance to listen for a
+    TCP connection on a local port.
+
+    ''termid'' is an identifier specifying the terminal instance which to execute
+    the listen operation against.
+
+    ''port'' is an integer ranging from 0-65535 representing the port on which to
+    listen.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal.
+
+    [TERMBUSY]      ''termid'' is already attached or already listening for
+                    connections.
+    
+    [PORTINVAL]     ''port'' does not represent a valid port as specified above.
+    
+    [SOCKETERR]     The call results in a socket error.',
+	'',
+	3,
+	5);
+INSERT INTO C_EP_PROXY
+	VALUES ("a94a96b8-b2b3-448d-83bb-4d214d443267",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	-1,
+	'listen',
+	'NAME
+    listen -- set a terminal instance to listen for a TCP connection on a local
+    port.
+    
+SYNOPSIS
+    public service listen( termid: in termid,
+                           port:   in integer );
+    
+DESCRIPTION
+
+    The ''listen'' service is used to initiate a terminal instance to listen for a
+    TCP connection on a local port.
+
+    ''termid'' is an identifier specifying the terminal instance which to execute
+    the listen operation against.
+
+    ''port'' is an integer ranging from 0-65535 representing the port on which to
+    listen.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal.
+
+    [TERMBUSY]      ''termid'' is already attached or already listening for
+                    connections.
+    
+    [PORTINVAL]     ''port'' does not represent a valid port as specified above.
+    
+    [SOCKETERR]     The call results in a socket error.',
+	'../Shared/Telnet/Telnet.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("a7d70a5d-943a-471c-8ddd-057ee7de8a45",
+	"236767ff-31b3-411e-8ddf-b6d31e36ae16",
+	"e9b837bc-23e6-465a-aa61-39249ad92cc6");
+INSERT INTO SPR_PO
+	VALUES ("a7d70a5d-943a-471c-8ddd-057ee7de8a45",
+	'sendtext',
+	'NAME
+    sendtext -- send ASCII text on a specified terminal instance.
+    
+SYNOPSIS
+    public service sendtext( termid: in termid,
+                             text:   in string );
+    
+DESCRIPTION
+
+    The ''sendtext'' service is used to queue ASCII text to be sent on a specified
+    terminal instance.
+
+    ''termid'' is an identifier specifying the terminal instance which to
+    send the text from.
+    
+    ''text'' is an ASCII text string.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal. Also
+                    returned if the terminal is not attached to a peer.',
+	'',
+	3,
+	5);
+INSERT INTO C_EP_PROXY
+	VALUES ("236767ff-31b3-411e-8ddf-b6d31e36ae16",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	-1,
+	'sendtext',
+	'NAME
+    sendtext -- send ASCII text on a specified terminal instance.
+    
+SYNOPSIS
+    public service sendtext( termid: in termid,
+                             text:   in string );
+    
+DESCRIPTION
+
+    The ''sendtext'' service is used to queue ASCII text to be sent on a specified
+    terminal instance.
+
+    ''termid'' is an identifier specifying the terminal instance which to
+    send the text from.
+    
+    ''text'' is an ASCII text string.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal. Also
+                    returned if the terminal is not attached to a peer.',
+	'../Shared/Telnet/Telnet.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("2b40a26c-6d81-490a-b210-8137d4e5dfbf",
 	"00000000-0000-0000-0000-000000000000",
@@ -368,7 +732,28 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RO
 	VALUES ("d260453f-2b4a-48b8-ad25-52ebbf3a490e",
 	'print',
-	'',
+	'NAME
+    print -- post data from a specified Telnet terminal instance.
+    
+SYNOPSIS
+    public service print( termid: in termid,
+                          text:   in string );
+    
+DESCRIPTION
+
+    The ''print'' service is used to notify listeners of data received at a
+    specified Telnet terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which the data
+    was received at.
+    
+    ''text'' is an ASCII string representing the data that was received.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
 	'',
 	3,
 	1);
@@ -377,7 +762,28 @@ INSERT INTO C_EP_PROXY
 	"34131f52-c231-4e8f-8f22-a3dbffc2a21a",
 	-1,
 	'print',
-	'',
+	'NAME
+    print -- post data from a specified Telnet terminal instance.
+    
+SYNOPSIS
+    public service print( termid: in termid,
+                          text:   in string );
+    
+DESCRIPTION
+
+    The ''print'' service is used to notify listeners of data received at a
+    specified Telnet terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which the data
+    was received at.
+    
+    ''text'' is an ASCII string representing the data that was received.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
 	'../Shared/Printer/Printer.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("b83a8683-60b1-4069-b1cc-fe21761b51eb",
@@ -386,7 +792,29 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RO
 	VALUES ("b83a8683-60b1-4069-b1cc-fe21761b51eb",
 	'command',
-	'',
+	'NAME
+    command -- post a Telnet command from a specified terminal instance.
+    
+SYNOPSIS
+    public service command( termid: in termid,
+                            cmd:    in telnetcmd );
+    
+DESCRIPTION
+
+    The ''command'' service is used to notify listeners of commands received at a
+    specified Telnet terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which the command
+    was received at.
+    
+    ''cmd'' is a command code defined in the enumerated type telnetcmd. See the
+    datatype definition for descriptions of available commands.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
 	'',
 	3,
 	1);
@@ -395,7 +823,29 @@ INSERT INTO C_EP_PROXY
 	"34131f52-c231-4e8f-8f22-a3dbffc2a21a",
 	-1,
 	'command',
-	'',
+	'NAME
+    command -- post a Telnet command from a specified terminal instance.
+    
+SYNOPSIS
+    public service command( termid: in termid,
+                            cmd:    in telnetcmd );
+    
+DESCRIPTION
+
+    The ''command'' service is used to notify listeners of commands received at a
+    specified Telnet terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which the command
+    was received at.
+    
+    ''cmd'' is a command code defined in the enumerated type telnetcmd. See the
+    datatype definition for descriptions of available commands.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
 	'../Shared/Printer/Printer.xtuml');
 INSERT INTO SPR_REP
 	VALUES ("99d30b59-c090-4f45-9887-cceeebb23d98",
@@ -404,7 +854,24 @@ INSERT INTO SPR_REP
 INSERT INTO SPR_RO
 	VALUES ("99d30b59-c090-4f45-9887-cceeebb23d98",
 	'error',
-	'',
+	'NAME
+    error -- post a Telnet error.
+    
+SYNOPSIS
+    public service error( error:  in error );
+    
+DESCRIPTION
+
+    The ''error'' service is used to notify listeners of error that have occurred.
+    
+    ''error'' is an error code defined in the enumerated type error. See the
+    datatype definition for descriptions of errors.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
 	'',
 	3,
 	1);
@@ -413,7 +880,24 @@ INSERT INTO C_EP_PROXY
 	"34131f52-c231-4e8f-8f22-a3dbffc2a21a",
 	-1,
 	'error',
-	'',
+	'NAME
+    error -- post a Telnet error.
+    
+SYNOPSIS
+    public service error( error:  in error );
+    
+DESCRIPTION
+
+    The ''error'' service is used to notify listeners of error that have occurred.
+    
+    ''error'' is an error code defined in the enumerated type error. See the
+    datatype definition for descriptions of errors.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
 	'../Shared/Printer/Printer.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("34131f52-c231-4e8f-8f22-a3dbffc2a21a",

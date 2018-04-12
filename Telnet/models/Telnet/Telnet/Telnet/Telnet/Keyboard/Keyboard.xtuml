@@ -1,0 +1,113 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("9afbafd3-aba6-405a-9262-a50a7242a3f2",
+	'Keyboard',
+	3,
+	'Keyboard',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("9afbafd3-aba6-405a-9262-a50a7242a3f2",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	0,
+	"a778917b-f9ba-48ba-958e-b60bcb230808",
+	"501f2a2e-1bfe-4952-ae99-c60876847177",
+	"16b5d61a-733d-4ec4-aa01-fc23e67ea27b",
+	"690447ba-7f2f-484b-8a7f-d76afc245648",
+	"50464758-a005-4b1f-8151-191a9b030911",
+	"79721e50-03fb-4dee-a002-d2e9a6c3b2d2",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'NetworkVirtualTerminal',
+	'id',
+	'R2.''passes_input_to''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("9afbafd3-aba6-405a-9262-a50a7242a3f2",
+	"501f2a2e-1bfe-4952-ae99-c60876847177",
+	"16b5d61a-733d-4ec4-aa01-fc23e67ea27b",
+	'../Telnet.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("a778917b-f9ba-48ba-958e-b60bcb230808",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	0,
+	"501f2a2e-1bfe-4952-ae99-c60876847177",
+	"690447ba-7f2f-484b-8a7f-d76afc245648",
+	'../Telnet.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("50464758-a005-4b1f-8151-191a9b030911",
+	"9afbafd3-aba6-405a-9262-a50a7242a3f2",
+	"a778917b-f9ba-48ba-958e-b60bcb230808",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	1,
+	'id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("a778917b-f9ba-48ba-958e-b60bcb230808",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	'../NetworkVirtualTerminal/NetworkVirtualTerminal.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("50464758-a005-4b1f-8151-191a9b030911",
+	"9afbafd3-aba6-405a-9262-a50a7242a3f2",
+	"00000000-0000-0000-0000-000000000000",
+	'nvt_id',
+	'',
+	'nvt_',
+	'id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a14ea5b4-9e86-41f4-8429-ebd293c24ad9",
+	"9afbafd3-aba6-405a-9262-a50a7242a3f2");
+INSERT INTO O_BATTR
+	VALUES ("a14ea5b4-9e86-41f4-8429-ebd293c24ad9",
+	"9afbafd3-aba6-405a-9262-a50a7242a3f2");
+INSERT INTO O_ATTR
+	VALUES ("a14ea5b4-9e86-41f4-8429-ebd293c24ad9",
+	"9afbafd3-aba6-405a-9262-a50a7242a3f2",
+	"50464758-a005-4b1f-8151-191a9b030911",
+	'buffer',
+	'',
+	'',
+	'buffer',
+	0,
+	"c4e77d2f-a07b-43e5-aa2c-8a68ce9ed351",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("c4e77d2f-a07b-43e5-aa2c-8a68ce9ed351",
+	"00000000-0000-0000-0000-000000000000",
+	'sequence of byte',
+	'',
+	'',
+	'../../../../types/types.xtuml');
+INSERT INTO O_ID
+	VALUES (0,
+	"9afbafd3-aba6-405a-9262-a50a7242a3f2");
+INSERT INTO O_OIDA
+	VALUES ("50464758-a005-4b1f-8151-191a9b030911",
+	"9afbafd3-aba6-405a-9262-a50a7242a3f2",
+	0,
+	'nvt_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"9afbafd3-aba6-405a-9262-a50a7242a3f2");
+INSERT INTO O_ID
+	VALUES (2,
+	"9afbafd3-aba6-405a-9262-a50a7242a3f2");
+INSERT INTO PE_PE
+	VALUES ("9afbafd3-aba6-405a-9262-a50a7242a3f2",
+	1,
+	"264b5492-d687-49f9-b2b5-0e520ea6ae83",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("264b5492-d687-49f9-b2b5-0e520ea6ae83",
+	"00000000-0000-0000-0000-000000000000",
+	"55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'Telnet',
+	'',
+	0,
+	'../Telnet.xtuml');

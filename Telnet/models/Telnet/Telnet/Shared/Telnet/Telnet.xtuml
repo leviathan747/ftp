@@ -5,6 +5,454 @@ INSERT INTO C_I
 	"00000000-0000-0000-0000-000000000000",
 	'Telnet',
 	'');
+INSERT INTO C_EP
+	VALUES ("38acd252-6836-43c8-a622-6a5b61e3cade",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	-1,
+	'attach',
+	'NAME
+    attach -- attach a Telnet terminal instance to another Telnet terminal.
+    
+SYNOPSIS
+    public service attach( termid: in termid,
+                           host:   in string,
+                           port:   in integer );
+    
+DESCRIPTION
+
+    The ''attach'' service is used to attach a Telnet terminal instance to another
+    Telnet terminal specified by ''host'' and ''port''.
+
+    ''termid'' is an identifier specifying the terminal instance which to
+    execute the attach operation against.
+
+    ''host'' is a string representation of an IPv4 address in the form
+    "<byte>.<byte>.<byte>.<byte>" where <byte> is a string representing a
+    decimal integer from 0-255. "localhost" is also accepted as a value for
+    ''host''. Any other string is invalid and will result in an error.
+    
+    ''port'' is an integer ranging from 0-65535 representing the port on which the
+    foreign Telnet terminal is listening.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal.
+
+    [TERMBUSY]      ''termid'' is already attached or already listening for
+                    connections.
+    
+    [HOSTINVAL]     ''host'' does not represent a valid host as specified above.
+    
+    [PORTINVAL]     ''port'' does not represent a valid port as specified above.
+    
+    [SOCKETERR]     The call results in a socket error.');
+INSERT INTO C_IO
+	VALUES ("38acd252-6836-43c8-a622-6a5b61e3cade",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'attach',
+	'NAME
+    attach -- attach a Telnet terminal instance to another Telnet terminal.
+    
+SYNOPSIS
+    public service attach( termid: in termid,
+                           host:   in string,
+                           port:   in integer );
+    
+DESCRIPTION
+
+    The ''attach'' service is used to attach a Telnet terminal instance to another
+    Telnet terminal specified by ''host'' and ''port''.
+
+    ''termid'' is an identifier specifying the terminal instance which to
+    execute the attach operation against.
+
+    ''host'' is a string representation of an IPv4 address in the form
+    "<byte>.<byte>.<byte>.<byte>" where <byte> is a string representing a
+    decimal integer from 0-255. "localhost" is also accepted as a value for
+    ''host''. Any other string is invalid and will result in an error.
+    
+    ''port'' is an integer ranging from 0-65535 representing the port on which the
+    foreign Telnet terminal is listening.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal.
+
+    [TERMBUSY]      ''termid'' is already attached or already listening for
+                    connections.
+    
+    [HOSTINVAL]     ''host'' does not represent a valid host as specified above.
+    
+    [PORTINVAL]     ''port'' does not represent a valid port as specified above.
+    
+    [SOCKETERR]     The call results in a socket error.',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("7e520b47-eeb1-4193-893a-02c1c6594349",
+	"38acd252-6836-43c8-a622-6a5b61e3cade",
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	'termid',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("6314e6a4-e588-4ac5-b758-e200640cc183",
+	"00000000-0000-0000-0000-000000000000",
+	'termid',
+	'',
+	'',
+	'../Shared.xtuml');
+INSERT INTO C_PP
+	VALUES ("e0bdaad2-8e75-4b07-ae3f-4971366b9e4c",
+	"38acd252-6836-43c8-a622-6a5b61e3cade",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'host',
+	'',
+	0,
+	'',
+	"7e520b47-eeb1-4193-893a-02c1c6594349");
+INSERT INTO C_PP
+	VALUES ("b955e16d-9b9d-4343-8e3a-7290cd7100df",
+	"38acd252-6836-43c8-a622-6a5b61e3cade",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'port',
+	'',
+	0,
+	'',
+	"e0bdaad2-8e75-4b07-ae3f-4971366b9e4c");
+INSERT INTO C_EP
+	VALUES ("141f3d71-78b9-4529-8978-5a2915eb9cf7",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	-1,
+	'command',
+	'NAME
+    command -- send a Telnet command on a specified terminal instance.
+    
+SYNOPSIS
+    public service command( termid: in termid,
+                            cmd:    in telnetcmd );
+    
+DESCRIPTION
+
+    The ''command'' service is used to queue Telnet commands to be sent on a
+    specified terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which to
+    send the command from.
+    
+    ''cmd'' is a command code defined in the enumerated type telnetcmd. See the
+    datatype definition for descriptions of available commands.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal. Also
+                    returned if the terminal is not attached to a peer.');
+INSERT INTO C_IO
+	VALUES ("141f3d71-78b9-4529-8978-5a2915eb9cf7",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'command',
+	'NAME
+    command -- send a Telnet command on a specified terminal instance.
+    
+SYNOPSIS
+    public service command( termid: in termid,
+                            cmd:    in telnetcmd );
+    
+DESCRIPTION
+
+    The ''command'' service is used to queue Telnet commands to be sent on a
+    specified terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which to
+    send the command from.
+    
+    ''cmd'' is a command code defined in the enumerated type telnetcmd. See the
+    datatype definition for descriptions of available commands.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal. Also
+                    returned if the terminal is not attached to a peer.',
+	0,
+	'',
+	"38acd252-6836-43c8-a622-6a5b61e3cade");
+INSERT INTO C_PP
+	VALUES ("a8fcf963-0265-497e-8b3c-8d3d92a30ec8",
+	"141f3d71-78b9-4529-8978-5a2915eb9cf7",
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	'termid',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("3c5f4b6c-fb42-4816-8ae2-43462decdf54",
+	"141f3d71-78b9-4529-8978-5a2915eb9cf7",
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	'cmd',
+	'',
+	0,
+	'',
+	"a8fcf963-0265-497e-8b3c-8d3d92a30ec8");
+INSERT INTO S_DT_PROXY
+	VALUES ("afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"00000000-0000-0000-0000-000000000000",
+	'telnetcmd',
+	'',
+	'',
+	'../Shared.xtuml');
+INSERT INTO C_EP
+	VALUES ("8a82c706-97d8-4f80-a1a2-1cf0da703910",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	-1,
+	'create_terminal',
+	'NAME
+    create_terminal -- create a new Telnet terminal instance.
+    
+SYNOPSIS
+    public service create_terminal( termid: out termid );
+    
+DESCRIPTION
+
+    The ''create_terminal'' service is used to create a new Telnet terminal
+    instance with its own printer and keyboard.
+
+    ''termid'' is set to the identifier of the created terminal instance.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A');
+INSERT INTO C_IO
+	VALUES ("8a82c706-97d8-4f80-a1a2-1cf0da703910",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'create_terminal',
+	'NAME
+    create_terminal -- create a new Telnet terminal instance.
+    
+SYNOPSIS
+    public service create_terminal( termid: out termid );
+    
+DESCRIPTION
+
+    The ''create_terminal'' service is used to create a new Telnet terminal
+    instance with its own printer and keyboard.
+
+    ''termid'' is set to the identifier of the created terminal instance.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
+	0,
+	'',
+	"141f3d71-78b9-4529-8978-5a2915eb9cf7");
+INSERT INTO C_PP
+	VALUES ("260cd8c5-5069-4c25-a8be-489671fda85a",
+	"8a82c706-97d8-4f80-a1a2-1cf0da703910",
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	'termid',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("a94a96b8-b2b3-448d-83bb-4d214d443267",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	-1,
+	'listen',
+	'NAME
+    listen -- set a terminal instance to listen for a TCP connection on a local
+    port.
+    
+SYNOPSIS
+    public service listen( termid: in termid,
+                           port:   in integer );
+    
+DESCRIPTION
+
+    The ''listen'' service is used to initiate a terminal instance to listen for a
+    TCP connection on a local port.
+
+    ''termid'' is an identifier specifying the terminal instance which to execute
+    the listen operation against.
+
+    ''port'' is an integer ranging from 0-65535 representing the port on which to
+    listen.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal.
+
+    [TERMBUSY]      ''termid'' is already attached or already listening for
+                    connections.
+    
+    [PORTINVAL]     ''port'' does not represent a valid port as specified above.
+    
+    [SOCKETERR]     The call results in a socket error.');
+INSERT INTO C_IO
+	VALUES ("a94a96b8-b2b3-448d-83bb-4d214d443267",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'listen',
+	'NAME
+    listen -- set a terminal instance to listen for a TCP connection on a local
+    port.
+    
+SYNOPSIS
+    public service listen( termid: in termid,
+                           port:   in integer );
+    
+DESCRIPTION
+
+    The ''listen'' service is used to initiate a terminal instance to listen for a
+    TCP connection on a local port.
+
+    ''termid'' is an identifier specifying the terminal instance which to execute
+    the listen operation against.
+
+    ''port'' is an integer ranging from 0-65535 representing the port on which to
+    listen.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal.
+
+    [TERMBUSY]      ''termid'' is already attached or already listening for
+                    connections.
+    
+    [PORTINVAL]     ''port'' does not represent a valid port as specified above.
+    
+    [SOCKETERR]     The call results in a socket error.',
+	0,
+	'',
+	"8a82c706-97d8-4f80-a1a2-1cf0da703910");
+INSERT INTO C_PP
+	VALUES ("c02a2138-e133-436a-9b2e-6ce5304afe37",
+	"a94a96b8-b2b3-448d-83bb-4d214d443267",
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	'termid',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("891e6aa7-da86-47ca-a860-79dbcbb9cb4f",
+	"a94a96b8-b2b3-448d-83bb-4d214d443267",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'port',
+	'',
+	0,
+	'',
+	"c02a2138-e133-436a-9b2e-6ce5304afe37");
+INSERT INTO C_EP
+	VALUES ("236767ff-31b3-411e-8ddf-b6d31e36ae16",
+	"2b40a26c-6d81-490a-b210-8137d4e5dfbf",
+	-1,
+	'sendtext',
+	'NAME
+    sendtext -- send ASCII text on a specified terminal instance.
+    
+SYNOPSIS
+    public service sendtext( termid: in termid,
+                             text:   in string );
+    
+DESCRIPTION
+
+    The ''sendtext'' service is used to queue ASCII text to be sent on a specified
+    terminal instance.
+
+    ''termid'' is an identifier specifying the terminal instance which to
+    send the text from.
+    
+    ''text'' is an ASCII text string.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal. Also
+                    returned if the terminal is not attached to a peer.');
+INSERT INTO C_IO
+	VALUES ("236767ff-31b3-411e-8ddf-b6d31e36ae16",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'sendtext',
+	'NAME
+    sendtext -- send ASCII text on a specified terminal instance.
+    
+SYNOPSIS
+    public service sendtext( termid: in termid,
+                             text:   in string );
+    
+DESCRIPTION
+
+    The ''sendtext'' service is used to queue ASCII text to be sent on a specified
+    terminal instance.
+
+    ''termid'' is an identifier specifying the terminal instance which to
+    send the text from.
+    
+    ''text'' is an ASCII text string.
+    
+RETURN VALUES
+    N/A
+    
+ERRORS
+    The call will fail and send an ''error'' message on the Printer terminator if:
+    
+    [TERMINVAL]     ''termid'' is a non-existent or invalid terminal. Also
+                    returned if the terminal is not attached to a peer.',
+	0,
+	'',
+	"a94a96b8-b2b3-448d-83bb-4d214d443267");
+INSERT INTO C_PP
+	VALUES ("67e3febe-bffd-4974-bcf5-964558192691",
+	"236767ff-31b3-411e-8ddf-b6d31e36ae16",
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	'termid',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("07c70861-c0d9-4ad9-9128-70ce15f91291",
+	"236767ff-31b3-411e-8ddf-b6d31e36ae16",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'text',
+	'',
+	0,
+	'',
+	"67e3febe-bffd-4974-bcf5-964558192691");
 INSERT INTO PE_PE
 	VALUES ("2b40a26c-6d81-490a-b210-8137d4e5dfbf",
 	1,

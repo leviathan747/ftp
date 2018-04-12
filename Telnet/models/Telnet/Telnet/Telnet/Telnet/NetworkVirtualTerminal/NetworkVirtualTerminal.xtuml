@@ -1,0 +1,62 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	'NetworkVirtualTerminal',
+	1,
+	'NVT',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("a778917b-f9ba-48ba-958e-b60bcb230808",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8");
+INSERT INTO O_BATTR
+	VALUES ("a778917b-f9ba-48ba-958e-b60bcb230808",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8");
+INSERT INTO O_ATTR
+	VALUES ("a778917b-f9ba-48ba-958e-b60bcb230808",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	"00000000-0000-0000-0000-000000000000",
+	'id',
+	'',
+	'',
+	'id',
+	0,
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("6314e6a4-e588-4ac5-b758-e200640cc183",
+	"00000000-0000-0000-0000-000000000000",
+	'termid',
+	'',
+	'',
+	'../../../Shared/Shared.xtuml');
+INSERT INTO O_ID
+	VALUES (0,
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8");
+INSERT INTO O_OIDA
+	VALUES ("a778917b-f9ba-48ba-958e-b60bcb230808",
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	0,
+	'id');
+INSERT INTO O_ID
+	VALUES (1,
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8");
+INSERT INTO O_ID
+	VALUES (2,
+	"97f1cc78-fba9-4c1a-8c45-d2977318c4f8");
+INSERT INTO PE_PE
+	VALUES ("97f1cc78-fba9-4c1a-8c45-d2977318c4f8",
+	1,
+	"264b5492-d687-49f9-b2b5-0e520ea6ae83",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("264b5492-d687-49f9-b2b5-0e520ea6ae83",
+	"00000000-0000-0000-0000-000000000000",
+	"55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'Telnet',
+	'',
+	0,
+	'../Telnet.xtuml');

@@ -1,4 +1,4 @@
-private service Telnet::create_terminal ( termid: out termid ) is
+public service Telnet::create_terminal ( termid: out termid ) is
 begin
   null;
 end service;

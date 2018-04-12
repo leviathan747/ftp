@@ -1,5 +1,5 @@
-private service Telnet::command ( termid: in termid,
-                                  cmd: in telnetcmd ) is
+public service Telnet::command ( termid: in termid,
+                                 cmd: in telnetcmd ) is
 begin
   null;
 end service;

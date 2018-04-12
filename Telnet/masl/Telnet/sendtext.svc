@@ -1,5 +1,5 @@
-private service Telnet::sendtext ( termid: in termid,
-                                   text: in integer ) is
+public service Telnet::sendtext ( termid: in termid,
+                                  text: in integer ) is
 begin
   null;
 end service;
