@@ -11,19 +11,14 @@ domain Telnet is
   //!    create_terminal -- create a new Telnet terminal instance.
   //!    
   //!SYNOPSIS
-  //!    public service create_terminal( terminal: out termid,
-  //!                                    error:    out error );
+  //!    public service create_terminal( termid: out termid );
   //!    
   //!DESCRIPTION
   //!
   //!    The 'create_terminal' service is used to create a new Telnet terminal
   //!    instance with its own printer and keyboard.
   //!
-  //!    'terminal' is set to the identifier of the created terminal instance or the
-  //!    constant NULTERM if the operation results in an error. See the
-  //!    'TerminalConstants' class.
-  //!
-  //!    'error' is an error code set by the attach operation or OK if successful.
+  //!    'termid' is set to the identifier of the created terminal instance.
   //! 
   //!RETURN VALUES
   //!    N/A
@@ -31,21 +26,46 @@ domain Telnet is
   //!ERRORS
   //!    N/A
   private service create_terminal ( termid: out termid );   
+  //!NAME
+  //!    sendtext -- send ASCII text on a specified terminal instance.
+  //!    
+  //!SYNOPSIS
+  //!    public service sendtext( termid: in termid,
+  //!                             text:   in string );
+  //!    
+  //!DESCRIPTION
+  //!
+  //!    The 'sendtext' service is used to queue ASCII text to be sent on a specified
+  //!    terminal instance.
+  //!
+  //!    'termid' is an identifier specifying the terminal instance which to
+  //!    send the text from.
+  //!    
+  //!    'text' is an ASCII text string.
+  //!    
+  //!RETURN VALUES
+  //!    N/A
+  //!    
+  //!ERRORS
+  //!    The call will fail and send an 'error' message on the Printer terminator if:
+  //!    
+  //!    [TERMINVAL]     'termid' is a non-existent or invalid terminal. Also
+  //!                    returned if the terminal is not attached to a peer.
   private service sendtext ( termid: in termid,
                              text: in integer );   
   //!NAME
   //!    command -- send a Telnet command on a specified terminal instance.
   //!    
   //!SYNOPSIS
-  //!    public service command( terminal: in termid,
-  //!                            cmd:      in telnetcmd );
+  //!    public service command( termid: in termid,
+  //!                            cmd:    in telnetcmd );
   //!    
   //!DESCRIPTION
   //!
   //!    The 'command' service is used to queue Telnet commands to be sent on a
   //!    specified terminal instance.
   //!    
-  //!    'terminal' is an identifier specifying the terminal instance which to
+  //!    'termid' is an identifier specifying the terminal instance which to
   //!    send the command from.
   //!    
   //!    'cmd' is a command code defined in the enumerated type telnetcmd. See the
@@ -55,9 +75,9 @@ domain Telnet is
   //!    N/A
   //!    
   //!ERRORS
-  //!    The call will fail and set the 'error' code if:
+  //!    The call will fail and send an 'error' message on the Printer terminator if:
   //!    
-  //!    [TERMINVAL]     'terminal' is a non-existent or invalid terminal. Also
+  //!    [TERMINVAL]     'termid' is a non-existent or invalid terminal. Also
   //!                    returned if the terminal is not attached to a peer.
   private service command ( termid: in termid,
                             cmd: in telnetcmd );   
@@ -65,17 +85,16 @@ domain Telnet is
   //!    attach -- attach a Telnet terminal instance to another Telnet terminal.
   //!    
   //!SYNOPSIS
-  //!    public service attach( terminal: in  termid,
-  //!                           host:     in  string,
-  //!                           port:     in  integer,
-  //!                           error:    out error );
+  //!    public service attach( termid: in termid,
+  //!                           host:   in string,
+  //!                           port:   in integer );
   //!    
   //!DESCRIPTION
   //!
   //!    The 'attach' service is used to attach a Telnet terminal instance to another
   //!    Telnet terminal specified by 'host' and 'port'.
   //!
-  //!    'terminal' is an identifier specifying the terminal instance which to
+  //!    'termid' is an identifier specifying the terminal instance which to
   //!    execute the attach operation against.
   //!
   //!    'host' is a string representation of an IPv4 address in the form
@@ -86,17 +105,15 @@ domain Telnet is
   //!    'port' is an integer ranging from 0-65535 representing the port on which the
   //!    foreign Telnet terminal is listening.
   //!    
-  //!    'error' is an error code set by the attach operation or OK if successful.
-  //! 
   //!RETURN VALUES
   //!    N/A
   //!    
   //!ERRORS
-  //!    The call will fail and set the 'error' code if:
+  //!    The call will fail and send an 'error' message on the Printer terminator if:
   //!    
-  //!    [TERMINVAL]     'terminal' is a non-existent or invalid terminal.
+  //!    [TERMINVAL]     'termid' is a non-existent or invalid terminal.
   //!
-  //!    [TERMBUSY]      'terminal' is already attached or already listening for
+  //!    [TERMBUSY]      'termid' is already attached or already listening for
   //!                    connections.
   //!    
   //!    [HOSTINVAL]     'host' does not represent a valid host as specified above.
@@ -112,32 +129,29 @@ domain Telnet is
   //!    port.
   //!    
   //!SYNOPSIS
-  //!    public service listen( terminal: in  termid,
-  //!                           port:     in  integer,
-  //!                           error:    out error );
+  //!    public service listen( termid: in termid,
+  //!                           port:   in integer );
   //!    
   //!DESCRIPTION
   //!
   //!    The 'listen' service is used to initiate a terminal instance to listen for a
   //!    TCP connection on a local port.
   //!
-  //!    'terminal' is an identifier specifying the terminal instance which to
-  //!    execute the listen operation against.
+  //!    'termid' is an identifier specifying the terminal instance which to execute
+  //!    the listen operation against.
   //!
   //!    'port' is an integer ranging from 0-65535 representing the port on which to
   //!    listen.
   //!    
-  //!    'error' is an error code set by the listen operation or OK if successful.
-  //! 
   //!RETURN VALUES
   //!    N/A
   //!    
   //!ERRORS
-  //!    The call will fail and set the 'error' code if:
+  //!    The call will fail and send an 'error' message on the Printer terminator if:
   //!    
-  //!    [TERMINVAL]     'terminal' is a non-existent or invalid terminal.
+  //!    [TERMINVAL]     'termid' is a non-existent or invalid terminal.
   //!
-  //!    [TERMBUSY]      'terminal' is already attached or already listening for
+  //!    [TERMBUSY]      'termid' is already attached or already listening for
   //!                    connections.
   //!    
   //!    [PORTINVAL]     'port' does not represent a valid port as specified above.
@@ -148,6 +162,74 @@ domain Telnet is
   
   
   terminator Printer is
+    //!NAME
+    //!    print -- post data from a specified Telnet terminal instance.
+    //!    
+    //!SYNOPSIS
+    //!    public service print( termid: in termid,
+    //!                          text:   in string );
+    //!    
+    //!DESCRIPTION
+    //!
+    //!    The 'print' service is used to notify listeners of data received at a
+    //!    specified Telnet terminal instance.
+    //!    
+    //!    'termid' is an identifier specifying the terminal instance which the data
+    //!    was received at.
+    //!    
+    //!    'text' is an ASCII string representing the data that was received.
+    //! 
+    //!RETURN VALUES
+    //!    N/A
+    //!    
+    //!ERRORS
+    //!    N/A
+    public service print ( termid: in termid,
+                           text: in string );     
+    //!NAME
+    //!    command -- post a Telnet command from a specified terminal instance.
+    //!    
+    //!SYNOPSIS
+    //!    public service command( termid: in termid,
+    //!                            cmd:    in telnetcmd );
+    //!    
+    //!DESCRIPTION
+    //!
+    //!    The 'command' service is used to notify listeners of commands received at a
+    //!    specified Telnet terminal instance.
+    //!    
+    //!    'termid' is an identifier specifying the terminal instance which the command
+    //!    was received at.
+    //!    
+    //!    'cmd' is a command code defined in the enumerated type telnetcmd. See the
+    //!    datatype definition for descriptions of available commands.
+    //! 
+    //!RETURN VALUES
+    //!    N/A
+    //!    
+    //!ERRORS
+    //!    N/A
+    public service command ( termid: in termid,
+                             cmd: in telnetcmd );     
+    //!NAME
+    //!    error -- post a Telnet error.
+    //!    
+    //!SYNOPSIS
+    //!    public service error( error:  in error );
+    //!    
+    //!DESCRIPTION
+    //!
+    //!    The 'error' service is used to notify listeners of error that have occurred.
+    //!    
+    //!    'error' is an error code defined in the enumerated type error. See the
+    //!    datatype definition for descriptions of errors.
+    //! 
+    //!RETURN VALUES
+    //!    N/A
+    //!    
+    //!ERRORS
+    //!    N/A
+    public service error ( error: in error );     
   end terminator;
   
   

@@ -5,6 +5,234 @@ INSERT INTO C_I
 	"00000000-0000-0000-0000-000000000000",
 	'Printer',
 	'');
+INSERT INTO C_EP
+	VALUES ("5ce788a1-9ca1-4d2f-89a8-902dbc61c58d",
+	"34131f52-c231-4e8f-8f22-a3dbffc2a21a",
+	-1,
+	'print',
+	'NAME
+    print -- post data from a specified Telnet terminal instance.
+    
+SYNOPSIS
+    public service print( termid: in termid,
+                          text:   in string );
+    
+DESCRIPTION
+
+    The ''print'' service is used to notify listeners of data received at a
+    specified Telnet terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which the data
+    was received at.
+    
+    ''text'' is an ASCII string representing the data that was received.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A');
+INSERT INTO C_IO
+	VALUES ("5ce788a1-9ca1-4d2f-89a8-902dbc61c58d",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'print',
+	'NAME
+    print -- post data from a specified Telnet terminal instance.
+    
+SYNOPSIS
+    public service print( termid: in termid,
+                          text:   in string );
+    
+DESCRIPTION
+
+    The ''print'' service is used to notify listeners of data received at a
+    specified Telnet terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which the data
+    was received at.
+    
+    ''text'' is an ASCII string representing the data that was received.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
+	0,
+	'',
+	"61726fb1-0d16-46c7-a0bb-cc388aabeae9");
+INSERT INTO C_PP
+	VALUES ("0eee9395-7450-4762-b59c-f0869e2b2462",
+	"5ce788a1-9ca1-4d2f-89a8-902dbc61c58d",
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	'termid',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("6314e6a4-e588-4ac5-b758-e200640cc183",
+	"00000000-0000-0000-0000-000000000000",
+	'termid',
+	'',
+	'',
+	'../Shared.xtuml');
+INSERT INTO C_PP
+	VALUES ("b4181eae-6efc-4e1c-bccf-eb942453efcd",
+	"5ce788a1-9ca1-4d2f-89a8-902dbc61c58d",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'text',
+	'',
+	0,
+	'',
+	"0eee9395-7450-4762-b59c-f0869e2b2462");
+INSERT INTO C_EP
+	VALUES ("2fbf7493-703f-4c18-8fdd-e9546b2134a0",
+	"34131f52-c231-4e8f-8f22-a3dbffc2a21a",
+	-1,
+	'command',
+	'NAME
+    command -- post a Telnet command from a specified terminal instance.
+    
+SYNOPSIS
+    public service command( termid: in termid,
+                            cmd:    in telnetcmd );
+    
+DESCRIPTION
+
+    The ''command'' service is used to notify listeners of commands received at a
+    specified Telnet terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which the command
+    was received at.
+    
+    ''cmd'' is a command code defined in the enumerated type telnetcmd. See the
+    datatype definition for descriptions of available commands.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A');
+INSERT INTO C_IO
+	VALUES ("2fbf7493-703f-4c18-8fdd-e9546b2134a0",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'command',
+	'NAME
+    command -- post a Telnet command from a specified terminal instance.
+    
+SYNOPSIS
+    public service command( termid: in termid,
+                            cmd:    in telnetcmd );
+    
+DESCRIPTION
+
+    The ''command'' service is used to notify listeners of commands received at a
+    specified Telnet terminal instance.
+    
+    ''termid'' is an identifier specifying the terminal instance which the command
+    was received at.
+    
+    ''cmd'' is a command code defined in the enumerated type telnetcmd. See the
+    datatype definition for descriptions of available commands.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("09b5c89d-9d32-4073-81d7-ccdf64987626",
+	"2fbf7493-703f-4c18-8fdd-e9546b2134a0",
+	"6314e6a4-e588-4ac5-b758-e200640cc183",
+	'termid',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("7b310cae-7295-4fe3-810c-ec000c31a37e",
+	"2fbf7493-703f-4c18-8fdd-e9546b2134a0",
+	"afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	'cmd',
+	'',
+	0,
+	'',
+	"09b5c89d-9d32-4073-81d7-ccdf64987626");
+INSERT INTO S_DT_PROXY
+	VALUES ("afdc0ca2-a336-49bc-bbce-4bc9e0c8cbb5",
+	"00000000-0000-0000-0000-000000000000",
+	'telnetcmd',
+	'',
+	'',
+	'../Shared.xtuml');
+INSERT INTO C_EP
+	VALUES ("61726fb1-0d16-46c7-a0bb-cc388aabeae9",
+	"34131f52-c231-4e8f-8f22-a3dbffc2a21a",
+	-1,
+	'error',
+	'NAME
+    error -- post a Telnet error.
+    
+SYNOPSIS
+    public service error( error:  in error );
+    
+DESCRIPTION
+
+    The ''error'' service is used to notify listeners of error that have occurred.
+    
+    ''error'' is an error code defined in the enumerated type error. See the
+    datatype definition for descriptions of errors.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A');
+INSERT INTO C_IO
+	VALUES ("61726fb1-0d16-46c7-a0bb-cc388aabeae9",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'error',
+	'NAME
+    error -- post a Telnet error.
+    
+SYNOPSIS
+    public service error( error:  in error );
+    
+DESCRIPTION
+
+    The ''error'' service is used to notify listeners of error that have occurred.
+    
+    ''error'' is an error code defined in the enumerated type error. See the
+    datatype definition for descriptions of errors.
+ 
+RETURN VALUES
+    N/A
+    
+ERRORS
+    N/A',
+	0,
+	'',
+	"2fbf7493-703f-4c18-8fdd-e9546b2134a0");
+INSERT INTO C_PP
+	VALUES ("0db8481b-17e0-4b0e-afdf-492d4382131c",
+	"61726fb1-0d16-46c7-a0bb-cc388aabeae9",
+	"4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	'error',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("4759761c-ff94-437c-9a70-f7e0ae7a4074",
+	"00000000-0000-0000-0000-000000000000",
+	'error',
+	'',
+	'',
+	'../Shared.xtuml');
 INSERT INTO PE_PE
 	VALUES ("34131f52-c231-4e8f-8f22-a3dbffc2a21a",
 	1,

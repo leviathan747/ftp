@@ -1,0 +1,23 @@
+//! ACTIVITY BEGIN. 'd260453f-2b4a-48b8-ad25-52ebbf3a490e' DO NOT EDIT THIS LINE.
+public service Telnet::Printer~>print ( termid : in integer,
+                                       text : in integer ) is
+begin
+  null;
+end service;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. 'b83a8683-60b1-4069-b1cc-fe21761b51eb' DO NOT EDIT THIS LINE.
+public service Telnet::Printer~>command ( termid : in integer,
+                                         cmd : in integer ) is
+begin
+  null;
+end service;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. '99d30b59-c090-4f45-9887-cceeebb23d98' DO NOT EDIT THIS LINE.
+public service Telnet::Printer~>error () is
+begin
+  null;
+end service;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+

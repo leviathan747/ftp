@@ -361,6 +361,60 @@ INSERT INTO C_R
 	'',
 	'Unnamed Interface',
 	'Telnet::Printer::Printer');
+INSERT INTO SPR_REP
+	VALUES ("d260453f-2b4a-48b8-ad25-52ebbf3a490e",
+	"5ce788a1-9ca1-4d2f-89a8-902dbc61c58d",
+	"7ce2966b-75d4-417e-9c78-068f4d42003d");
+INSERT INTO SPR_RO
+	VALUES ("d260453f-2b4a-48b8-ad25-52ebbf3a490e",
+	'print',
+	'',
+	'',
+	3,
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("5ce788a1-9ca1-4d2f-89a8-902dbc61c58d",
+	"34131f52-c231-4e8f-8f22-a3dbffc2a21a",
+	-1,
+	'print',
+	'',
+	'../Shared/Printer/Printer.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("b83a8683-60b1-4069-b1cc-fe21761b51eb",
+	"2fbf7493-703f-4c18-8fdd-e9546b2134a0",
+	"7ce2966b-75d4-417e-9c78-068f4d42003d");
+INSERT INTO SPR_RO
+	VALUES ("b83a8683-60b1-4069-b1cc-fe21761b51eb",
+	'command',
+	'',
+	'',
+	3,
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("2fbf7493-703f-4c18-8fdd-e9546b2134a0",
+	"34131f52-c231-4e8f-8f22-a3dbffc2a21a",
+	-1,
+	'command',
+	'',
+	'../Shared/Printer/Printer.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("99d30b59-c090-4f45-9887-cceeebb23d98",
+	"61726fb1-0d16-46c7-a0bb-cc388aabeae9",
+	"7ce2966b-75d4-417e-9c78-068f4d42003d");
+INSERT INTO SPR_RO
+	VALUES ("99d30b59-c090-4f45-9887-cceeebb23d98",
+	'error',
+	'',
+	'',
+	3,
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("61726fb1-0d16-46c7-a0bb-cc388aabeae9",
+	"34131f52-c231-4e8f-8f22-a3dbffc2a21a",
+	-1,
+	'error',
+	'',
+	'../Shared/Printer/Printer.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("34131f52-c231-4e8f-8f22-a3dbffc2a21a",
 	"00000000-0000-0000-0000-000000000000",

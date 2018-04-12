@@ -1,0 +1,5 @@
+public service Telnet::Printer~>command ( termid: in termid,
+                                          cmd: in telnetcmd ) is
+begin
+  null;
+end service;

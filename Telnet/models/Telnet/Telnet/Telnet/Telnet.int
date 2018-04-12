@@ -9,5 +9,74 @@ domain Telnet is
   public type error is enum (OK, TERMINVAL, TERMBUSY, HOSTINVAL, PORTINVAL, SOCKETERR)
   ;
   terminator Printer is
+//!NAME
+//!    print -- post data from a specified Telnet terminal instance.
+//!    
+//!SYNOPSIS
+//!    public service print( termid: in termid,
+//!                          text:   in string );
+//!    
+//!DESCRIPTION
+//!
+//!    The 'print' service is used to notify listeners of data received at a
+//!    specified Telnet terminal instance.
+//!    
+//!    'termid' is an identifier specifying the terminal instance which the data
+//!    was received at.
+//!    
+//!    'text' is an ASCII string representing the data that was received.
+//! 
+//!RETURN VALUES
+//!    N/A
+//!    
+//!ERRORS
+//!    N/A
+    public service print (
+        termid : in termid,        text : in string    );
+//!NAME
+//!    command -- post a Telnet command from a specified terminal instance.
+//!    
+//!SYNOPSIS
+//!    public service command( termid: in termid,
+//!                            cmd:    in telnetcmd );
+//!    
+//!DESCRIPTION
+//!
+//!    The 'command' service is used to notify listeners of commands received at a
+//!    specified Telnet terminal instance.
+//!    
+//!    'termid' is an identifier specifying the terminal instance which the command
+//!    was received at.
+//!    
+//!    'cmd' is a command code defined in the enumerated type telnetcmd. See the
+//!    datatype definition for descriptions of available commands.
+//! 
+//!RETURN VALUES
+//!    N/A
+//!    
+//!ERRORS
+//!    N/A
+    public service command (
+        termid : in termid,        cmd : in telnetcmd    );
+//!NAME
+//!    error -- post a Telnet error.
+//!    
+//!SYNOPSIS
+//!    public service error( error:  in error );
+//!    
+//!DESCRIPTION
+//!
+//!    The 'error' service is used to notify listeners of error that have occurred.
+//!    
+//!    'error' is an error code defined in the enumerated type error. See the
+//!    datatype definition for descriptions of errors.
+//! 
+//!RETURN VALUES
+//!    N/A
+//!    
+//!ERRORS
+//!    N/A
+    public service error (
+        error : in error    );
   end terminator;
 end domain;
