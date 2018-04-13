@@ -15,7 +15,7 @@ end service;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 
 //! ACTIVITY BEGIN. '99d30b59-c090-4f45-9887-cceeebb23d98' DO NOT EDIT THIS LINE.
-public service Telnet::Print~>error ( error : in error ) is
+public service Telnet::Print~>error ( error : in errorcode ) is
 begin
   null;
 end service;

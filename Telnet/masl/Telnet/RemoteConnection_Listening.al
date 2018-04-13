@@ -35,6 +35,6 @@ begin
   end if;
   
 exception when Socket::SocketException =>
-  generate error( SOCKETERR ) to this;
+  generate error( ( "Error " & Socket::geterror()'image & ": " & Socket::strerror(), SOCKETERR ) ) to this;
 
 end state;

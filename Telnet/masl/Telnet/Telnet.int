@@ -5,7 +5,11 @@ domain Telnet is
   
   public type termid is integer;   
   public type telnetcmd is enum ( SE, NOP, DM, BRK, IP, AO, AYT, EC, EL, GA, SB, WILL, WONT, DO, DONT, IAC );   
-  public type error is enum ( OK, TERMINVAL, TERMBUSY, HOSTINVAL, PORTINVAL, SOCKETERR );   
+  public type errorcode is enum ( OK, TERMINVAL, TERMBUSY, HOSTINVAL, PORTINVAL, SOCKETERR );   
+  public type error is structure
+    message: string;     
+    code: errorcode;     
+  end structure;   
   
   //!NAME
   //!    create_terminal -- create a new Telnet terminal instance.

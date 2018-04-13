@@ -67,15 +67,15 @@ begin
         generate RemoteConnection.listen() to conn;
       else
         // TODO log error
-        Print~>error( TERMBUSY );
+        Print~>error( ( "Terminal is busy.", TERMBUSY ) );
       end if;
     else
       // TODO log error
-      Print~>error( PORTINVAL );
+      Print~>error( ( "Invalid port value.", PORTINVAL ) );
     end if;
   else
     // TODO log error
-    Print~>error( TERMINVAL );
+    Print~>error( ( "Terminal does not exist.", TERMINVAL ) );
   end if;
 end service;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
