@@ -7,11 +7,18 @@ begin
     raise Socket::SocketException;
   end if;
   
-  // print data
-  console << "Received data: " << Socket::datatostring( buffer ) << endl;
+  // no data means the peer has closed the connection
+  if ( buffer'length > 0 ) then
+
+    // print data
+    console << "Received data: " << Socket::datatostring( buffer ) << endl;
   
-  // repeat
-  generate done() to this;
+    // repeat
+    generate ready() to this;
+  
+  else
+    generate close() to this;
+  end if;
 
 exception when Socket::SocketException =>
   generate error( ( "Error " & Socket::geterror()'image & ": " & Socket::strerror(), SOCKETERR ) ) to this;

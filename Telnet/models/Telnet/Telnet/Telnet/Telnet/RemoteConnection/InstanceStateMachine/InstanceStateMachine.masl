@@ -39,7 +39,7 @@ begin
   else
     this.socket_id := sock;
     this.remote_address := remoteaddr;
-    generate done() to this;
+    generate ready() to this;
   end if;
   
 exception when Socket::SocketException =>
@@ -53,7 +53,7 @@ state Telnet::RemoteConnection.ReportingError ( code : in error ) is
 begin
   // TODO log error
   Print~>error( code );
-  generate RemoteConnection.done() to this;
+  generate RemoteConnection.close() to this;
   
   // TODO clean up
 end state;
@@ -69,15 +69,51 @@ begin
     raise Socket::SocketException;
   end if;
   
-  // print data
-  console << "Received data: " << Socket::datatostring( buffer ) << endl;
+  // no data means the peer has closed the connection
+  if ( buffer'length > 0 ) then
+
+    // print data
+    console << "Received data: " << Socket::datatostring( buffer ) << endl;
   
-  // repeat
-  generate done() to this;
+    // repeat
+    generate ready() to this;
+  
+  else
+    generate close() to this;
+  end if;
 
 exception when Socket::SocketException =>
   generate error( ( "Error " & Socket::geterror()'image & ": " & Socket::strerror(), SOCKETERR ) ) to this;
 
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. '2740c197-7613-46cf-b20c-3a91f8f3a7c9' '29382008-b1cf-47e3-80d7-69397eefec18' DO NOT EDIT THIS LINE.
+state Telnet::RemoteConnection.Connecting () is
+begin
+  null;
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. '2740c197-7613-46cf-b20c-3a91f8f3a7c9' '8d0932e0-f455-496e-b4a6-db6561d84811' DO NOT EDIT THIS LINE.
+state Telnet::RemoteConnection.SendingData () is
+begin
+  null;
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. '2740c197-7613-46cf-b20c-3a91f8f3a7c9' '742045b2-ac47-4017-9242-e1d596cd7844' DO NOT EDIT THIS LINE.
+terminal state Telnet::RemoteConnection.ShuttingDown () is
+begin
+
+  // TODO gracefully close the socket
+  
+  // unlink from terminal
+  unlink this R3 this->R3.provides_communication_channel_for.NetworkVirtualTerminal;
+  
+  // delete self
+  delete this;
+  
 end state;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 

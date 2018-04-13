@@ -31,7 +31,7 @@ begin
   else
     this.socket_id := sock;
     this.remote_address := remoteaddr;
-    generate done() to this;
+    generate ready() to this;
   end if;
   
 exception when Socket::SocketException =>

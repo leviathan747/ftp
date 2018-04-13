@@ -272,30 +272,81 @@ pragma scenario ( 1 ); pragma test_only ( true );
      state Listening();
      state ReportingError(        code : in error);
      state ReceivingData();
+     state Connecting();
+     state SendingData();
+    terminal state ShuttingDown();
      event listen();
      event error(        code : in error);
-     event done();
+     event ready();
+     event connect();
+     event read();
+     event write();
+     event close();
      transition is
       Non_Existent (
         listen => Cannot_Happen,
         error => Cannot_Happen,
-        done => Cannot_Happen      ); 
+        ready => Cannot_Happen,
+        connect => Cannot_Happen,
+        read => Cannot_Happen,
+        write => Cannot_Happen,
+        close => Cannot_Happen      ); 
       Idle (
         listen => Listening,
         error => Cannot_Happen,
-        done => Cannot_Happen      ); 
+        ready => Cannot_Happen,
+        connect => Connecting,
+        read => Cannot_Happen,
+        write => Cannot_Happen,
+        close => Cannot_Happen      ); 
       Listening (
-        listen => Cannot_Happen,
+        listen => Listening,
         error => ReportingError,
-        done => ReceivingData      ); 
+        ready => ReceivingData,
+        connect => Cannot_Happen,
+        read => Cannot_Happen,
+        write => Cannot_Happen,
+        close => Cannot_Happen      ); 
       ReportingError (
         listen => Cannot_Happen,
         error => Cannot_Happen,
-        done => Idle      ); 
+        ready => Cannot_Happen,
+        connect => Cannot_Happen,
+        read => Cannot_Happen,
+        write => Cannot_Happen,
+        close => ShuttingDown      ); 
       ReceivingData (
         listen => Cannot_Happen,
         error => ReportingError,
-        done => ReceivingData      ); 
+        ready => ReceivingData,
+        connect => Cannot_Happen,
+        read => Cannot_Happen,
+        write => SendingData,
+        close => ShuttingDown      ); 
+      Connecting (
+        listen => Cannot_Happen,
+        error => ReportingError,
+        ready => ReceivingData,
+        connect => Cannot_Happen,
+        read => Cannot_Happen,
+        write => Cannot_Happen,
+        close => Cannot_Happen      ); 
+      SendingData (
+        listen => Cannot_Happen,
+        error => ReportingError,
+        ready => SendingData,
+        connect => Cannot_Happen,
+        read => ReceivingData,
+        write => Cannot_Happen,
+        close => Cannot_Happen      ); 
+      ShuttingDown (
+        listen => Cannot_Happen,
+        error => Cannot_Happen,
+        ready => Cannot_Happen,
+        connect => Cannot_Happen,
+        read => Cannot_Happen,
+        write => Cannot_Happen,
+        close => Cannot_Happen      ); 
     end transition;
   end object;
 end domain;
