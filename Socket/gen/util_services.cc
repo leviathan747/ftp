@@ -7,14 +7,7 @@
 // can do whatever you want with this stuff. If we meet some day, and you think
 // this stuff is worth it, you can buy me a beer in return.  Levi Starrett
 //
-#include "Socket_OOA/__Socket_interface.hh"
 #include "Socket_OOA/__Socket_services.hh"
-#include "Socket_OOA/__Socket_types.hh"
-#include "swa/Domain.hh"
-#include "swa/Stack.hh"
-#include "swa/String.hh"
-
-#include <sys/time.h>
 
 namespace masld_Socket
 {

@@ -1,15 +1,13 @@
 //
 // File: socket_services.cc
 //
-#include "Socket_OOA/__Socket_interface.hh"
+// "THE BEER-WARE LICENSE" (Revision 42): 
+// 
+// <levi@roxsoftware.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return.  Levi Starrett
+//
 #include "Socket_OOA/__Socket_services.hh"
-#include "Socket_OOA/__Socket_types.hh"
-#include <stdint.h>
-#include "swa/Domain.hh"
-#include "swa/Stack.hh"
-
-#include <sys/socket.h>
-#include <netinet/in.h>
 #include <arpa/inet.h>
 
 namespace masld_Socket
