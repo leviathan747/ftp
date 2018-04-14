@@ -5,5 +5,12 @@ TEST=-test
 if [[ $# > 0 && $1 == "notest" ]]; then
   TEST=
 fi
-$MASLMC -mod $CWD/masl/Socket/Socket.mod -output $CWD/gen/code_generation $TEST -copyright $CWD/../LICENSE.md -custombuildfile $CWD/gen/custom.cmake
+
+$MASLMC -mod $CWD/masl/Socket/Socket.mod \
+        -output $CWD/gen/code_generation \
+        $TEST \
+        -copyright $CWD/../LICENSE.md \
+        -custombuildfile $CWD/gen/custom.cmake \
+        -skiptranslator Sqlite
+
 cmake $CWD -DCMAKE_INSTALL_PREFIX=$PWD
