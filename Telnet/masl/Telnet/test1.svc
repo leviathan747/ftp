@@ -1,8 +1,0 @@
-private service Telnet::test1 () is
-termid: termid;
-begin
-  // create terminal
-  create_terminal( termid );
-  // start it listening
-  listen( termid, 5555 );
-end service;

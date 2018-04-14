@@ -3,10 +3,10 @@
 //!additional options.
 domain Telnet is
   
+  object Keyboard;
+  object NetworkVirtualTerminal;
   object Printer;
   object RemoteConnection;
-  object NetworkVirtualTerminal;
-  object Keyboard;
   
   public type termid is integer;   
   public type telnetcmd is enum ( SE, NOP, DM, BRK, IP, AO, AYT, EC, EL, GA, SB, WILL, WONT, DO, DONT, IAC );   
@@ -257,6 +257,19 @@ domain Telnet is
   
   
   
+  object Keyboard is
+    
+    nvt_id: preferred referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;     
+    buffer: sequence of byte;     
+    
+  end object;
+  
+  object NetworkVirtualTerminal is
+    
+    id: preferred termid;     
+    
+  end object;
+  
   object Printer is
     
     nvt_id: preferred referential ( R1.displays_output_for.NetworkVirtualTerminal.id ) termid;     
@@ -273,14 +286,14 @@ domain Telnet is
     
     state Idle ();     
     state Listening ();     
-    state ReportingError ( code: in error );     
+    state ReportingError ( error: in error );     
     state ReceivingData ();     
     state Connecting ();     
     state SendingData ();     
     terminal state ShuttingDown ();     
     
     event listen ();     
-    event error ( code: in error );     
+    event error ( error: in error );     
     event ready ();     
     event connect ();     
     event read ();     
@@ -345,19 +358,6 @@ domain Telnet is
                      write => Cannot_Happen,
                      close => Cannot_Happen );       
     end transition;
-    
-  end object;
-  
-  object NetworkVirtualTerminal is
-    
-    id: preferred termid;     
-    
-  end object;
-  
-  object Keyboard is
-    
-    nvt_id: preferred referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;     
-    buffer: sequence of byte;     
     
   end object;
   

@@ -63,11 +63,12 @@ end state;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 
 //! ACTIVITY BEGIN. '2740c197-7613-46cf-b20c-3a91f8f3a7c9' '3d4fdfa0-7d5d-483f-9fbb-36dd8378f995' DO NOT EDIT THIS LINE.
-state Telnet::RemoteConnection.ReportingError ( code : in error ) is
+state Telnet::RemoteConnection.ReportingError ( error : in error ) is
 begin
 
-  // TODO log error
-  Print~>error( code );
+  // log error
+  Logger::log( Logger::Error, "Telnet::RemoteConnection: " & error.code'image & " " & error.message );
+  Print~>error( error );
   generate RemoteConnection.close() to this;
 
 end state;

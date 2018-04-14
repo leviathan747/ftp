@@ -12,7 +12,7 @@ INSERT INTO SM_MOORE
 INSERT INTO SM_EVTDI
 	VALUES ("b22d8f9d-09ab-4a38-adcf-d0864f728373",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	'code',
+	'error',
 	'',
 	"4398079b-7e70-4f02-8062-573d3ee273c5",
 	'',

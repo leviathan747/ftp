@@ -21,3 +21,4 @@ add_compile_options ( "-g" )
 
 add_subdirectory(gen/code_generation/Telnet)
 add_subdirectory(gen/code_generation/Socket)
+add_subdirectory(gen/code_generation/Logger)

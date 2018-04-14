@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+  <pattern id="short"><priority/>: <message/></pattern>    
+  <pattern id="long"><timestamp decimal="micros"/> <priority/>: <message/></pattern>    
+  <default name="TelnetLog"/>
+  <logger>
+    <name>TelnetLog</name>
+    <format>
+      <pattern ref="long"/>
+      <syslog/>
+      <file>
+        <path>gen/Telnet.log</path>
+        <archive>
+          <rotate>
+            <size units="B">100</size>
+          </rotate>
+          <purge units="count">10</purge>
+        </archive>
+      </file>
+    </format>
+    <filter>
+      <minlevel>information</minlevel>
+      <format>
+        <pattern ref="short"/>
+        <stderr/>
+      </format>
+    </filter>
+  </logger>
+</log>
