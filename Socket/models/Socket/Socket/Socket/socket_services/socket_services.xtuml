@@ -4,7 +4,7 @@ INSERT INTO EP_PKG
 	VALUES ("0fcbf994-85d3-4a85-96b9-555e301e7108",
 	"00000000-0000-0000-0000-000000000000",
 	"d82c84ce-d0a8-4ae5-8341-75a7060de1df",
-	'functions',
+	'socket_services',
 	'',
 	0);
 INSERT INTO GD_MD
@@ -25,7 +25,7 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'',
-	'Socket::Socket::Socket::functions');
+	'Socket::Socket::Socket::socket_services');
 INSERT INTO DIM_DIA
 	VALUES ("5d51d6ba-c96d-4bd0-a9ed-f75b39d027cc",
 	'',

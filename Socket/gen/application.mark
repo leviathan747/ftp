@@ -6,3 +6,5 @@ Socket::Socket::testcases::void testrecv_udp,scenario,Function,3
 Socket::Socket::testcases::void testrecv_udp,test_only,Function,true
 Socket::Socket::testcases::void testsend_udp,scenario,Function,4
 Socket::Socket::testcases::void testsend_udp,test_only,Function,true
+Socket::Socket::testcases::void testselect,scenario,Function,5
+Socket::Socket::testcases::void testselect,test_only,Function,true

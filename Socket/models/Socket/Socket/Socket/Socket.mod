@@ -42,12 +42,11 @@ pragma scenario ( 4 ); pragma test_only ( true );
     private service testrecv_udp (
     );
 pragma scenario ( 3 ); pragma test_only ( true ); 
+    private service testselect (
+    );
+pragma scenario ( 5 ); pragma test_only ( true ); 
     public service datatostring (
         data : in data    ) return string;
-    public service geterror (
-    ) return error;
-    public service strerror (
-    ) return string;
     public service durationtotimeval (
         duration : in duration    ) return data;
     private service stringtodata (
@@ -80,4 +79,12 @@ pragma scenario ( 3 ); pragma test_only ( true );
         socket : in socketfd,        how : in shutdowntype    ) return integer;
     public service socket (
         socktype : in socktype,        protocol : in sockproto    ) return socketfd;
+    public service geterror (
+    ) return error;
+    public service strerror (
+    ) return string;
+    public service select (
+        readfds : out set of integer,        writefds : out set of integer,        exceptfds : out set of integer,        timeout : in data    ) return integer;
+    public service close (
+        fd : in integer    ) return integer;
 end domain;

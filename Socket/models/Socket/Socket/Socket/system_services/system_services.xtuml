@@ -1,0 +1,190 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("e0067d39-82e4-4754-abb7-8a873614481d",
+	"00000000-0000-0000-0000-000000000000",
+	"d82c84ce-d0a8-4ae5-8341-75a7060de1df",
+	'system_services',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("8798d3ff-e121-47f1-914f-f51ee7d74925",
+	112,
+	"e0067d39-82e4-4754-abb7-8a873614481d",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'Socket::Socket::Socket::system_services');
+INSERT INTO DIM_DIA
+	VALUES ("8798d3ff-e121-47f1-914f-f51ee7d74925",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("92d99217-01b8-4469-8b7f-9b6878177444",
+	"00000000-0000-0000-0000-000000000000",
+	'geterror',
+	'',
+	'',
+	"0bff8eae-0937-4138-9892-6ee52e7a7c9a",
+	3,
+	'',
+	5);
+INSERT INTO PE_PE
+	VALUES ("92d99217-01b8-4469-8b7f-9b6878177444",
+	1,
+	"e0067d39-82e4-4754-abb7-8a873614481d",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_DT_PROXY
+	VALUES ("0bff8eae-0937-4138-9892-6ee52e7a7c9a",
+	"00000000-0000-0000-0000-000000000000",
+	'error',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO S_SYNC
+	VALUES ("f5e2e225-8281-4a5e-a893-6d5f3dc7a901",
+	"00000000-0000-0000-0000-000000000000",
+	'strerror',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	3,
+	'',
+	5);
+INSERT INTO PE_PE
+	VALUES ("f5e2e225-8281-4a5e-a893-6d5f3dc7a901",
+	1,
+	"e0067d39-82e4-4754-abb7-8a873614481d",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("9b2b76c9-5c9f-4a6e-82e4-fe0212c579c9",
+	"00000000-0000-0000-0000-000000000000",
+	'select',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	5);
+INSERT INTO S_SPARM
+	VALUES ("7f42f7b9-4321-41fb-909d-03c2d1f6b46d",
+	"9b2b76c9-5c9f-4a6e-82e4-fe0212c579c9",
+	'readfds',
+	"d97dc521-e9d1-4567-8161-a8cc6731abb4",
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("d97dc521-e9d1-4567-8161-a8cc6731abb4",
+	"00000000-0000-0000-0000-000000000000",
+	'set of integer',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO S_SPARM
+	VALUES ("28d0582b-f437-4e58-b004-93b201361a16",
+	"9b2b76c9-5c9f-4a6e-82e4-fe0212c579c9",
+	'writefds',
+	"d97dc521-e9d1-4567-8161-a8cc6731abb4",
+	1,
+	'',
+	"7f42f7b9-4321-41fb-909d-03c2d1f6b46d",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("a8162c74-43e2-4e93-a2ed-efb735fbc677",
+	"9b2b76c9-5c9f-4a6e-82e4-fe0212c579c9",
+	'exceptfds',
+	"d97dc521-e9d1-4567-8161-a8cc6731abb4",
+	1,
+	'',
+	"28d0582b-f437-4e58-b004-93b201361a16",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("560d4cdb-39c3-477f-9962-16193c732d46",
+	"9b2b76c9-5c9f-4a6e-82e4-fe0212c579c9",
+	'timeout',
+	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	0,
+	'',
+	"a8162c74-43e2-4e93-a2ed-efb735fbc677",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	"00000000-0000-0000-0000-000000000000",
+	'data',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO PE_PE
+	VALUES ("9b2b76c9-5c9f-4a6e-82e4-fe0212c579c9",
+	1,
+	"e0067d39-82e4-4754-abb7-8a873614481d",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("f3002531-ee7e-4def-9658-8e390daa08ca",
+	"00000000-0000-0000-0000-000000000000",
+	'close',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	3,
+	'',
+	5);
+INSERT INTO S_SPARM
+	VALUES ("7386b4a3-1ef6-4149-a454-1561a924eb5e",
+	"f3002531-ee7e-4def-9658-8e390daa08ca",
+	'fd',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("f3002531-ee7e-4def-9658-8e390daa08ca",
+	1,
+	"e0067d39-82e4-4754-abb7-8a873614481d",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("e0067d39-82e4-4754-abb7-8a873614481d",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"07ebd00e-3bed-4dac-b43a-fb9c66bfe086",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("07ebd00e-3bed-4dac-b43a-fb9c66bfe086",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Socket',
+	'Implementation based on documentation found here:
+http://pubs.opengroup.org/onlinepubs/7908799/xns/syssocket.h.html
+
+This implementation only supports internet sockets.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Socket.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("d82c84ce-d0a8-4ae5-8341-75a7060de1df",
+	'Socket',
+	1,
+	'../../../Socket.xtuml');

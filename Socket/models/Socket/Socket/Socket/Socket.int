@@ -32,10 +32,6 @@ end structure
   public exception SocketException;
     public service datatostring (
         data : in data    ) return string;
-    public service geterror (
-    ) return error;
-    public service strerror (
-    ) return string;
     public service durationtotimeval (
         duration : in duration    ) return data;
     public service accept (
@@ -66,4 +62,12 @@ end structure
         socket : in socketfd,        how : in shutdowntype    ) return integer;
     public service socket (
         socktype : in socktype,        protocol : in sockproto    ) return socketfd;
+    public service geterror (
+    ) return error;
+    public service strerror (
+    ) return string;
+    public service select (
+        readfds : out set of integer,        writefds : out set of integer,        exceptfds : out set of integer,        timeout : in data    ) return integer;
+    public service close (
+        fd : in integer    ) return integer;
 end domain;

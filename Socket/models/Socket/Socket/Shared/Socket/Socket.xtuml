@@ -702,6 +702,86 @@ INSERT INTO S_DT_PROXY
 	'',
 	'',
 	'../Shared.xtuml');
+INSERT INTO C_EP
+	VALUES ("d5de5c80-456a-41a3-a283-de17d18fd8bd",
+	"f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
+	-1,
+	'close',
+	'');
+INSERT INTO C_IO
+	VALUES ("d5de5c80-456a-41a3-a283-de17d18fd8bd",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'close',
+	'',
+	0,
+	'',
+	"ed1fa4f4-fdf9-4dfe-9c17-aaac930bb7aa");
+INSERT INTO C_PP
+	VALUES ("4eef6bc7-1958-417c-bb8d-1cb78b739d5d",
+	"d5de5c80-456a-41a3-a283-de17d18fd8bd",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'fd',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("84212a2e-2b84-42ba-b210-4a9e91516eb9",
+	"f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
+	-1,
+	'select',
+	'');
+INSERT INTO C_IO
+	VALUES ("84212a2e-2b84-42ba-b210-4a9e91516eb9",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'select',
+	'',
+	0,
+	'',
+	"d5de5c80-456a-41a3-a283-de17d18fd8bd");
+INSERT INTO C_PP
+	VALUES ("d1e678d4-a688-42c6-af69-59bdc64dac21",
+	"84212a2e-2b84-42ba-b210-4a9e91516eb9",
+	"d97dc521-e9d1-4567-8161-a8cc6731abb4",
+	'readfds',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("d97dc521-e9d1-4567-8161-a8cc6731abb4",
+	"00000000-0000-0000-0000-000000000000",
+	'set of integer',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO C_PP
+	VALUES ("6eec5595-81be-40f5-858e-e9ef68449b32",
+	"84212a2e-2b84-42ba-b210-4a9e91516eb9",
+	"d97dc521-e9d1-4567-8161-a8cc6731abb4",
+	'writefds',
+	'',
+	0,
+	'',
+	"d1e678d4-a688-42c6-af69-59bdc64dac21");
+INSERT INTO C_PP
+	VALUES ("ce17d1bd-7a64-4ede-94c5-608cdf3fb316",
+	"84212a2e-2b84-42ba-b210-4a9e91516eb9",
+	"d97dc521-e9d1-4567-8161-a8cc6731abb4",
+	'exceptfds',
+	'',
+	0,
+	'',
+	"6eec5595-81be-40f5-858e-e9ef68449b32");
+INSERT INTO C_PP
+	VALUES ("b5bc23cd-da56-4751-9b84-a8c0f090b8c7",
+	"84212a2e-2b84-42ba-b210-4a9e91516eb9",
+	"2a9fc384-d7bc-4cc5-a51c-214f4b089796",
+	'timeout',
+	'',
+	0,
+	'',
+	"ce17d1bd-7a64-4ede-94c5-608cdf3fb316");
 INSERT INTO PE_PE
 	VALUES ("f7d47c46-b7c8-4758-a99e-8160ba99cc4f",
 	1,
