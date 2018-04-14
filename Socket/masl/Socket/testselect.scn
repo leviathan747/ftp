@@ -9,10 +9,14 @@ readfds: set of integer;
 emptyset: set of integer;
 begin
 
+  serversock := -1;
+  sock := -1;
+
   // create a server socket
   serversock := socket( SOCK_STREAM, IPPROTO_TCP );
   if ( serversock < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Socket creation error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   end if;
 
   // bind to localhost on port 8080
@@ -20,13 +24,15 @@ begin
   localaddr.port := 8080;
   retval := bind( serversock, localaddr );
   if ( retval < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Bind error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   end if;
   
   // listen for one connection
   retval := listen( serversock, 1 );
   if ( retval < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Listen error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   end if;
   
   // select with a timeout
@@ -35,7 +41,8 @@ begin
     readfds := integer(serversock);
     retval := select( readfds, emptyset, emptyset, durationtotimeval( @PT5S@ ) );
     if ( retval < 0) then
-      console << "Error " << geterror() << ": " << strerror() << endl;
+      console << "Select error " << geterror() << ": " << strerror() << endl;
+      raise SocketException;
     elsif ( retval = 0 ) then
       console << "Timeout reached. looping..." << endl;
     end if;
@@ -44,22 +51,31 @@ begin
   // accept a connection
   sock := accept( serversock, peeraddr );
   if ( sock < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Accept error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   end if;
   
   // set timeout to 5 seconds
   retval := setsockopt( sock, SO_RCVTIMEO, durationtotimeval( @PT5S@ ) );
   if ( retval < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Set socket option error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   end if;
 
   // receive data
   retval := recv( sock, databuffer, 256, 0 );
   if ( retval < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Receive error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   else
     // log the data
     console << "Message: " << datatostring( databuffer ) << endl;
+    retval := close( integer(serversock) );
+    retval := close( integer(sock) );
   end if;
+
+exception when SocketException =>
+  retval := close( integer(serversock) );
+  retval := close( integer(sock) );
 
 end service;

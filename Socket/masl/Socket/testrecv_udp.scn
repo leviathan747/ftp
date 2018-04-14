@@ -6,10 +6,13 @@ databuffer: data;
 retval: integer;
 begin
 
+  serversock := -1;
+
   // create a server socket
   serversock := socket( SOCK_DGRAM, IPPROTO_UDP );
   if ( serversock < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Socket creation error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   end if;
 
   // bind to localhost on port 8080
@@ -17,16 +20,22 @@ begin
   localaddr.port := 8080;
   retval := bind( serversock, localaddr );
   if ( retval < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Bind error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   end if;
   
   // receive some data
   retval := recvfrom( serversock, databuffer, 256, 0, peeraddr );
   if ( retval < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Receive error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   else
     // log the data
     console << "Message from " << peeraddr.address << ":" << peeraddr.port << ": " << datatostring( databuffer ) << endl;
+    retval := close( integer(serversock) );
   end if;
+
+exception when SocketException =>
+  retval := close( integer(serversock) );
 
 end service;

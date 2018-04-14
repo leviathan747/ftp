@@ -5,10 +5,13 @@ msg: string;
 retval: integer;
 begin
 
+  sock := -1;
+
   // create a client socket
   sock := socket( SOCK_STREAM, IPPROTO_TCP );
   if ( sock < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Socket creation error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   end if;
   
   // connect to server
@@ -16,14 +19,20 @@ begin
   peeraddr.port := 8080;
   retval := connect( sock, peeraddr );
   if ( retval < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Connect error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   end if;
   
   // send some data
   msg := "Hello, World!";
   retval := send( sock, stringtodata( msg ), msg'length(), 0 );
   if ( retval < 0 ) then
-    console << "Error " << geterror() << ": " << strerror() << endl;
+    console << "Send error " << geterror() << ": " << strerror() << endl;
+    raise SocketException;
   end if;
+  retval := close( integer(sock) );
   
+exception when SocketException =>
+  retval := close( integer(sock) );
+
 end service;
