@@ -9,6 +9,9 @@ end state;
 state Telnet::RemoteConnection.Listening () is
 sock: Socket::socketfd;
 remoteaddr: Socket::sockaddr;
+readfds: set of integer;
+emptyfds: set of integer;
+retval: integer;
 begin
 
   // if the socket does not exist, create it
@@ -32,14 +35,25 @@ begin
     
   end if;
   
-  // accept a connection
-  sock := Socket::accept( this.socket_id, remoteaddr );
-  if ( sock < 0 ) then
+  // select for incoming connections
+  readfds := integer(this.socket_id);
+  retval := Socket::select( readfds, emptyfds, emptyfds, Socket::durationtotimeval( @PT0S@ ) );
+  if ( retval < 0 ) then
     raise Socket::SocketException;
+  elsif( retval = 0 ) then
+    schedule this.timer generate listen() to this delay @PT1S@; // TODO get delay from a constant
   else
-    this.socket_id := sock;
-    this.remote_address := remoteaddr;
-    generate ready() to this;
+  
+    // accept a connection
+    sock := Socket::accept( this.socket_id, remoteaddr );
+    if ( sock < 0 ) then
+      raise Socket::SocketException;
+    else
+      this.socket_id := sock;
+      this.remote_address := remoteaddr;
+      generate ready() to this;
+    end if;
+
   end if;
   
 exception when Socket::SocketException =>
@@ -51,35 +65,49 @@ end state;
 //! ACTIVITY BEGIN. '2740c197-7613-46cf-b20c-3a91f8f3a7c9' '3d4fdfa0-7d5d-483f-9fbb-36dd8378f995' DO NOT EDIT THIS LINE.
 state Telnet::RemoteConnection.ReportingError ( code : in error ) is
 begin
+
   // TODO log error
   Print~>error( code );
   generate RemoteConnection.close() to this;
-  
-  // TODO clean up
+
 end state;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 
 //! ACTIVITY BEGIN. '2740c197-7613-46cf-b20c-3a91f8f3a7c9' '76ccd70f-a409-4cdf-a57b-0b0c5cd6775b' DO NOT EDIT THIS LINE.
 state Telnet::RemoteConnection.ReceivingData () is
 buffer: Socket::data;
+readfds: set of integer;
+emptyfds: set of integer;
+retval: integer;
 begin
 
-  // receive data
-  if ( Socket::recv( this.socket_id, buffer, 1024, 0 ) < 0 ) then
+  // select for input data
+  readfds := integer(this.socket_id);
+  retval := Socket::select( readfds, emptyfds, emptyfds, Socket::durationtotimeval( @PT0S@ ) );
+  if ( retval < 0 ) then
     raise Socket::SocketException;
-  end if;
-  
-  // no data means the peer has closed the connection
-  if ( buffer'length > 0 ) then
-
-    // print data
-    console << "Received data: " << Socket::datatostring( buffer ) << endl;
-  
-    // repeat
-    generate ready() to this;
-  
+  elsif( retval = 0 ) then
+    schedule this.timer generate ready() to this delay @PT1S@; // TODO get delay from a constant
   else
-    generate close() to this;
+
+    // receive data
+    if ( Socket::recv( this.socket_id, buffer, 1024, 0 ) < 0 ) then
+      raise Socket::SocketException;
+    end if;
+  
+    // no data means the peer has closed the connection
+    if ( buffer'length > 0 ) then
+
+      // print data
+      console << "Received data: " << Socket::datatostring( buffer ) << endl;
+  
+      // repeat
+      generate ready() to this;
+  
+    else
+      generate close() to this;
+    end if;
+
   end if;
 
 exception when Socket::SocketException =>
@@ -106,7 +134,8 @@ end state;
 terminal state Telnet::RemoteConnection.ShuttingDown () is
 begin
 
-  // TODO gracefully close the socket
+  // gracefully close the socket
+  if ( Socket::close( integer(this.socket_id) ) < 0 ) then end if;
   
   // unlink from terminal
   unlink this R3 this->R3.provides_communication_channel_for.NetworkVirtualTerminal;

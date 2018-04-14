@@ -2,10 +2,10 @@
 //!simple implementation that only implements the NVT and does not support any
 //!additional options.
 domain Telnet is
-  object Keyboard;
-  object NetworkVirtualTerminal;
   object Printer;
   object RemoteConnection;
+  object NetworkVirtualTerminal;
+  object Keyboard;
   public type termid is integer
   ;
   public type telnetcmd is enum (SE, NOP, DM, BRK, IP, AO, AYT, EC, EL, GA, SB, WILL, WONT, DO, DONT, IAC)
@@ -253,13 +253,6 @@ pragma scenario ( 1 ); pragma test_only ( true );
     Keyboard unconditionally passes_input_to one NetworkVirtualTerminal;
   relationship R3 is NetworkVirtualTerminal conditionally communicates_through one RemoteConnection,
     RemoteConnection unconditionally provides_communication_channel_for one NetworkVirtualTerminal;
-  object Keyboard is
-    nvt_id : preferred  referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;
-    buffer :   sequence of byte;
-  end object;
-  object NetworkVirtualTerminal is
-    id : preferred  termid;
-  end object;
   object Printer is
     nvt_id : preferred  referential ( R1.displays_output_for.NetworkVirtualTerminal.id ) termid;
   end object;
@@ -268,6 +261,7 @@ pragma scenario ( 1 ); pragma test_only ( true );
     socket_id :   Socket::socketfd;
     local_address :   Socket::sockaddr;
     remote_address :   Socket::sockaddr;
+    timer :   timer;
      state Idle();
      state Listening();
      state ReportingError(        code : in error);
@@ -348,5 +342,12 @@ pragma scenario ( 1 ); pragma test_only ( true );
         write => Cannot_Happen,
         close => Cannot_Happen      ); 
     end transition;
+  end object;
+  object NetworkVirtualTerminal is
+    id : preferred  termid;
+  end object;
+  object Keyboard is
+    nvt_id : preferred  referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;
+    buffer :   sequence of byte;
   end object;
 end domain;

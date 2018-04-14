@@ -135,13 +135,31 @@ INSERT INTO O_BATTR
 INSERT INTO O_ATTR
 	VALUES ("a4175873-bac0-4389-89c1-5559b7d58bf7",
 	"41e2da58-7702-4676-b4f8-266d953e44b7",
-	"ad7239c5-af13-4218-8b85-d1ed7cb272a5",
+	"c8507f79-05dc-4cc0-9e99-5208dfea7504",
 	'current_state',
 	'',
 	'',
 	'current_state',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c8507f79-05dc-4cc0-9e99-5208dfea7504",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_BATTR
+	VALUES ("c8507f79-05dc-4cc0-9e99-5208dfea7504",
+	"41e2da58-7702-4676-b4f8-266d953e44b7");
+INSERT INTO O_ATTR
+	VALUES ("c8507f79-05dc-4cc0-9e99-5208dfea7504",
+	"41e2da58-7702-4676-b4f8-266d953e44b7",
+	"ad7239c5-af13-4218-8b85-d1ed7cb272a5",
+	'timer',
+	'',
+	'',
+	'timer',
+	0,
+	"ba5eda7a-def5-0000-0000-00000000000f",
 	'',
 	'');
 INSERT INTO O_ID

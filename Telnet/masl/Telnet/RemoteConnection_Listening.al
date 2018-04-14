@@ -1,6 +1,9 @@
 state Telnet::RemoteConnection.Listening () is
 sock: Socket::socketfd;
 remoteaddr: Socket::sockaddr;
+readfds: set of integer;
+emptyfds: set of integer;
+retval: integer;
 begin
 
   // if the socket does not exist, create it
@@ -24,14 +27,25 @@ begin
     
   end if;
   
-  // accept a connection
-  sock := Socket::accept( this.socket_id, remoteaddr );
-  if ( sock < 0 ) then
+  // select for incoming connections
+  readfds := integer(this.socket_id);
+  retval := Socket::select( readfds, emptyfds, emptyfds, Socket::durationtotimeval( @PT0S@ ) );
+  if ( retval < 0 ) then
     raise Socket::SocketException;
+  elsif( retval = 0 ) then
+    schedule this.timer generate listen() to this delay @PT1S@; // TODO get delay from a constant
   else
-    this.socket_id := sock;
-    this.remote_address := remoteaddr;
-    generate ready() to this;
+  
+    // accept a connection
+    sock := Socket::accept( this.socket_id, remoteaddr );
+    if ( sock < 0 ) then
+      raise Socket::SocketException;
+    else
+      this.socket_id := sock;
+      this.remote_address := remoteaddr;
+      generate ready() to this;
+    end if;
+
   end if;
   
 exception when Socket::SocketException =>
