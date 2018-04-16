@@ -279,6 +279,7 @@ pragma signal_handler ( SIGURG );
      event read();
      event write();
      event close();
+     event urgentdata();
      transition is
       Non_Existent (
         listen => Cannot_Happen,
@@ -287,7 +288,8 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => Cannot_Happen      ); 
+        close => Cannot_Happen,
+        urgentdata => Cannot_Happen      ); 
       Idle (
         listen => Listening,
         error => Cannot_Happen,
@@ -295,7 +297,8 @@ pragma signal_handler ( SIGURG );
         connect => Connecting,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => Cannot_Happen      ); 
+        close => Cannot_Happen,
+        urgentdata => Cannot_Happen      ); 
       Listening (
         listen => Listening,
         error => ReportingError,
@@ -303,7 +306,8 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => Cannot_Happen      ); 
+        close => Cannot_Happen,
+        urgentdata => Cannot_Happen      ); 
       ReportingError (
         listen => Cannot_Happen,
         error => Cannot_Happen,
@@ -311,7 +315,8 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => ShuttingDown      ); 
+        close => ShuttingDown,
+        urgentdata => Cannot_Happen      ); 
       ReceivingData (
         listen => Cannot_Happen,
         error => ReportingError,
@@ -319,7 +324,8 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => SendingData,
-        close => ShuttingDown      ); 
+        close => ShuttingDown,
+        urgentdata => Cannot_Happen      ); 
       Connecting (
         listen => Cannot_Happen,
         error => ReportingError,
@@ -327,7 +333,8 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => Cannot_Happen      ); 
+        close => Cannot_Happen,
+        urgentdata => Cannot_Happen      ); 
       SendingData (
         listen => Cannot_Happen,
         error => ReportingError,
@@ -335,7 +342,8 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => ReceivingData,
         write => Cannot_Happen,
-        close => Cannot_Happen      ); 
+        close => Cannot_Happen,
+        urgentdata => Cannot_Happen      ); 
       ShuttingDown (
         listen => Cannot_Happen,
         error => Cannot_Happen,
@@ -343,7 +351,8 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => Cannot_Happen      ); 
+        close => Cannot_Happen,
+        urgentdata => Cannot_Happen      ); 
     end transition;
   end object;
   object NetworkVirtualTerminal is
