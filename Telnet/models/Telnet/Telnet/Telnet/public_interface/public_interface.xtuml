@@ -4,7 +4,7 @@ INSERT INTO EP_PKG
 	VALUES ("b1d5d768-f0c2-413f-a6b0-1eefdefcdba5",
 	"00000000-0000-0000-0000-000000000000",
 	"55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
-	'functions',
+	'public_interface',
 	'',
 	0);
 INSERT INTO GD_MD
@@ -25,7 +25,7 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'',
-	'Telnet::Telnet::Telnet::functions');
+	'Telnet::Telnet::Telnet::public_interface');
 INSERT INTO DIM_DIA
 	VALUES ("08f2eec1-43d5-4362-8e34-2a8572bf0019",
 	'',
