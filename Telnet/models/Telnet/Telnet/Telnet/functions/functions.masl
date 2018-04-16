@@ -60,6 +60,7 @@ begin
       // select an existing connection
       if ( null = term->R3.communicates_through.RemoteConnection ) then
         conn := create RemoteConnection( nvt_id => term.id, Current_State => Idle );
+        link conn R3.provides_communication_channel_for term;
         conn.socket_id := -1;
         localaddr.address := "127.0.0.1";
         localaddr.port := port;
