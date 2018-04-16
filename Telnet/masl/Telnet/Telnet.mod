@@ -171,6 +171,7 @@ domain Telnet is
   private service test1 (); pragma scenario( 1 ); pragma test_only( true );   
   private service address_is_valid ( address: in string ) return boolean;   
   private service port_is_valid ( port: in integer ) return boolean;   
+  private service sigurg_handler (); pragma signal_handler( SIGURG );   
   
   
   terminator Print is

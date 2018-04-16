@@ -12,3 +12,10 @@ begin
 end service;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 
+//! ACTIVITY BEGIN. 'b2d11817-3fdb-4ba3-b476-0b2181e9f4db' DO NOT EDIT THIS LINE.
+private service Telnet::sigurg_handler () is
+begin
+  Logger::log( Logger::Information, "Telnet::sigurg_handler: Received urgent signal." );
+end service;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+

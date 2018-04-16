@@ -1,0 +1,4 @@
+private service Telnet::sigurg_handler () is
+begin
+  Logger::log( Logger::Information, "Telnet::sigurg_handler: Received urgent signal." );
+end service;

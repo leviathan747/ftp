@@ -176,6 +176,9 @@ pragma scenario ( 1 ); pragma test_only ( true );
         address : in string    ) return boolean;
     private service port_is_valid (
         port : in integer    ) return boolean;
+    private service sigurg_handler (
+    );
+pragma signal_handler ( SIGURG ); 
   terminator Print is
 //!NAME
 //!    print -- post data from a specified Telnet terminal instance.

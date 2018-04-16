@@ -2,5 +2,6 @@ Function,scenario
 Function,external
 Function,test_only
 Function,soa_remote
+Function,signal_handler
 Component,number
 Model Class,key_letter

@@ -9,10 +9,10 @@
       <pattern ref="long"/>
       <syslog/>
       <file>
-        <path>gen/Telnet.log</path>
+        <path>Telnet.log</path>
         <archive>
           <rotate>
-            <size units="B">100</size>
+            <size units="MiB">1</size>
           </rotate>
           <purge units="count">10</purge>
         </archive>

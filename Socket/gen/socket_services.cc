@@ -9,6 +9,7 @@
 //
 #include "Socket_OOA/__Socket_services.hh"
 #include <arpa/inet.h>
+#include <fcntl.h>
 
 namespace masld_Socket
 {
@@ -26,7 +27,12 @@ namespace masld_Socket
       maslp_address.set_masla_address() = ::SWA::String( inet_ntoa( peeraddress.sin_addr) );
       maslp_address.set_masla_port() = (int32_t)ntohs( peeraddress.sin_port );
 
+      if ( fcntl( sock, F_SETOWN, getpid() ) < 0 ) {
+        return -1;
+      }
+
     }
+
     return sock;
   }
 

@@ -100,6 +100,7 @@ begin
     if ( buffer'length > 0 ) then
 
       // print data
+      Logger::log( Logger::Trace, "Received data: " & Socket::datatostring( buffer ) );
       console << "Received data: " << Socket::datatostring( buffer ) << endl;
   
       // repeat
