@@ -19,15 +19,15 @@ begin
         conn.local_address := localaddr;
         generate RemoteConnection.listen() to conn;
       else
-        // TODO log error
+        Logger::log( Logger::Error, "Telnet::listen: " & TERMBUSY'image & " Terminal is busy." );
         Print~>error( ( "Terminal is busy.", TERMBUSY ) );
       end if;
     else
-      // TODO log error
+      Logger::log( Logger::Error, "Telnet::listen: " & PORTINVAL'image & " Invalid port value." );
       Print~>error( ( "Invalid port value.", PORTINVAL ) );
     end if;
   else
-    // TODO log error
+    Logger::log( Logger::Error, "Telnet::listen: " & TERMINVAL'image & " Terminal does not exist." );
     Print~>error( ( "Terminal does not exist.", TERMINVAL ) );
   end if;
 end service;

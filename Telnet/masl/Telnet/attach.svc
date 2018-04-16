@@ -2,5 +2,5 @@ public service Telnet::attach ( termid: in termid,
                                 host: in string,
                                 port: in integer ) is
 begin
-  null;
+  null; // TODO implement
 end service;
