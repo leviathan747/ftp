@@ -11,7 +11,7 @@ begin
   if ( retval < 0 ) then
     raise Socket::SocketException;
   elsif( retval = 0 ) then
-    schedule this.timer generate ready() to this delay @PT1S@; // TODO get delay from a constant
+    schedule this.ticker generate ready() to this delay Connections.default().tick;
   else
 
     // receive data
@@ -22,9 +22,8 @@ begin
     // no data means the peer has closed the connection
     if ( buffer'length > 0 ) then
 
-      // print data
-      Logger::log( Logger::Trace, "Received data: " & Socket::datatostring( buffer ) );
-      console << "Received data: " << Socket::datatostring( buffer ) << endl;
+      // log data
+      Logger::information( "Telnet::RemoteConnection: Received data: " & Socket::datatostring( buffer ) );
   
       // repeat
       generate ready() to this;

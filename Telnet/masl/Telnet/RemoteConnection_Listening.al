@@ -33,7 +33,12 @@ begin
   if ( retval < 0 ) then
     raise Socket::SocketException;
   elsif( retval = 0 ) then
-    schedule this.timer generate listen() to this delay @PT1S@; // TODO get delay from a constant
+    if ( Connections.default().default_timeout > this.retries * Connections.default().tick ) then
+      schedule this.ticker generate listen() to this delay Connections.default().tick;
+      this.retries := this.retries + 1;
+    else
+      generate error( ( "Listen operation timed out.", SOCKETERR ) ) to this;
+    end if;
   else
   
     // accept a connection
@@ -43,6 +48,7 @@ begin
     else
       this.socket_id := sock;
       this.remote_address := remoteaddr;
+      this.connected := true;
       generate ready() to this;
     end if;
 

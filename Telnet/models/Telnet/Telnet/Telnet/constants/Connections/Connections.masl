@@ -1,0 +1,11 @@
+//! ACTIVITY BEGIN. '7d0adc62-0eac-4bd4-a6ba-bab931dc5f9a' DO NOT EDIT THIS LINE.
+public service Telnet::Connections.default () return instance of Connections is
+begin
+  if ( null = find_one Connections() ) then
+    return create Connections( id => 1 );
+  else
+    return find_one Connections();
+  end if;
+end service;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+

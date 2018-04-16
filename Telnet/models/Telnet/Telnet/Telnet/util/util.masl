@@ -17,13 +17,13 @@ private service Telnet::sigurg_handler () is
 exceptfds: set of integer;
 emptyset: set of integer;
 begin
-  Logger::log( Logger::Information, "Telnet::sigurg_handler: Received urgent signal." );
+  Logger::information( "Telnet::sigurg_handler: Received urgent signal." );
   for conn in find_all RemoteConnection() loop
     exceptfds := exceptfds union integer(conn.socket_id);
   end loop;
   // check for sockets with an exception condition set -- this means there is out of band data available
   if ( Socket::select( emptyset, emptyset, exceptfds, Socket::durationtotimeval( @PT0S@ ) ) < 0 ) then
-    Logger::log( Logger::Error, "Telnet::sigurg_handler: Error " & Socket::geterror()'image & ": " & Socket::strerror() );
+    Logger::error( "Telnet::sigurg_handler: Error " & Socket::geterror()'image & ": " & Socket::strerror() );
   else
     for sock in exceptfds loop
       for conn in find RemoteConnection( socket_id = Socket::socketfd(sock) ) loop

@@ -2,10 +2,11 @@
 //!simple implementation that only implements the NVT and does not support any
 //!additional options.
 domain Telnet is
+  object Keyboard;
+  object NetworkVirtualTerminal;
   object Printer;
   object RemoteConnection;
-  object NetworkVirtualTerminal;
-  object Keyboard;
+  object Connections;
   public type termid is integer
   ;
   public type telnetcmd is enum (SE, NOP, DM, BRK, IP, AO, AYT, EC, EL, GA, SB, WILL, WONT, DO, DONT, IAC)
@@ -256,15 +257,24 @@ pragma signal_handler ( SIGURG );
     Keyboard unconditionally passes_input_to one NetworkVirtualTerminal;
   relationship R3 is NetworkVirtualTerminal conditionally communicates_through one RemoteConnection,
     RemoteConnection unconditionally provides_communication_channel_for one NetworkVirtualTerminal;
+  object Keyboard is
+    nvt_id : preferred  referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;
+    buffer :   sequence of byte;
+  end object;
+  object NetworkVirtualTerminal is
+    id : preferred  termid;
+  end object;
   object Printer is
     nvt_id : preferred  referential ( R1.displays_output_for.NetworkVirtualTerminal.id ) termid;
   end object;
   object RemoteConnection is
     nvt_id : preferred  referential ( R3.provides_communication_channel_for.NetworkVirtualTerminal.id ) termid;
-    socket_id :   Socket::socketfd;
+    socket_id :   Socket::socketfd := -1;
     local_address :   Socket::sockaddr;
     remote_address :   Socket::sockaddr;
-    timer :   timer;
+    ticker :   timer;
+    connected :   boolean := false;
+    retries :   integer := 1;
      state Idle();
      state Listening();
      state ReportingError(        error : in error);
@@ -355,11 +365,11 @@ pragma signal_handler ( SIGURG );
         urgentdata => Cannot_Happen      ); 
     end transition;
   end object;
-  object NetworkVirtualTerminal is
-    id : preferred  termid;
-  end object;
-  object Keyboard is
-    nvt_id : preferred  referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;
-    buffer :   sequence of byte;
+  object Connections is
+    default_timeout :   duration := @PT30S@;
+    tick :   duration := @PT0.001S@;
+    id : preferred  integer;
+    public  service default (
+    ) return instance of Connections;
   end object;
 end domain;

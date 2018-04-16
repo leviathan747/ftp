@@ -1,6 +1,8 @@
 terminal state Telnet::RemoteConnection.ShuttingDown () is
 begin
 
+  Logger::information( "Telnet::RemoteConnection: Shutting down socket." );
+
   // gracefully close the socket
   if ( Socket::close( integer(this.socket_id) ) < 0 ) then end if;
   

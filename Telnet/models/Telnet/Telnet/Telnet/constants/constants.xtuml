@@ -1,0 +1,84 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("d9b773b0-a033-4c56-a558-476917e7c154",
+	"00000000-0000-0000-0000-000000000000",
+	"55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'constants',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("ad15fb18-207f-4042-a3cf-7814c5c3c223",
+	112,
+	"d9b773b0-a033-4c56-a558-476917e7c154",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'Telnet::Telnet::Telnet::constants');
+INSERT INTO GD_GE
+	VALUES ("156a3380-3699-4c1e-84df-df0c2ac415d4",
+	"ad15fb18-207f-4042-a3cf-7814c5c3c223",
+	"e9e2d3ba-49c5-443a-9887-f5d025463841",
+	21,
+	0,
+	'Telnet::Telnet::Telnet::constants::Connections');
+INSERT INTO GD_SHP
+	VALUES ("156a3380-3699-4c1e-84df-df0c2ac415d4");
+INSERT INTO GD_NCS
+	VALUES ("156a3380-3699-4c1e-84df-df0c2ac415d4");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"156a3380-3699-4c1e-84df-df0c2ac415d4");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"156a3380-3699-4c1e-84df-df0c2ac415d4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("156a3380-3699-4c1e-84df-df0c2ac415d4",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("ad15fb18-207f-4042-a3cf-7814c5c3c223",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("d9b773b0-a033-4c56-a558-476917e7c154",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"1b9d9160-59bd-4a09-9c36-8e5ffc195451",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("1b9d9160-59bd-4a09-9c36-8e5ffc195451",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Telnet',
+	'This is an implementation of the Telnet protocol as defined in RFC 854. It is a
+simple implementation that only implements the NVT and does not support any
+additional options.
+',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Telnet.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("55b4869c-fc8f-4e57-9992-e3f6dd6503b8",
+	'Telnet',
+	1,
+	'../../../Telnet.xtuml');
