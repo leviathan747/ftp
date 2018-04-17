@@ -13,7 +13,7 @@ begin
   
   // create a terminal, printer, and keyboard
   term := create NetworkVirtualTerminal( id => termid );
-  link create Printer( nvt_id => termid ) R1.displays_output_for term;
+  link create Printer( nvt_id => termid, Current_State => Idle ) R1.displays_output_for term;
   link create Keyboard( nvt_id => termid ) R2.passes_input_to term;
 
 end service;

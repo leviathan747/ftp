@@ -1,0 +1,7 @@
+//! ACTIVITY BEGIN. '06ccaaa1-b27a-44ce-bae1-1e24982910ec' 'dabeef0c-78c2-4090-97c5-c2d91aa15bf8' DO NOT EDIT THIS LINE.
+state Telnet::Printer.Idle () is
+begin
+  null;
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+

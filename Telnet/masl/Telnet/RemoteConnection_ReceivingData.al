@@ -1,8 +1,9 @@
 state Telnet::RemoteConnection.ReceivingData () is
-buffer: Socket::data;
+buffer: anonymous sequence of byte;
 readfds: set of integer;
 emptyfds: set of integer;
 retval: integer;
+printer: instance of Printer;
 begin
 
   // select for input data
@@ -15,15 +16,18 @@ begin
   else
 
     // receive data
-    if ( Socket::recv( this.socket_id, buffer, 1024, 0 ) < 0 ) then
+    if ( Socket::recv( this.socket_id, buffer, Connections.default().buffer_size, 0 ) < 0 ) then
       raise Socket::SocketException;
     end if;
   
     // no data means the peer has closed the connection
     if ( buffer'length > 0 ) then
 
-      // log data
+      // store data
       Logger::information( "Telnet::RemoteConnection: Received data: " & Socket::datatostring( buffer ) );
+      printer := this->R3.provides_communication_channel_for.NetworkVirtualTerminal->R1.outputs_data_on.Printer;
+      printer.buffer := printer.buffer & buffer;
+      generate Printer.data() to printer;
   
       // repeat
       generate ready() to this;

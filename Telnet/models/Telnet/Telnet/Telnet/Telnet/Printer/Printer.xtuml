@@ -58,6 +58,49 @@ INSERT INTO O_ATTR
 	"ba5eda7a-def5-0000-0000-000000000007",
 	'',
 	'');
+INSERT INTO O_NBATTR
+	VALUES ("35838ec7-6a3b-44c8-9d90-237f85f7c01b",
+	"2a9116ea-4021-43d3-9df2-e15c07ed05ab");
+INSERT INTO O_BATTR
+	VALUES ("35838ec7-6a3b-44c8-9d90-237f85f7c01b",
+	"2a9116ea-4021-43d3-9df2-e15c07ed05ab");
+INSERT INTO O_ATTR
+	VALUES ("35838ec7-6a3b-44c8-9d90-237f85f7c01b",
+	"2a9116ea-4021-43d3-9df2-e15c07ed05ab",
+	"9df3d224-a1c8-4811-b8e7-5df923795e2f",
+	'buffer',
+	'',
+	'',
+	'buffer',
+	0,
+	"c4e77d2f-a07b-43e5-aa2c-8a68ce9ed351",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("c4e77d2f-a07b-43e5-aa2c-8a68ce9ed351",
+	"00000000-0000-0000-0000-000000000000",
+	'sequence of byte',
+	'',
+	'',
+	'../../../../types/types.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("cb334742-7bbd-463d-b6c4-ffa50cf028b2",
+	"2a9116ea-4021-43d3-9df2-e15c07ed05ab");
+INSERT INTO O_BATTR
+	VALUES ("cb334742-7bbd-463d-b6c4-ffa50cf028b2",
+	"2a9116ea-4021-43d3-9df2-e15c07ed05ab");
+INSERT INTO O_ATTR
+	VALUES ("cb334742-7bbd-463d-b6c4-ffa50cf028b2",
+	"2a9116ea-4021-43d3-9df2-e15c07ed05ab",
+	"35838ec7-6a3b-44c8-9d90-237f85f7c01b",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"2a9116ea-4021-43d3-9df2-e15c07ed05ab");

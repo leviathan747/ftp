@@ -1,0 +1,12 @@
+//! ACTIVITY BEGIN. '7ca570d7-78ce-4b55-bd95-f40f6f93cd1f' DO NOT EDIT THIS LINE.
+public service Telnet::CharacterSequences.default () return instance of CharacterSequences is
+cs: instance of CharacterSequences;
+begin
+  cs := find_one CharacterSequences();
+  if ( null = cs ) then
+    cs := create CharacterSequences( id => 1 );
+  end if;
+  return cs;
+end service;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+

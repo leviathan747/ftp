@@ -1,0 +1,9 @@
+public service Telnet::CharacterSequences.default () return instance of CharacterSequences is
+cs: instance of CharacterSequences;
+begin
+  cs := find_one CharacterSequences();
+  if ( null = cs ) then
+    cs := create CharacterSequences( id => 1 );
+  end if;
+  return cs;
+end service;

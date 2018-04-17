@@ -7,6 +7,7 @@ domain Telnet is
   object Printer;
   object RemoteConnection;
   object Connections;
+  object CharacterSequences;
   public type termid is integer
   ;
   public type telnetcmd is enum (SE, NOP, DM, BRK, IP, AO, AYT, EC, EL, GA, SB, WILL, WONT, DO, DONT, IAC)
@@ -173,6 +174,9 @@ end structure
     private service test1 (
     );
 pragma scenario ( 1 ); pragma test_only ( true ); 
+    private service test2 (
+    );
+pragma scenario ( 2 ); pragma test_only ( true ); 
     private service address_is_valid (
         address : in string    ) return boolean;
     private service port_is_valid (
@@ -266,6 +270,15 @@ pragma signal_handler ( SIGURG );
   end object;
   object Printer is
     nvt_id : preferred  referential ( R1.displays_output_for.NetworkVirtualTerminal.id ) termid;
+    buffer :   sequence of byte;
+     state Idle();
+     event data();
+     transition is
+      Non_Existent (
+        data => Cannot_Happen      ); 
+      Idle (
+        data => Ignore      ); 
+    end transition;
   end object;
   object RemoteConnection is
     nvt_id : preferred  referential ( R3.provides_communication_channel_for.NetworkVirtualTerminal.id ) termid;
@@ -369,7 +382,14 @@ pragma signal_handler ( SIGURG );
     default_timeout :   duration := @PT30S@;
     tick :   duration := @PT0.001S@;
     id : preferred  integer;
+    buffer_size :   integer := 256;
     public  service default (
     ) return instance of Connections;
+  end object;
+  object CharacterSequences is
+    id : preferred  integer;
+    CRLF :   sequence of byte := 13 & 10;
+    public  service default (
+    ) return instance of CharacterSequences;
   end object;
 end domain;

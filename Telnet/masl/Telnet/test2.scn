@@ -1,15 +1,3 @@
-//! ACTIVITY BEGIN. '67c4d0ce-bdcc-4e48-9282-c7d18558da9a' DO NOT EDIT THIS LINE.
-private service Telnet::test1 () is
-termid: termid;
-begin
-  // create terminal
-  create_terminal( termid );
-  // start it listening
-  listen( termid, 5555 );
-end service;
-//! ACTIVITY END. DO NOT EDIT THIS LINE.
-
-//! ACTIVITY BEGIN. 'ec718db6-8a9e-4e5d-b9ca-2225e173f2e3' DO NOT EDIT THIS LINE.
 private service Telnet::test2 () is
 conn: instance of RemoteConnection;
 keyboard: instance of Keyboard;
@@ -27,5 +15,3 @@ begin
     end if;
   end if;
 end service;
-//! ACTIVITY END. DO NOT EDIT THIS LINE.
-
