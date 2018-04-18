@@ -4,7 +4,7 @@ serversock: socketfd;
 localaddr: sockaddr;
 sock: socketfd;
 peeraddr: sockaddr;
-databuffer: data;
+databuffer: sequence of byte;
 retval: integer;
 begin
   
@@ -55,7 +55,11 @@ begin
     raise SocketException;
   else
     // log the data
-    console << "Message: " << datatostring( databuffer ) << endl;
+    console << "Message: ";
+    for b in databuffer loop
+      console << b;
+    end loop;
+    console << endl;
     retval := close( integer(serversock) );
     retval := close( integer(sock) );
   end if;
@@ -71,7 +75,7 @@ end service;
 private service Socket::testsend () is
 sock: socketfd;
 peeraddr: sockaddr;
-msg: string;
+msg: sequence of byte;
 retval: integer;
 begin
 
@@ -94,8 +98,8 @@ begin
   end if;
   
   // send some data
-  msg := "Hello, World!";
-  retval := send( sock, stringtodata( msg ), msg'length(), 0 );
+  msg := 72 & 101 & 108 & 108 & 111 & 44 & 32 & 87 & 111 & 114 & 108 & 100 & 33; // "Hello, World!"
+  retval := send( sock, msg, msg'length, 0 );
   if ( retval < 0 ) then
     console << "Send error " << geterror() << ": " << strerror() << endl;
     raise SocketException;
@@ -112,7 +116,7 @@ end service;
 private service Socket::testsend_udp () is
 sock: socketfd;
 peeraddr: sockaddr;
-msg: string;
+msg: sequence of byte;
 retval: integer;
 begin
 
@@ -128,8 +132,8 @@ begin
   // send some data
   peeraddr.address := "127.0.0.1";
   peeraddr.port := 8080;
-  msg := "Hello, World! (UDP)";
-  retval := sendto( sock, stringtodata( msg ), msg'length(), 0, peeraddr );
+  msg := 72 & 101 & 108 & 108 & 111 & 44 & 32 & 87 & 111 & 114 & 108 & 100 & 33 & 32 & 40 & 85 & 68 & 80 & 41; // "Hello, World! (UDP)"
+  retval := sendto( sock, msg, msg'length(), 0, peeraddr );
   if ( retval < 0 ) then
     console << "Send error " << geterror() << ": " << strerror() << endl;
     raise SocketException;
@@ -147,7 +151,7 @@ private service Socket::testrecv_udp () is
 serversock: socketfd;
 localaddr: sockaddr;
 peeraddr: sockaddr;
-databuffer: data;
+databuffer: sequence of byte;
 retval: integer;
 begin
 
@@ -176,7 +180,11 @@ begin
     raise SocketException;
   else
     // log the data
-    console << "Message from " << peeraddr.address << ":" << peeraddr.port << ": " << datatostring( databuffer ) << endl;
+    console << "Message from " << peeraddr.address << ":" << peeraddr.port << ": ";
+    for b in databuffer loop
+      console << b;
+    end loop;
+    console << endl;
     retval := close( integer(serversock) );
   end if;
 
@@ -192,7 +200,7 @@ serversock: socketfd;
 localaddr: sockaddr;
 sock: socketfd;
 peeraddr: sockaddr;
-databuffer: data;
+databuffer: sequence of byte;
 retval: integer;
 readfds: set of integer;
 emptyset: set of integer;
@@ -258,7 +266,11 @@ begin
     raise SocketException;
   else
     // log the data
-    console << "Message: " << datatostring( databuffer ) << endl;
+    console << "Message: ";
+    for b in databuffer loop
+      console << b;
+    end loop;
+    console << endl;
     retval := close( integer(serversock) );
     retval := close( integer(sock) );
   end if;

@@ -271,7 +271,7 @@ INSERT INTO S_DT_PROXY
 	'data',
 	'',
 	'',
-	'../../Shared/Shared.xtuml');
+	'../../../types/types.xtuml');
 INSERT INTO PE_PE
 	VALUES ("0ab50b63-a07c-445e-a2ab-2e977ee366d9",
 	1,

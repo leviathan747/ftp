@@ -5,7 +5,6 @@
 domain Socket is
   
   public type socketfd is integer;   
-  public type data is sequence of byte;   
   public type socktype is enum ( SOCK_STREAM, SOCK_DGRAM );   
   public type sockproto is enum ( IPPROTO_TCP, IPPROTO_UDP );   
   public type optionlevel is enum ( SOL_SOCKET );   
@@ -24,8 +23,14 @@ domain Socket is
   
   public exception SocketException;   
   
-  public service datatostring ( data: in data ) return string;   
-  public service durationtotimeval ( duration: in duration ) return data;   
+  public service durationtotimeval ( duration: in duration ) return anonymous sequence of anonymous byte;   
+  public service geterror () return error;   
+  public service strerror () return string;   
+  public service select ( readfds: out set of integer,
+                          writefds: out set of integer,
+                          exceptfds: out set of integer,
+                          timeout: in anonymous sequence of anonymous byte ) return integer;   
+  public service close ( fd: in integer ) return integer;   
   public service accept ( socket: in socketfd,
                           address: out sockaddr ) return socketfd;   
   public service bind ( socket: in socketfd,
@@ -38,40 +43,33 @@ domain Socket is
                                address: out sockaddr ) return integer;   
   public service getsockopt ( socket: in socketfd,
                               option: in optionname,
-                              value: out data ) return integer;   
+                              value: out anonymous sequence of anonymous byte ) return integer;   
   public service listen ( socket: in socketfd,
                           backlog: in integer ) return integer;   
   public service recv ( socket: in socketfd,
-                        buffer: out data,
+                        buffer: out anonymous sequence of anonymous byte,
                         length: in integer,
                         flags: in integer ) return integer;   
   public service recvfrom ( socket: in socketfd,
-                            buffer: out data,
+                            buffer: out anonymous sequence of anonymous byte,
                             length: in integer,
                             flags: in integer,
                             address: out sockaddr ) return integer;   
   public service sendto ( socket: in socketfd,
-                          message: in data,
+                          message: in anonymous sequence of anonymous byte,
                           length: in integer,
                           flags: in integer,
                           address: in sockaddr ) return integer;   
   public service setsockopt ( socket: in socketfd,
                               option: in optionname,
-                              value: in data ) return integer;   
+                              value: in anonymous sequence of anonymous byte ) return integer;   
   public service send ( socket: in socketfd,
-                        message: in data,
+                        message: in anonymous sequence of anonymous byte,
                         length: in integer,
                         flags: in integer ) return integer;   
   public service shutdown ( socket: in socketfd,
                             how: in shutdowntype ) return integer;   
   public service socket ( socktype: in socktype,
                           protocol: in sockproto ) return socketfd;   
-  public service geterror () return error;   
-  public service strerror () return string;   
-  public service select ( readfds: out set of integer,
-                          writefds: out set of integer,
-                          exceptfds: out set of integer,
-                          timeout: in data ) return integer;   
-  public service close ( fd: in integer ) return integer;   
   
 end domain;

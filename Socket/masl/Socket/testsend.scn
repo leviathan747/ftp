@@ -1,7 +1,7 @@
 private service Socket::testsend () is
 sock: socketfd;
 peeraddr: sockaddr;
-msg: string;
+msg: sequence of byte;
 retval: integer;
 begin
 
@@ -24,8 +24,8 @@ begin
   end if;
   
   // send some data
-  msg := "Hello, World!";
-  retval := send( sock, stringtodata( msg ), msg'length(), 0 );
+  msg := 72 & 101 & 108 & 108 & 111 & 44 & 32 & 87 & 111 & 114 & 108 & 100 & 33; // "Hello, World!"
+  retval := send( sock, msg, msg'length, 0 );
   if ( retval < 0 ) then
     console << "Send error " << geterror() << ": " << strerror() << endl;
     raise SocketException;

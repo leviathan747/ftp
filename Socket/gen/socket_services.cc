@@ -94,9 +94,9 @@ namespace masld_Socket
     return retval;
   }
 
-  int32_t masls_getsockopt ( maslt_socketfd          maslp_socket,
-                             const maslt_optionname& maslp_option,
-                             maslt_data&             maslp_value )
+  int32_t masls_getsockopt ( maslt_socketfd            maslp_socket,
+                             const maslt_optionname&   maslp_option,
+                             ::SWA::Sequence<uint8_t>& maslp_value )
   {
     uint8_t buf[ 1024 ] = {};
     int32_t size        = 1024;
@@ -141,10 +141,10 @@ namespace masld_Socket
     return listen( maslp_socket, maslp_backlog );
   }
 
-  int32_t masls_recv ( maslt_socketfd maslp_socket,
-                       maslt_data&    maslp_buffer,
-                       int32_t        maslp_length,
-                       int32_t        maslp_flags )
+  int32_t masls_recv ( maslt_socketfd            maslp_socket,
+                       ::SWA::Sequence<uint8_t>& maslp_buffer,
+                       int32_t                   maslp_length,
+                       int32_t                   maslp_flags )
   {
     uint8_t buf[ maslp_length ] = {};
     int32_t retval              = -1;
@@ -162,11 +162,11 @@ namespace masld_Socket
     return retval;
   }
 
-  int32_t masls_recvfrom ( maslt_socketfd  maslp_socket,
-                           maslt_data&     maslp_buffer,
-                           int32_t         maslp_length,
-                           int32_t         maslp_flags,
-                           maslt_sockaddr& maslp_address )
+  int32_t masls_recvfrom ( maslt_socketfd            maslp_socket,
+                           ::SWA::Sequence<uint8_t>& maslp_buffer,
+                           int32_t                   maslp_length,
+                           int32_t                   maslp_flags,
+                           maslt_sockaddr&           maslp_address )
   {
     uint8_t buf[ maslp_length ]        = {};
     struct sockaddr_in peeraddress     = {};
@@ -189,19 +189,19 @@ namespace masld_Socket
     return retval;
   }
 
-  int32_t masls_send ( maslt_socketfd    maslp_socket,
-                       const maslt_data& maslp_message,
-                       int32_t           maslp_length,
-                       int32_t           maslp_flags )
+  int32_t masls_send ( maslt_socketfd                  maslp_socket,
+                       const ::SWA::Sequence<uint8_t>& maslp_message,
+                       int32_t                         maslp_length,
+                       int32_t                         maslp_flags )
   {
     return send( maslp_socket, maslp_message.getData().data(), maslp_length, maslp_flags );
   }
 
-  int32_t masls_sendto ( maslt_socketfd        maslp_socket,
-                         const maslt_data&     maslp_message,
-                         int32_t               maslp_length,
-                         int32_t               maslp_flags,
-                         const maslt_sockaddr& maslp_address )
+  int32_t masls_sendto ( maslt_socketfd                  maslp_socket,
+                         const ::SWA::Sequence<uint8_t>& maslp_message,
+                         int32_t                         maslp_length,
+                         int32_t                         maslp_flags,
+                         const maslt_sockaddr&           maslp_address )
   {
     struct sockaddr_in peeraddress = {};
 
@@ -212,9 +212,9 @@ namespace masld_Socket
     return sendto( maslp_socket, maslp_message.getData().data(), maslp_length, maslp_flags, (struct sockaddr *)&peeraddress, sizeof(peeraddress) );
   }
 
-  int32_t masls_setsockopt ( maslt_socketfd          maslp_socket,
-                             const maslt_optionname& maslp_option,
-                             const maslt_data&       maslp_value )
+  int32_t masls_setsockopt ( maslt_socketfd                  maslp_socket,
+                             const maslt_optionname&         maslp_option,
+                             const ::SWA::Sequence<uint8_t>& maslp_value )
   {
     int32_t option = -1;
     if ( maslt_optionname::masle_SO_DEBUG == maslp_option ) option = SO_DEBUG;

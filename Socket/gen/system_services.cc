@@ -68,10 +68,10 @@ namespace masld_Socket
     return error_code;
   }
 
-  int32_t masls_select ( ::SWA::Set<int32_t>& maslp_readfds,
-                         ::SWA::Set<int32_t>& maslp_writefds,
-                         ::SWA::Set<int32_t>& maslp_exceptfds,
-                         const maslt_data&    maslp_timeout )
+  int32_t masls_select ( ::SWA::Set<int32_t>&            maslp_readfds,
+                         ::SWA::Set<int32_t>&            maslp_writefds,
+                         ::SWA::Set<int32_t>&            maslp_exceptfds,
+                         const ::SWA::Sequence<uint8_t>& maslp_timeout )
   {
     
     fd_set                   readset;

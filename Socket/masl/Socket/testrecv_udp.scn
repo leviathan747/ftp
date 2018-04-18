@@ -2,7 +2,7 @@ private service Socket::testrecv_udp () is
 serversock: socketfd;
 localaddr: sockaddr;
 peeraddr: sockaddr;
-databuffer: data;
+databuffer: sequence of byte;
 retval: integer;
 begin
 
@@ -31,7 +31,11 @@ begin
     raise SocketException;
   else
     // log the data
-    console << "Message from " << peeraddr.address << ":" << peeraddr.port << ": " << datatostring( databuffer ) << endl;
+    console << "Message from " << peeraddr.address << ":" << peeraddr.port << ": ";
+    for b in databuffer loop
+      console << b;
+    end loop;
+    console << endl;
     retval := close( integer(serversock) );
   end if;
 

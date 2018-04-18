@@ -11,16 +11,7 @@
 
 namespace masld_Socket
 {
-  ::SWA::String masls_datatostring ( const maslt_data& maslp_data )
-  {
-    std::ostringstream oss;
-    for ( maslt_data::const_iterator it = maslp_data.begin(); it != maslp_data.end(); it++ ) {
-      oss << (char)*it;
-    }
-    return ::SWA::String( oss.str() );
-  }
-
-  maslt_data masls_durationtotimeval ( const ::SWA::Duration& maslp_duration )
+  ::SWA::Sequence<uint8_t> masls_durationtotimeval ( const ::SWA::Duration& maslp_duration )
   {
     struct timeval tv = {};
     uint8_t *      dataptr = (uint8_t *)&tv;
@@ -28,12 +19,6 @@ namespace masld_Socket
     tv.tv_sec = maslp_duration.seconds();
     tv.tv_usec = maslp_duration.microOfSecond();
 
-    return maslt_data( dataptr, dataptr + sizeof(struct timeval) );
+    return ::SWA::Sequence<uint8_t>( dataptr, dataptr + sizeof(struct timeval) );
   }
-
-  maslt_data masls_stringtodata ( const ::SWA::String& maslp_s )
-  {
-    return maslt_data( maslp_s.begin(), maslp_s.end() );
-  }
-
 }

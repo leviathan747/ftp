@@ -3,7 +3,7 @@ serversock: socketfd;
 localaddr: sockaddr;
 sock: socketfd;
 peeraddr: sockaddr;
-databuffer: data;
+databuffer: sequence of byte;
 retval: integer;
 readfds: set of integer;
 emptyset: set of integer;
@@ -69,7 +69,11 @@ begin
     raise SocketException;
   else
     // log the data
-    console << "Message: " << datatostring( databuffer ) << endl;
+    console << "Message: ";
+    for b in databuffer loop
+      console << b;
+    end loop;
+    console << endl;
     retval := close( integer(serversock) );
     retval := close( integer(sock) );
   end if;

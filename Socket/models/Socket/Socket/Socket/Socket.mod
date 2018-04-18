@@ -5,8 +5,6 @@
 domain Socket is
   public type socketfd is integer
   ;
-  public type data is sequence of byte
-  ;
   public type socktype is enum (SOCK_STREAM, SOCK_DGRAM)
   ;
   public type sockproto is enum (IPPROTO_TCP, IPPROTO_UDP)
@@ -45,12 +43,16 @@ pragma scenario ( 3 ); pragma test_only ( true );
     private service testselect (
     );
 pragma scenario ( 5 ); pragma test_only ( true ); 
-    public service datatostring (
-        data : in data    ) return string;
     public service durationtotimeval (
-        duration : in duration    ) return data;
-    private service stringtodata (
-        s : in string    ) return data;
+        duration : in duration    ) return anonymous sequence of anonymous byte;
+    public service geterror (
+    ) return error;
+    public service strerror (
+    ) return string;
+    public service select (
+        readfds : out set of integer,        writefds : out set of integer,        exceptfds : out set of integer,        timeout : in anonymous sequence of anonymous byte    ) return integer;
+    public service close (
+        fd : in integer    ) return integer;
     public service accept (
         socket : in socketfd,        address : out sockaddr    ) return socketfd;
     public service bind (
@@ -62,29 +64,21 @@ pragma scenario ( 5 ); pragma test_only ( true );
     public service getsockname (
         socket : in socketfd,        address : out sockaddr    ) return integer;
     public service getsockopt (
-        socket : in socketfd,        option : in optionname,        value : out data    ) return integer;
+        socket : in socketfd,        option : in optionname,        value : out anonymous sequence of anonymous byte    ) return integer;
     public service listen (
         socket : in socketfd,        backlog : in integer    ) return integer;
     public service recv (
-        socket : in socketfd,        buffer : out data,        length : in integer,        flags : in integer    ) return integer;
+        socket : in socketfd,        buffer : out anonymous sequence of anonymous byte,        length : in integer,        flags : in integer    ) return integer;
     public service recvfrom (
-        socket : in socketfd,        buffer : out data,        length : in integer,        flags : in integer,        address : out sockaddr    ) return integer;
+        socket : in socketfd,        buffer : out anonymous sequence of anonymous byte,        length : in integer,        flags : in integer,        address : out sockaddr    ) return integer;
     public service sendto (
-        socket : in socketfd,        message : in data,        length : in integer,        flags : in integer,        address : in sockaddr    ) return integer;
+        socket : in socketfd,        message : in anonymous sequence of anonymous byte,        length : in integer,        flags : in integer,        address : in sockaddr    ) return integer;
     public service setsockopt (
-        socket : in socketfd,        option : in optionname,        value : in data    ) return integer;
+        socket : in socketfd,        option : in optionname,        value : in anonymous sequence of anonymous byte    ) return integer;
     public service send (
-        socket : in socketfd,        message : in data,        length : in integer,        flags : in integer    ) return integer;
+        socket : in socketfd,        message : in anonymous sequence of anonymous byte,        length : in integer,        flags : in integer    ) return integer;
     public service shutdown (
         socket : in socketfd,        how : in shutdowntype    ) return integer;
     public service socket (
         socktype : in socktype,        protocol : in sockproto    ) return socketfd;
-    public service geterror (
-    ) return error;
-    public service strerror (
-    ) return string;
-    public service select (
-        readfds : out set of integer,        writefds : out set of integer,        exceptfds : out set of integer,        timeout : in data    ) return integer;
-    public service close (
-        fd : in integer    ) return integer;
 end domain;

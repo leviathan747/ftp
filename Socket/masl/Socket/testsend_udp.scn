@@ -1,7 +1,7 @@
 private service Socket::testsend_udp () is
 sock: socketfd;
 peeraddr: sockaddr;
-msg: string;
+msg: sequence of byte;
 retval: integer;
 begin
 
@@ -17,8 +17,8 @@ begin
   // send some data
   peeraddr.address := "127.0.0.1";
   peeraddr.port := 8080;
-  msg := "Hello, World! (UDP)";
-  retval := sendto( sock, stringtodata( msg ), msg'length(), 0, peeraddr );
+  msg := 72 & 101 & 108 & 108 & 111 & 44 & 32 & 87 & 111 & 114 & 108 & 100 & 33 & 32 & 40 & 85 & 68 & 80 & 41; // "Hello, World! (UDP)"
+  retval := sendto( sock, msg, msg'length(), 0, peeraddr );
   if ( retval < 0 ) then
     console << "Send error " << geterror() << ": " << strerror() << endl;
     raise SocketException;
