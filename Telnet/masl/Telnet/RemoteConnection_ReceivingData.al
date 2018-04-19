@@ -1,5 +1,5 @@
 state Telnet::RemoteConnection.ReceivingData () is
-buffer: anonymous sequence of byte;
+buffer: sequence of byte;
 readfds: set of integer;
 emptyfds: set of integer;
 retval: integer;
@@ -24,7 +24,7 @@ begin
     if ( buffer'length > 0 ) then
 
       // store data
-      Logger::information( "Telnet::RemoteConnection: Received data: " & Socket::datatostring( buffer ) );
+      //Logger::information( "Telnet::RemoteConnection: Received data: " & Socket::datatostring( buffer ) );
       printer := this->R3.provides_communication_channel_for.NetworkVirtualTerminal->R1.outputs_data_on.Printer;
       printer.buffer := printer.buffer & buffer;
       generate Printer.data() to printer;

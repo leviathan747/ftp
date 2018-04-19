@@ -1,5 +1,5 @@
 state Telnet::RemoteConnection.SendingData () is
-buffer: anonymous sequence of byte;
+buffer: sequence of byte;
 writefds: set of integer;
 emptyfds: set of integer;
 retval: integer;

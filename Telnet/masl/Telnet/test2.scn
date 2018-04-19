@@ -1,7 +1,7 @@
 private service Telnet::test2 () is
 conn: instance of RemoteConnection;
 keyboard: instance of Keyboard;
-msg: anonymous sequence of byte;
+msg: sequence of byte;
 begin
   keyboard := find_one Keyboard();
   if ( null /= keyboard ) then
