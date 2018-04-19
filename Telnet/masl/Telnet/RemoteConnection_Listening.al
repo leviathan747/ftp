@@ -50,6 +50,7 @@ begin
       this.remote_address := remoteaddr;
       this.connected := true;
       generate ready() to this;
+      generate NetworkVirtualTerminal.connected() to this->R3.provides_communication_channel_for.NetworkVirtualTerminal;
     end if;
 
   end if;

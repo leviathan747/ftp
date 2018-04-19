@@ -4,7 +4,7 @@ INSERT INTO O_OBJ
 	VALUES ("2a9116ea-4021-43d3-9df2-e15c07ed05ab",
 	'Printer',
 	2,
-	'Printer',
+	'PR',
 	'',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_REF

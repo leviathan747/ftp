@@ -41,7 +41,7 @@ INSERT INTO SM_EVT
 	'listen',
 	0,
 	'',
-	'RemoteConnection1',
+	'RC1',
 	'');
 INSERT INTO SM_LEVT
 	VALUES ("2779303c-ddda-4cac-a096-51de89106235",
@@ -59,7 +59,7 @@ INSERT INTO SM_EVT
 	'error',
 	0,
 	'',
-	'RemoteConnection2',
+	'RC2',
 	'');
 INSERT INTO SM_LEVT
 	VALUES ("06981836-5508-4031-b02e-11c8d8f87cb4",
@@ -77,7 +77,7 @@ INSERT INTO SM_EVT
 	'ready',
 	0,
 	'',
-	'RemoteConnection3',
+	'RC3',
 	'');
 INSERT INTO SM_LEVT
 	VALUES ("748b5d49-8b69-4102-a869-19439c767255",
@@ -95,7 +95,7 @@ INSERT INTO SM_EVT
 	'connect',
 	0,
 	'',
-	'RemoteConnection4',
+	'RC4',
 	'');
 INSERT INTO SM_LEVT
 	VALUES ("d9446850-fa4e-4a7d-ab19-940ae139fc0f",
@@ -113,7 +113,7 @@ INSERT INTO SM_EVT
 	'read',
 	0,
 	'',
-	'RemoteConnection5',
+	'RC5',
 	'');
 INSERT INTO SM_LEVT
 	VALUES ("820bebd5-d6be-4397-9099-62b993828628",
@@ -131,7 +131,7 @@ INSERT INTO SM_EVT
 	'write',
 	0,
 	'',
-	'RemoteConnection6',
+	'RC6',
 	'');
 INSERT INTO SM_LEVT
 	VALUES ("65e17980-b72f-493b-9e41-a61d1a0aa4c0",
@@ -149,25 +149,7 @@ INSERT INTO SM_EVT
 	'close',
 	0,
 	'',
-	'RemoteConnection7',
-	'');
-INSERT INTO SM_LEVT
-	VALUES ("5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_SEVT
-	VALUES ("5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_EVT
-	VALUES ("5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000",
-	8,
-	'urgentdata',
-	0,
-	'',
-	'RemoteConnection8',
+	'RC7',
 	'');
 INSERT INTO SM_STATE
 	VALUES ("c1337b11-a2e5-43b4-a6b2-9f84b244d053",
@@ -241,17 +223,6 @@ INSERT INTO SM_SEME
 	"65e17980-b72f-493b-9e41-a61d1a0aa4c0",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
-	VALUES ("c1337b11-a2e5-43b4-a6b2-9f84b244d053",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO SM_SEME
-	VALUES ("c1337b11-a2e5-43b4-a6b2-9f84b244d053",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_STATE
 	VALUES ("a499acf2-a628-4f8e-aca7-b34d5baf8ee4",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
@@ -316,17 +287,6 @@ INSERT INTO SM_CH
 INSERT INTO SM_SEME
 	VALUES ("a499acf2-a628-4f8e-aca7-b34d5baf8ee4",
 	"65e17980-b72f-493b-9e41-a61d1a0aa4c0",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
-	VALUES ("a499acf2-a628-4f8e-aca7-b34d5baf8ee4",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO SM_SEME
-	VALUES ("a499acf2-a628-4f8e-aca7-b34d5baf8ee4",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_STATE
@@ -407,17 +367,6 @@ INSERT INTO SM_SEME
 	"65e17980-b72f-493b-9e41-a61d1a0aa4c0",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
-	VALUES ("cc240d00-07fd-49cb-baa8-197a4d0bcf84",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO SM_SEME
-	VALUES ("cc240d00-07fd-49cb-baa8-197a4d0bcf84",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_STATE
 	VALUES ("44bf3694-edd0-4b53-9c45-3c4f6aa6700f",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
@@ -476,17 +425,6 @@ INSERT INTO SM_SEME
 INSERT INTO SM_SEME
 	VALUES ("44bf3694-edd0-4b53-9c45-3c4f6aa6700f",
 	"65e17980-b72f-493b-9e41-a61d1a0aa4c0",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
-	VALUES ("44bf3694-edd0-4b53-9c45-3c4f6aa6700f",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO SM_SEME
-	VALUES ("44bf3694-edd0-4b53-9c45-3c4f6aa6700f",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_STATE
@@ -561,17 +499,6 @@ INSERT INTO SM_SEME
 	"65e17980-b72f-493b-9e41-a61d1a0aa4c0",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
-	VALUES ("38f1f24d-92dc-438d-b32c-b255479419b4",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO SM_SEME
-	VALUES ("38f1f24d-92dc-438d-b32c-b255479419b4",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_STATE
 	VALUES ("90512176-93af-45bc-948e-eb7fb3def409",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
@@ -636,17 +563,6 @@ INSERT INTO SM_CH
 INSERT INTO SM_SEME
 	VALUES ("90512176-93af-45bc-948e-eb7fb3def409",
 	"65e17980-b72f-493b-9e41-a61d1a0aa4c0",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
-	VALUES ("90512176-93af-45bc-948e-eb7fb3def409",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO SM_SEME
-	VALUES ("90512176-93af-45bc-948e-eb7fb3def409",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_STATE
@@ -731,17 +647,6 @@ INSERT INTO SM_CH
 INSERT INTO SM_SEME
 	VALUES ("8aa9fb96-649b-4b4e-9007-be0d1b7c4516",
 	"65e17980-b72f-493b-9e41-a61d1a0aa4c0",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
-	VALUES ("8aa9fb96-649b-4b4e-9007-be0d1b7c4516",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
-	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
-	"00000000-0000-0000-0000-000000000000",
-	'');
-INSERT INTO SM_SEME
-	VALUES ("8aa9fb96-649b-4b4e-9007-be0d1b7c4516",
-	"5e9c1a2e-df3f-4ad0-8f71-7e415c4a08ef",
 	"2740c197-7613-46cf-b20c-3a91f8f3a7c9",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO SM_NSTXN
@@ -1384,7 +1289,7 @@ INSERT INTO GD_GE
 	"6cd583a1-cd9b-4c69-8ab5-28330b73a777",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Idle::RemoteConnection1: listen');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Idle::RC1: listen');
 INSERT INTO GD_CON
 	VALUES ("57d9e220-d65d-41f8-bf66-0e3ea3cd7806",
 	"00000000-0000-0000-0000-000000000000");
@@ -1497,7 +1402,7 @@ INSERT INTO GD_GE
 	"126f2cc3-a6d0-4a2a-af00-29f800b712b0",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Listening::RemoteConnection2: error');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Listening::RC2: error');
 INSERT INTO GD_CON
 	VALUES ("a2bcde71-45b9-4d35-af0e-f5099f568b0b",
 	"00000000-0000-0000-0000-000000000000");
@@ -1687,7 +1592,7 @@ INSERT INTO GD_GE
 	"9bef8b55-38c0-41b8-9bd4-b56f33786c93",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Listening::RemoteConnection3: ready');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Listening::RC3: ready');
 INSERT INTO GD_CON
 	VALUES ("6f2a7ba3-a0cb-4a84-806e-92156c4bacf4",
 	"00000000-0000-0000-0000-000000000000");
@@ -1787,7 +1692,7 @@ INSERT INTO GD_GE
 	"2ba4f939-92c3-471a-be71-c0dcd701053b",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::ReceivingData::RemoteConnection2: error');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::ReceivingData::RC2: error');
 INSERT INTO GD_CON
 	VALUES ("e1c88120-3ecf-4f3c-a0b9-f0fdd6e855bb",
 	"00000000-0000-0000-0000-000000000000");
@@ -1900,7 +1805,7 @@ INSERT INTO GD_GE
 	"7c32fe5a-80e3-4f1e-ab1f-f9ee699275bf",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::ReceivingData::RemoteConnection3: ready');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::ReceivingData::RC3: ready');
 INSERT INTO GD_CON
 	VALUES ("ec5393ba-bf16-4f3c-b060-46fdc02d00a3",
 	"00000000-0000-0000-0000-000000000000");
@@ -2078,7 +1983,7 @@ INSERT INTO GD_GE
 	"51b56427-67c0-41d6-ace4-fdbda7ad4139",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Idle::RemoteConnection4: connect');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Idle::RC4: connect');
 INSERT INTO GD_CON
 	VALUES ("b36bf6ef-31dd-4b2b-bfd0-9ca30b1901fe",
 	"00000000-0000-0000-0000-000000000000");
@@ -2178,7 +2083,7 @@ INSERT INTO GD_GE
 	"4c50d4d2-d9b3-4e68-a7d1-3d8bb2b142f0",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Connecting::RemoteConnection3: ready');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Connecting::RC3: ready');
 INSERT INTO GD_CON
 	VALUES ("3c9f16f4-a1c7-4e06-9589-fb9f566a4081",
 	"00000000-0000-0000-0000-000000000000");
@@ -2278,7 +2183,7 @@ INSERT INTO GD_GE
 	"925f490b-af37-4787-98a3-e06f2f05e190",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Connecting::RemoteConnection2: error');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Connecting::RC2: error');
 INSERT INTO GD_CON
 	VALUES ("ef6854f1-86ca-48ee-9539-9f2b6ba16bb0",
 	"00000000-0000-0000-0000-000000000000");
@@ -2427,7 +2332,7 @@ INSERT INTO GD_GE
 	"d4144379-a527-412f-95d9-5eff0c9457ce",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::ReceivingData::RemoteConnection6: write');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::ReceivingData::RC6: write');
 INSERT INTO GD_CON
 	VALUES ("8fe74831-3715-4307-9621-95f4e0642aca",
 	"00000000-0000-0000-0000-000000000000");
@@ -2527,7 +2432,7 @@ INSERT INTO GD_GE
 	"1447c725-a092-4e1c-9592-7d2f5613af5b",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::SendingData::RemoteConnection5: read');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::SendingData::RC5: read');
 INSERT INTO GD_CON
 	VALUES ("671ed8c3-5710-4cd2-9818-86e414632d70",
 	"00000000-0000-0000-0000-000000000000");
@@ -2627,7 +2532,7 @@ INSERT INTO GD_GE
 	"98e22dc7-77ed-4504-ab44-88e94d400d0d",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::SendingData::RemoteConnection2: error');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::SendingData::RC2: error');
 INSERT INTO GD_CON
 	VALUES ("5d216c06-887e-4890-8837-e450f8197bce",
 	"00000000-0000-0000-0000-000000000000");
@@ -2740,7 +2645,7 @@ INSERT INTO GD_GE
 	"7c15ecd4-e33c-43a0-ba61-1c3187f878e4",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Listening::RemoteConnection1: listen');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::Listening::RC1: listen');
 INSERT INTO GD_CON
 	VALUES ("6d66f40f-6d66-4829-9269-d052d4f758cf",
 	"00000000-0000-0000-0000-000000000000");
@@ -2879,7 +2784,7 @@ INSERT INTO GD_GE
 	"285fd9b2-e424-4fb5-9225-bef7b625440d",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::SendingData::RemoteConnection3: ready');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::SendingData::RC3: ready');
 INSERT INTO GD_CON
 	VALUES ("c3953c47-8d20-4559-bca9-0be685567f3d",
 	"00000000-0000-0000-0000-000000000000");
@@ -3052,7 +2957,7 @@ INSERT INTO GD_GE
 	"cf6ec2dc-6454-4d8a-9fd4-e82f8b54a1cd",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::ReceivingData::RemoteConnection7: close');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::ReceivingData::RC7: close');
 INSERT INTO GD_CON
 	VALUES ("83a42f93-61a6-4a97-a0f6-5931c7e2ea60",
 	"00000000-0000-0000-0000-000000000000");
@@ -3152,7 +3057,7 @@ INSERT INTO GD_GE
 	"3fd2cb98-cb4f-459d-a000-1edbb3e5051c",
 	42,
 	0,
-	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::ReportingError::RemoteConnection7: close');
+	'Telnet::Telnet::Telnet::Telnet::RemoteConnection::Instance State Machine::ReportingError::RC7: close');
 INSERT INTO GD_CON
 	VALUES ("02119275-cae5-4b1f-8047-40dd2328ba6e",
 	"00000000-0000-0000-0000-000000000000");
@@ -3283,7 +3188,7 @@ INSERT INTO O_OBJ_PROXY
 	VALUES ("41e2da58-7702-4676-b4f8-266d953e44b7",
 	'RemoteConnection',
 	4,
-	'RemoteConnection',
+	'RC',
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	'../RemoteConnection.xtuml');

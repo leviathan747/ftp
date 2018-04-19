@@ -12,7 +12,7 @@ begin
   end if;
   
   // create a terminal, printer, and keyboard
-  term := create NetworkVirtualTerminal( id => termid );
+  term := create NetworkVirtualTerminal( id => termid, Current_State => Idle );
   link create Printer( nvt_id => termid, Current_State => Idle ) R1.displays_output_for term;
   link create Keyboard( nvt_id => termid ) R2.passes_input_to term;
 

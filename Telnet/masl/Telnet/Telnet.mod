@@ -306,7 +306,6 @@ domain Telnet is
     event read ();     
     event write ();     
     event close ();     
-    event urgentdata ();     
     
     transition is
       Non_Existent ( listen => Cannot_Happen,
@@ -315,64 +314,56 @@ domain Telnet is
                      connect => Cannot_Happen,
                      read => Cannot_Happen,
                      write => Cannot_Happen,
-                     close => Cannot_Happen,
-                     urgentdata => Cannot_Happen );       
+                     close => Cannot_Happen );       
       Idle ( listen => Listening,
              error => Cannot_Happen,
              ready => Cannot_Happen,
              connect => Connecting,
              read => Cannot_Happen,
              write => Cannot_Happen,
-             close => Cannot_Happen,
-             urgentdata => Cannot_Happen );       
+             close => Cannot_Happen );       
       Listening ( listen => Listening,
                   error => ReportingError,
                   ready => ReceivingData,
                   connect => Cannot_Happen,
                   read => Cannot_Happen,
                   write => Cannot_Happen,
-                  close => Cannot_Happen,
-                  urgentdata => Cannot_Happen );       
+                  close => Cannot_Happen );       
       ReportingError ( listen => Cannot_Happen,
                        error => Cannot_Happen,
                        ready => Cannot_Happen,
                        connect => Cannot_Happen,
                        read => Cannot_Happen,
                        write => Cannot_Happen,
-                       close => ShuttingDown,
-                       urgentdata => Cannot_Happen );       
+                       close => ShuttingDown );       
       ReceivingData ( listen => Cannot_Happen,
                       error => ReportingError,
                       ready => ReceivingData,
                       connect => Cannot_Happen,
                       read => Cannot_Happen,
                       write => SendingData,
-                      close => ShuttingDown,
-                      urgentdata => Cannot_Happen );       
+                      close => ShuttingDown );       
       Connecting ( listen => Cannot_Happen,
                    error => ReportingError,
                    ready => ReceivingData,
                    connect => Cannot_Happen,
                    read => Cannot_Happen,
                    write => Cannot_Happen,
-                   close => Cannot_Happen,
-                   urgentdata => Cannot_Happen );       
+                   close => Cannot_Happen );       
       SendingData ( listen => Cannot_Happen,
                     error => ReportingError,
                     ready => SendingData,
                     connect => Cannot_Happen,
                     read => ReceivingData,
                     write => Cannot_Happen,
-                    close => Cannot_Happen,
-                    urgentdata => Cannot_Happen );       
+                    close => Cannot_Happen );       
       ShuttingDown ( listen => Cannot_Happen,
                      error => Cannot_Happen,
                      ready => Cannot_Happen,
                      connect => Cannot_Happen,
                      read => Cannot_Happen,
                      write => Cannot_Happen,
-                     close => Cannot_Happen,
-                     urgentdata => Cannot_Happen );       
+                     close => Cannot_Happen );       
     end transition;
     
   end object;
@@ -396,6 +387,24 @@ domain Telnet is
   object NetworkVirtualTerminal is
     
     id: preferred termid;     
+    
+    state Idle ();     
+    state Connected ();     
+    state Synching ();     
+    
+    event connected ();     
+    event synch ();     
+    
+    transition is
+      Non_Existent ( connected => Cannot_Happen,
+                     synch => Cannot_Happen );       
+      Idle ( connected => Connected,
+             synch => Cannot_Happen );       
+      Connected ( connected => Cannot_Happen,
+                  synch => Synching );       
+      Synching ( connected => Cannot_Happen,
+                 synch => Cannot_Happen );       
+    end transition;
     
   end object;
   

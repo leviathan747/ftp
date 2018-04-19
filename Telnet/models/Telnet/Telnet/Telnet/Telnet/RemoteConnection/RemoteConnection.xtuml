@@ -4,7 +4,7 @@ INSERT INTO O_OBJ
 	VALUES ("41e2da58-7702-4676-b4f8-266d953e44b7",
 	'RemoteConnection',
 	4,
-	'RemoteConnection',
+	'RC',
 	'',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_REF

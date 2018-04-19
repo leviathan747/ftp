@@ -35,7 +35,7 @@ begin
       // update keyboard buffer
       if ( retval < keyboard.buffer'length ) then
         keyboard.buffer := keyboard.buffer[retval+1..keyboard.buffer'last];
-        generate ready() to this; // keyboard still has contents
+        schedule this.ticker generate ready() to this delay Connections.default().tick; // keyboard still has contents
       else
         keyboard.buffer := emptybuffer;
         generate read() to this; // keyboard empty, go back to reading

@@ -27,7 +27,11 @@ begin
   else
     for sock in exceptfds loop
       for conn in find RemoteConnection( socket_id = Socket::socketfd(sock) ) loop
-        generate RemoteConnection.urgentdata() to conn;
+        // tell the socket to read
+        cancel conn.ticker;
+        generate RemoteConnection.read() to conn;
+        // put the terminal into synching mode
+        generate NetworkVirtualTerminal.synch() to conn->R3.provides_communication_channel_for.NetworkVirtualTerminal;
       end loop;
     end loop;
   end if;

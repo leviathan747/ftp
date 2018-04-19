@@ -1,0 +1,21 @@
+//! ACTIVITY BEGIN. '7f199b29-6364-40ed-9393-717088368e46' '46165c7d-4cec-483a-813c-f46b867844b9' DO NOT EDIT THIS LINE.
+state Telnet::NetworkVirtualTerminal.Idle () is
+begin
+  null;
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. '7f199b29-6364-40ed-9393-717088368e46' '043246b9-56ed-40e4-873e-48d165c9cfe4' DO NOT EDIT THIS LINE.
+state Telnet::NetworkVirtualTerminal.Connected () is
+begin
+  null;
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+
+//! ACTIVITY BEGIN. '7f199b29-6364-40ed-9393-717088368e46' '1327297d-8634-400d-ab05-57e1d113dc4c' DO NOT EDIT THIS LINE.
+state Telnet::NetworkVirtualTerminal.Synching () is
+begin
+  null;
+end state;
+//! ACTIVITY END. DO NOT EDIT THIS LINE.
+

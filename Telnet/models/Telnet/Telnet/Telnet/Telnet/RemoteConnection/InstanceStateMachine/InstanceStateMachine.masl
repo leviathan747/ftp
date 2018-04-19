@@ -58,6 +58,7 @@ begin
       this.remote_address := remoteaddr;
       this.connected := true;
       generate ready() to this;
+      generate NetworkVirtualTerminal.connected() to this->R3.provides_communication_channel_for.NetworkVirtualTerminal;
     end if;
 
   end if;
@@ -116,7 +117,7 @@ begin
       generate Printer.data() to printer;
   
       // repeat
-      generate ready() to this;
+      schedule this.ticker generate ready() to this delay Connections.default().tick;
   
     else
       generate close() to this;
@@ -134,6 +135,7 @@ end state;
 state Telnet::RemoteConnection.Connecting () is
 begin
   null;
+  // TODO implement client side connecting
 end state;
 //! ACTIVITY END. DO NOT EDIT THIS LINE.
 
@@ -175,7 +177,7 @@ begin
       // update keyboard buffer
       if ( retval < keyboard.buffer'length ) then
         keyboard.buffer := keyboard.buffer[retval+1..keyboard.buffer'last];
-        generate ready() to this; // keyboard still has contents
+        schedule this.ticker generate ready() to this delay Connections.default().tick; // keyboard still has contents
       else
         keyboard.buffer := emptybuffer;
         generate read() to this; // keyboard empty, go back to reading

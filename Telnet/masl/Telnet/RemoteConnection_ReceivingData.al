@@ -33,7 +33,7 @@ begin
       generate Printer.data() to printer;
   
       // repeat
-      generate ready() to this;
+      schedule this.ticker generate ready() to this delay Connections.default().tick;
   
     else
       generate close() to this;

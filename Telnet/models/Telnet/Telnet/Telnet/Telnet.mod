@@ -297,7 +297,6 @@ pragma signal_handler ( SIGURG );
      event read();
      event write();
      event close();
-     event urgentdata();
      transition is
       Non_Existent (
         listen => Cannot_Happen,
@@ -306,8 +305,7 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => Cannot_Happen,
-        urgentdata => Cannot_Happen      ); 
+        close => Cannot_Happen      ); 
       Idle (
         listen => Listening,
         error => Cannot_Happen,
@@ -315,8 +313,7 @@ pragma signal_handler ( SIGURG );
         connect => Connecting,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => Cannot_Happen,
-        urgentdata => Cannot_Happen      ); 
+        close => Cannot_Happen      ); 
       Listening (
         listen => Listening,
         error => ReportingError,
@@ -324,8 +321,7 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => Cannot_Happen,
-        urgentdata => Cannot_Happen      ); 
+        close => Cannot_Happen      ); 
       ReportingError (
         listen => Cannot_Happen,
         error => Cannot_Happen,
@@ -333,8 +329,7 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => ShuttingDown,
-        urgentdata => Cannot_Happen      ); 
+        close => ShuttingDown      ); 
       ReceivingData (
         listen => Cannot_Happen,
         error => ReportingError,
@@ -342,8 +337,7 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => SendingData,
-        close => ShuttingDown,
-        urgentdata => Cannot_Happen      ); 
+        close => ShuttingDown      ); 
       Connecting (
         listen => Cannot_Happen,
         error => ReportingError,
@@ -351,8 +345,7 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => Cannot_Happen,
-        urgentdata => Cannot_Happen      ); 
+        close => Cannot_Happen      ); 
       SendingData (
         listen => Cannot_Happen,
         error => ReportingError,
@@ -360,8 +353,7 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => ReceivingData,
         write => Cannot_Happen,
-        close => Cannot_Happen,
-        urgentdata => Cannot_Happen      ); 
+        close => Cannot_Happen      ); 
       ShuttingDown (
         listen => Cannot_Happen,
         error => Cannot_Happen,
@@ -369,8 +361,7 @@ pragma signal_handler ( SIGURG );
         connect => Cannot_Happen,
         read => Cannot_Happen,
         write => Cannot_Happen,
-        close => Cannot_Happen,
-        urgentdata => Cannot_Happen      ); 
+        close => Cannot_Happen      ); 
     end transition;
   end object;
   object Printer is
@@ -387,6 +378,25 @@ pragma signal_handler ( SIGURG );
   end object;
   object NetworkVirtualTerminal is
     id : preferred  termid;
+     state Idle();
+     state Connected();
+     state Synching();
+     event connected();
+     event synch();
+     transition is
+      Non_Existent (
+        connected => Cannot_Happen,
+        synch => Cannot_Happen      ); 
+      Idle (
+        connected => Connected,
+        synch => Cannot_Happen      ); 
+      Connected (
+        connected => Cannot_Happen,
+        synch => Synching      ); 
+      Synching (
+        connected => Cannot_Happen,
+        synch => Cannot_Happen      ); 
+    end transition;
   end object;
   object Keyboard is
     nvt_id : preferred  referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;
