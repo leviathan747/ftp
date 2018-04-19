@@ -14,6 +14,7 @@ private service Telnet::test2 () is
 conn: instance of RemoteConnection;
 keyboard: instance of Keyboard;
 msg: sequence of byte;
+writer: device;
 begin
   keyboard := find_one Keyboard();
   if ( null /= keyboard ) then
@@ -21,8 +22,10 @@ begin
     if ( null /= conn ) then
       // throttle the maximum send amount to force multiple send operations
       Connections.default().buffer_size := 10;
-      msg := 72 & 101 & 108 & 108 & 111 & 44 & 32 & 87 & 111 & 114 & 108 & 100 & 33; // "Hello, World!" TODO sort out conversion utilities
-      keyboard.buffer := keyboard.buffer & msg & CharacterSequences.default().CRLF;
+      BinaryIO::open_byte_writer( writer );
+      writer << "Hello, World!";
+      keyboard.buffer := keyboard.buffer & BinaryIO::get_bytes( writer ) & CharacterSequences.default().CRLF;
+      BinaryIO::close_byte_writer( writer );
       generate RemoteConnection.write() to conn;
     end if;
   end if;

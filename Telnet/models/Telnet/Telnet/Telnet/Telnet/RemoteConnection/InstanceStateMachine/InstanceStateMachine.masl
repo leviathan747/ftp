@@ -87,6 +87,7 @@ readfds: set of integer;
 emptyfds: set of integer;
 retval: integer;
 printer: instance of Printer;
+reader: device;
 begin
 
   // select for input data
@@ -107,7 +108,9 @@ begin
     if ( buffer'length > 0 ) then
 
       // store data
-      //Logger::information( "Telnet::RemoteConnection: Received data: " & Socket::datatostring( buffer ) );
+      BinaryIO::open_byte_reader( buffer, reader );
+      Logger::information( "Telnet::RemoteConnection: Received data: " & BinaryIO::read_raw_string( reader, buffer'length ) );
+      BinaryIO::close_byte_reader( reader );
       printer := this->R3.provides_communication_channel_for.NetworkVirtualTerminal->R1.outputs_data_on.Printer;
       printer.buffer := printer.buffer & buffer;
       generate Printer.data() to printer;

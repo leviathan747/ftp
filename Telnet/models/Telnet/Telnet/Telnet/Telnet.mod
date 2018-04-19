@@ -2,12 +2,12 @@
 //!simple implementation that only implements the NVT and does not support any
 //!additional options.
 domain Telnet is
-  object Keyboard;
-  object NetworkVirtualTerminal;
-  object Printer;
-  object RemoteConnection;
   object Connections;
   object CharacterSequences;
+  object RemoteConnection;
+  object Printer;
+  object NetworkVirtualTerminal;
+  object Keyboard;
   public type termid is integer
   ;
   public type telnetcmd is enum (SE, NOP, DM, BRK, IP, AO, AYT, EC, EL, GA, SB, WILL, WONT, DO, DONT, IAC)
@@ -261,24 +261,19 @@ pragma signal_handler ( SIGURG );
     Keyboard unconditionally passes_input_to one NetworkVirtualTerminal;
   relationship R3 is NetworkVirtualTerminal conditionally communicates_through one RemoteConnection,
     RemoteConnection unconditionally provides_communication_channel_for one NetworkVirtualTerminal;
-  object Keyboard is
-    nvt_id : preferred  referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;
-    buffer :   sequence of byte;
+  object Connections is
+    default_timeout :   duration := @PT30S@;
+    tick :   duration := @PT0.001S@;
+    id : preferred  integer;
+    buffer_size :   integer := 256;
+    public  service default (
+    ) return instance of Connections;
   end object;
-  object NetworkVirtualTerminal is
-    id : preferred  termid;
-  end object;
-  object Printer is
-    nvt_id : preferred  referential ( R1.displays_output_for.NetworkVirtualTerminal.id ) termid;
-    buffer :   sequence of byte;
-     state Idle();
-     event data();
-     transition is
-      Non_Existent (
-        data => Cannot_Happen      ); 
-      Idle (
-        data => Ignore      ); 
-    end transition;
+  object CharacterSequences is
+    id : preferred  integer;
+    CRLF :   sequence of byte := 13 & 10;
+    public  service default (
+    ) return instance of CharacterSequences;
   end object;
   object RemoteConnection is
     nvt_id : preferred  referential ( R3.provides_communication_channel_for.NetworkVirtualTerminal.id ) termid;
@@ -378,18 +373,23 @@ pragma signal_handler ( SIGURG );
         urgentdata => Cannot_Happen      ); 
     end transition;
   end object;
-  object Connections is
-    default_timeout :   duration := @PT30S@;
-    tick :   duration := @PT0.001S@;
-    id : preferred  integer;
-    buffer_size :   integer := 256;
-    public  service default (
-    ) return instance of Connections;
+  object Printer is
+    nvt_id : preferred  referential ( R1.displays_output_for.NetworkVirtualTerminal.id ) termid;
+    buffer :   sequence of byte;
+     state Idle();
+     event data();
+     transition is
+      Non_Existent (
+        data => Cannot_Happen      ); 
+      Idle (
+        data => Ignore      ); 
+    end transition;
   end object;
-  object CharacterSequences is
-    id : preferred  integer;
-    CRLF :   sequence of byte := 13 & 10;
-    public  service default (
-    ) return instance of CharacterSequences;
+  object NetworkVirtualTerminal is
+    id : preferred  termid;
+  end object;
+  object Keyboard is
+    nvt_id : preferred  referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;
+    buffer :   sequence of byte;
   end object;
 end domain;

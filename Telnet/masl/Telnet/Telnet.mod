@@ -3,12 +3,12 @@
 //!additional options.
 domain Telnet is
   
-  object Keyboard;
-  object NetworkVirtualTerminal;
-  object Printer;
-  object RemoteConnection;
   object Connections;
   object CharacterSequences;
+  object RemoteConnection;
+  object Printer;
+  object NetworkVirtualTerminal;
+  object Keyboard;
   
   public type termid is integer;   
   public type telnetcmd is enum ( SE, NOP, DM, BRK, IP, AO, AYT, EC, EL, GA, SB, WILL, WONT, DO, DONT, IAC );   
@@ -261,32 +261,23 @@ domain Telnet is
   
   
   
-  object Keyboard is
+  object Connections is
     
-    nvt_id: preferred referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;     
-    buffer: sequence of byte;     
+    default_timeout: duration := @PT30S@;     
+    tick: duration := @PT0.001S@;     
+    id: preferred integer;     
+    buffer_size: integer := 256;     
     
-  end object;
-  
-  object NetworkVirtualTerminal is
-    
-    id: preferred termid;     
+    public service default () return instance of Connections;     
     
   end object;
   
-  object Printer is
+  object CharacterSequences is
     
-    nvt_id: preferred referential ( R1.displays_output_for.NetworkVirtualTerminal.id ) termid;     
-    buffer: sequence of byte;     
+    id: preferred integer;     
+    CRLF: sequence of byte := 13 & 10;     
     
-    state Idle ();     
-    
-    event data ();     
-    
-    transition is
-      Non_Existent ( data => Cannot_Happen );       
-      Idle ( data => Ignore );       
-    end transition;
+    public service default () return instance of CharacterSequences;     
     
   end object;
   
@@ -386,23 +377,32 @@ domain Telnet is
     
   end object;
   
-  object Connections is
+  object Printer is
     
-    default_timeout: duration := @PT30S@;     
-    tick: duration := @PT0.001S@;     
-    id: preferred integer;     
-    buffer_size: integer := 256;     
+    nvt_id: preferred referential ( R1.displays_output_for.NetworkVirtualTerminal.id ) termid;     
+    buffer: sequence of byte;     
     
-    public service default () return instance of Connections;     
+    state Idle ();     
+    
+    event data ();     
+    
+    transition is
+      Non_Existent ( data => Cannot_Happen );       
+      Idle ( data => Ignore );       
+    end transition;
     
   end object;
   
-  object CharacterSequences is
+  object NetworkVirtualTerminal is
     
-    id: preferred integer;     
-    CRLF: sequence of byte := 13 & 10;     
+    id: preferred termid;     
     
-    public service default () return instance of CharacterSequences;     
+  end object;
+  
+  object Keyboard is
+    
+    nvt_id: preferred referential ( R2.passes_input_to.NetworkVirtualTerminal.id ) termid;     
+    buffer: sequence of byte;     
     
   end object;
   
