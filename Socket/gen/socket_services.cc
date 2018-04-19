@@ -146,9 +146,10 @@ namespace masld_Socket
                        int32_t                   maslp_length,
                        int32_t                   maslp_flags )
   {
-    uint8_t buf[ maslp_length ] = {};
+    uint8_t buf[ maslp_length ];
     int32_t retval              = -1;
 
+    memset( buf, 0, maslp_length );
     maslp_buffer.clear();
 
     retval = recv( maslp_socket, buf, maslp_length, maslp_flags );
@@ -168,11 +169,12 @@ namespace masld_Socket
                            int32_t                   maslp_flags,
                            maslt_sockaddr&           maslp_address )
   {
-    uint8_t buf[ maslp_length ]        = {};
+    uint8_t buf[ maslp_length ];
     struct sockaddr_in peeraddress     = {};
     socklen_t          peeraddress_len = sizeof(peeraddress);
     int32_t retval                     = -1;
 
+    memset( buf, 0, maslp_length );
     maslp_buffer.clear();
 
     retval = recvfrom( maslp_socket, buf, maslp_length, maslp_flags, (struct sockaddr *)&peeraddress, &peeraddress_len );
