@@ -1,5 +1,32 @@
 public service Telnet::command ( termid: in termid,
                                  cmd: in telnetcmd ) is
+term: instance of NetworkVirtualTerminal;
+keyboard: instance of Keyboard;
+cmdbytes: sequence of byte;
 begin
-  null; // TODO implement
+  term := find_one NetworkVirtualTerminal( id = termid );
+  if ( null /= term ) then
+    keyboard := term->R2.receives_input_from.Keyboard;
+    case cmd is
+      when SE     => cmdbytes := CharacterSequences.default().SE;
+      when NOP    => cmdbytes := CharacterSequences.default().NOP;
+      when DM     => cmdbytes := CharacterSequences.default().SE;
+      when BRK    => cmdbytes := CharacterSequences.default().SE;
+      when IP     => cmdbytes := CharacterSequences.default().SE;
+      when AO     => cmdbytes := CharacterSequences.default().SE;
+      when AYT    => cmdbytes := CharacterSequences.default().NOP;
+      when EC     => cmdbytes := CharacterSequences.default().SE;
+      when EL     => cmdbytes := CharacterSequences.default().NOP;
+      when GA     => cmdbytes := CharacterSequences.default().NOP;
+      when SB     => cmdbytes := CharacterSequences.default().SE;
+      when WILL   => cmdbytes := CharacterSequences.default().NOP;
+      when WONT   => cmdbytes := CharacterSequences.default().SE;
+      when DO     => cmdbytes := CharacterSequences.default().NOP;
+      when DONT   => cmdbytes := CharacterSequences.default().NOP;
+      when IAC    => cmdbytes := CharacterSequences.default().NOP;
+      when others => cmdbytes := cmdbytes; // do nothing
+    end case;
+    keyboard.buffer := keyboard.buffer & cmdbytes;
+    generate NetworkVirtualTerminal.data() to term;
+  end if;
 end service;

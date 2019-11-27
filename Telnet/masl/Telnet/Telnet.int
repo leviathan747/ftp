@@ -56,7 +56,7 @@ domain Telnet is
   //!    [TERMINVAL]     'termid' is a non-existent or invalid terminal. Also
   //!                    returned if the terminal is not attached to a peer.
   public service sendtext ( termid: in termid,
-                            text: in integer );   
+                            text: in string );   
   //!NAME
   //!    command -- send a Telnet command on a specified terminal instance.
   //!    

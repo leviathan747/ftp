@@ -63,7 +63,7 @@ domain Telnet is
   //!    [TERMINVAL]     'termid' is a non-existent or invalid terminal. Also
   //!                    returned if the terminal is not attached to a peer.
   public service sendtext ( termid: in termid,
-                            text: in integer );   
+                            text: in string );   
   //!NAME
   //!    command -- send a Telnet command on a specified terminal instance.
   //!    
@@ -276,6 +276,22 @@ domain Telnet is
     
     id: preferred integer;     
     CRLF: sequence of byte := 13 & 10;     
+    SE: byte := 240;     
+    NOP: byte := 241;     
+    DM: byte := 242;     
+    BRK: byte := 243;     
+    IP: byte := 244;     
+    AO: byte := 245;     
+    AYT: byte := 246;     
+    EC: byte := 247;     
+    EL: byte := 248;     
+    GA: byte := 249;     
+    SB: byte := 250;     
+    WILL: byte := 251;     
+    WONT: byte := 252;     
+    DO: byte := 253;     
+    DONT: byte := 254;     
+    IAC: byte := 255;     
     
     public service default () return instance of CharacterSequences;     
     
@@ -394,16 +410,21 @@ domain Telnet is
     
     event connected ();     
     event synch ();     
+    event data ();     
     
     transition is
       Non_Existent ( connected => Cannot_Happen,
-                     synch => Cannot_Happen );       
+                     synch => Cannot_Happen,
+                     data => Cannot_Happen );       
       Idle ( connected => Connected,
-             synch => Cannot_Happen );       
+             synch => Cannot_Happen,
+             data => Cannot_Happen );       
       Connected ( connected => Cannot_Happen,
-                  synch => Synching );       
+                  synch => Synching,
+                  data => Cannot_Happen );       
       Synching ( connected => Cannot_Happen,
-                 synch => Cannot_Happen );       
+                 synch => Cannot_Happen,
+                 data => Cannot_Happen );       
     end transition;
     
   end object;

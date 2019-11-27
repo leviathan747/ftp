@@ -1,5 +1,16 @@
 public service Telnet::sendtext ( termid: in termid,
-                                  text: in integer ) is
+                                  text: in string ) is
+term: instance of NetworkVirtualTerminal;
+keyboard: instance of Keyboard;
+writer: device;
 begin
-  null; // TODO implement
+  term := find_one NetworkVirtualTerminal( id = termid );
+  if ( null /= term ) then
+    keyboard := term->R2.receives_input_from.Keyboard;
+    BinaryIO::open_byte_writer( writer );
+    writer << text;
+    keyboard.buffer := keyboard.buffer & BinaryIO::get_bytes( writer ) & CharacterSequences.default().CRLF;
+    BinaryIO::close_byte_writer( writer );
+    generate NetworkVirtualTerminal.data() to term;
+  end if;
 end service;
